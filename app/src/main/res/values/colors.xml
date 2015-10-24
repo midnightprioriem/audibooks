@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#283593</color>
+    <color name="accent">#ffc400</color>
+    <color name="text_primary">#D9FFFFFF</color>
+    <color name="text">#D9000000</color>
+    <color name="text_secondary">#9E9E9E</color>
+    <color name="icon_background">#ffff</color>
+
+
+    <color name="primaryBlue">#3F51B5</color>
+    <color name="primary_darkBlue">#283593</color>
+    <color name="accentBlue">#ffc400</color>
+    <color name="text_primaryBlue">#D9FFFFFF</color>
+    <color name="textBlue">#D9000000</color>
+    <color name="text_secondaryBlue">#9E9E9E</color>
+    <color name="icon_backgroundBlue">#ffff</color>
+
+    <color name="primaryNightOLED">#607D8B</color>
+    <color name="primary_darkNightOLED">#37474F</color>
+    <color name="accentNightOLED">#ffc400</color>
+    <color name="text_primaryNightOLED">#D9FFFFFF</color>
+    <color name="textNightOLED">#D9000000</color>
+    <color name="text_secondaryNightOLED">#9E9E9E</color>
+    <color name="icon_backgroundNightOLED">#ffff</color>
+    <color name="background">#000000</color>
+
+
+
+</resources>
