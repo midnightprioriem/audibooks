@@ -160,11 +160,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        File folder = new File(Environment.getExternalStorageDirectory() + "/Audibooks");
-        if (!folder.exists()) {
-            folder.mkdir();
-        }
         File folder2 = new File(Environment.getExternalStorageDirectory() + "/Audibooks/Covers");
         if(!folder2.exists()){
             folder2.mkdir();
