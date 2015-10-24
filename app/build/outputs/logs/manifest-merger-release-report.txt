@@ -56,6 +56,7 @@ MERGED from [com.android.support:design:23.0.1] E:\AndroidStudioProjects\audiboo
 MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.0.1\AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from E:\AndroidStudioProjects\audibooks\app\src\main\AndroidManifest.xml:15:9-41
 	android:fullBackupContent
@@ -135,6 +136,7 @@ MERGED from [com.android.support:design:23.0.1] E:\AndroidStudioProjects\audiboo
 MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:appcompat-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.0.1\AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
 		INJECTED from E:\AndroidStudioProjects\audibooks\app\src\main\AndroidManifest.xml
 		INJECTED from E:\AndroidStudioProjects\audibooks\app\src\main\AndroidManifest.xml

@@ -39,6 +39,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -85,6 +86,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.os.Handler;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -93,6 +95,7 @@ import org.w3c.dom.Text;
 public class MainActivity extends Activity implements MediaPlayerControl, ServiceCallbacks {
 
     ListView bookView;
+    GridView bookViewGrid;
     private ArrayList<Chapter> chapterList;
     private ArrayList<Books> bookList;
     private MediaService mediaSrv;
@@ -114,9 +117,8 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     public TextView durationLeft;
     public ImageView bookCover;
 
-    public JSONArray bookCoversArray;
-
     private BooksAdapter adapter;
+    private BooksGridAdapter gridAdapter;
 
     public LinearLayout controlLayout;
 
@@ -126,11 +128,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     DrawerLayout drawerLayout;
     ListView drawerList;
     private ArrayAdapter<String> drawerAdapter;
-
-    public Snackbar snackbar;
-
-    public Handler handler;
-
 
     public MaterialRippleLayout back;
     public MaterialRippleLayout replay30;
@@ -145,6 +142,8 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     private static final String QUERY_URL = "http://openlibrary.org/search.json?q=";
     private static final String IMAGE_URL_BASE = "http://covers.openlibrary.org/b/id/";
 
+
+
     public int FILE_CODE = 0;
 
     public int coverCounter = 0;
@@ -152,6 +151,9 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     DataBaseHelper db;
 
     public ProgressBar progressBar;
+
+    public boolean isListView = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,9 +187,14 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         getBookList(chapterList, bookList);
         getBookPositions();
         bookView = (ListView) findViewById(R.id.bookView);
+        bookViewGrid = (GridView) findViewById(R.id.bookViewGrid);
+        bookViewGrid.setVisibility(View.GONE);
 
         adapter = new BooksAdapter(this, bookList);
         bookView.setAdapter(adapter);
+        gridAdapter = new BooksGridAdapter(this, bookList);
+        bookViewGrid.setAdapter(gridAdapter);
+
 
         setButtons();
 
@@ -195,7 +202,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
-                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL()));
+                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
                 }
                 mediaSrv.setBook(position);
                 mediaSrv.playBook();
@@ -224,7 +231,9 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 percentElapsedOne = (TextView) findViewById(R.id.percentElapsedOne);
                 durationLeft = (TextView) findViewById(R.id.durationLeft);
                 controlLayout = (LinearLayout) findViewById(R.id.controlLayout);
-                slidingLayout.setPanelHeight(325);
+                final float scale = getApplicationContext().getResources().getDisplayMetrics().density;
+                int panelHeight = (int) (65 * scale + 0.5f);
+                slidingLayout.setPanelHeight(panelHeight);
 
 
                 playPauseButton.setState(MorphButton.MorphState.START, true);
@@ -398,7 +407,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 cursor.close();
             }
 
-            bookList.add(new Books(bTitle, bAuthor, bookChapters, chapterPos, currentPos, totalDur, coverPath));
+            bookList.add(new Books(bTitle, bAuthor, bookChapters, chapterPos, currentPos, totalDur, coverPath, 0));
             totalDur = 0;
         }
 
@@ -737,7 +746,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                         }
 
                     }
-                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), book.getChapters(), newChapter, seekPos, getTotalDuration(), book.coverURL));
+                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), book.getChapters(), newChapter, seekPos, getTotalDuration(), book.coverURL, book.percentCompleted));
                     mediaSrv.playBook();
                     updateChapterText();
                 } else {
@@ -769,7 +778,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                         }
 
                     }
-                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), book.getChapters(), newChapter, seekPos, getTotalDuration(), book.coverURL));
+                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), book.getChapters(), newChapter, seekPos, getTotalDuration(), book.coverURL, book.percentCompleted));
                     mediaSrv.playBook();
                     updateChapterText();
                 } else {
@@ -803,7 +812,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                     int seekPos = 10000 - (getDuration() - getCurrentPosition());
                     int newChapter = getChapterPos() + 1;
                     Books book = bookList.get(getBookPos());
-                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), book.getChapters(), newChapter, seekPos, getTotalDuration(), book.coverURL));
+                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), book.getChapters(), newChapter, seekPos, getTotalDuration(), book.coverURL, book.percentCompleted));
                     mediaSrv.playBook();
                     updateChapterText();
                 }
@@ -823,7 +832,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                     int seekPos = 30000 - (getDuration() - getCurrentPosition());
                     int newChapter = getChapterPos() + 1;
                     Books book = bookList.get(getBookPos());
-                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), book.getChapters(), newChapter, seekPos, getTotalDuration(), book.coverURL));
+                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), book.getChapters(), newChapter, seekPos, getTotalDuration(), book.coverURL, book.percentCompleted));
                     mediaSrv.playBook();
                     updateChapterText();
                 }
@@ -886,6 +895,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     public int getChapterPos(){return mediaSrv.getChapter();}
     public int getBookPos(){return mediaSrv.getBookPos();}
     public String getCoverURL(){return mediaSrv.getCoverURL();}
+    public int getPercentCompleted(){return mediaSrv.getPercentCompleted();}
 
     public void getBookPositions() {
         Books books;
@@ -898,6 +908,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         int chapPos;
         int seekPos;
         cursor.moveToNext();
+        int durationElapsed = 0;
         for(int i=0; i < bookList.size(); i++){
             books = bookList.get(i);
             if(cursor.isLast()) break;
@@ -905,9 +916,21 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             chapPos = cursor.getInt(2);
             seekPos = cursor.getInt(3);
             if(books.title.equals(bookTitle)){
-                bookList.set(i, new Books(books.title, books.author, books.chapters, chapPos, seekPos, books.totalDuration, books.coverURL));
+                for(int k = 0; k < chapterList.size(); k++){
+                    Chapter chapter = chapterList.get(k);
+                    if(bookTitle.equals(chapter.getTitle()) && chapPos > Integer.parseInt(chapter.getChapter())){
+                        durationElapsed = durationElapsed + chapter.getDuration();
+                    }
+
+                }
+                double dDurElapsed = (double) durationElapsed;
+                double dTotalDur = (double) books.totalDuration;
+                double rElapsed = (dDurElapsed/dTotalDur)*100;
+                int pElapsed = (int) rElapsed;
+                bookList.set(i, new Books(books.title, books.author, books.chapters, chapPos, seekPos, books.totalDuration, books.coverURL, pElapsed));
                 cursor.moveToNext();
             }
+            durationElapsed = 0;
 
         }
 
@@ -930,7 +953,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     protected void onStop() {
         super.onStop();
         if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
-            bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL()));
+            bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
         }
         writeBookPositions();
     }
@@ -1066,6 +1089,33 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             }
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.view_button:
+                if(isListView){
+                    item.setIcon(R.drawable.view_grid);
+                    bookView.setVisibility(View.GONE);
+                    bookViewGrid.setVisibility(View.VISIBLE);
+                    isListView = false;
+                }
+                else {
+                    item.setIcon(R.drawable.view_list);
+                    bookViewGrid.setVisibility(View.GONE);
+                    bookView.setVisibility(View.VISIBLE);
+                    isListView = true;
+                }
+
+                return true;
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
 
 
 

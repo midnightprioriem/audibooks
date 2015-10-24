@@ -8,6 +8,7 @@
     <color name="text">#D9000000</color>
     <color name="text_secondary">#9E9E9E</color>
     <color name="icon_background">#ffff</color>
+    <color name="window_background">#E0E0E0</color>
 
 
     <color name="primaryBlue">#3F51B5</color>

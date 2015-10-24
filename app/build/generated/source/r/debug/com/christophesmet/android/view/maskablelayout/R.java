@@ -8,8 +8,8 @@ package com.christophesmet.android.view.maskablelayout;
 
 public final class R {
 	public static final class attr {
-		public static final int mask = 0x7f010054;
-		public static final int porterduffxfermode = 0x7f010055;
+		public static final int mask = 0x7f01005f;
+		public static final int porterduffxfermode = 0x7f010060;
 	}
 	public static final class id {
 		public static final int ADD = 0x7f0c0035;
@@ -32,7 +32,7 @@ public final class R {
 		public static final int XOR = 0x7f0c0046;
 	}
 	public static final class styleable {
-		public static final int[] MaskableLayout = { 0x7f010054, 0x7f010055 };
+		public static final int[] MaskableLayout = { 0x7f01005f, 0x7f010060 };
 		public static final int MaskableLayout_mask = 0;
 		public static final int MaskableLayout_porterduffxfermode = 1;
 	}

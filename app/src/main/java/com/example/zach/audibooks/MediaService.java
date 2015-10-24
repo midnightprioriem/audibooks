@@ -33,6 +33,7 @@ MediaPlayer.OnCompletionListener{
     private String author;
     private int chapterSize;
     private int totalDuration;
+    private int percentCompleted;
     private String coverURL;
     public volatile boolean playing;
 
@@ -62,6 +63,7 @@ MediaPlayer.OnCompletionListener{
         bookChapters = playBook.getChapters();
         totalDuration = playBook.getTotalDuration();
         coverURL = playBook.coverURL;
+        percentCompleted = playBook.percentCompleted;
 
         chapterPos = playBook.currentChapter;
 
@@ -133,10 +135,11 @@ MediaPlayer.OnCompletionListener{
     public int getChapterSize(){return chapterSize;}
     public int getTotalDuration(){return totalDuration;}
     public String getCoverURL(){return coverURL;}
+    public int getPercentCompleted(){return percentCompleted;}
 
     public void playPrev(){
         if(chapterPos!=1 && player.getCurrentPosition()<10000) chapterPos--;
-        books.set(bookPos, new Books(bookTitle, author, bookChapters, chapterPos, 0, totalDuration, coverURL));
+        books.set(bookPos, new Books(bookTitle, author, bookChapters, chapterPos, 0, totalDuration, coverURL, percentCompleted));
         playBook();
     }
 
@@ -148,7 +151,7 @@ MediaPlayer.OnCompletionListener{
             return;
         }
         chapterPos++;
-        books.set(bookPos, new Books(bookTitle, author, bookChapters, chapterPos, 0, totalDuration, coverURL));
+        books.set(bookPos, new Books(bookTitle, author, bookChapters, chapterPos, 0, totalDuration, coverURL, percentCompleted));
         playBook();
     }
 

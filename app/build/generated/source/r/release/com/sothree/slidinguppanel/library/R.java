@@ -8,17 +8,17 @@ package com.sothree.slidinguppanel.library;
 
 public final class R {
 	public static final class attr {
-		public static final int umanoAnchorPoint = 0x7f0100a5;
-		public static final int umanoClipPanel = 0x7f0100a4;
-		public static final int umanoDragView = 0x7f0100a1;
-		public static final int umanoFadeColor = 0x7f01009f;
-		public static final int umanoFlingVelocity = 0x7f0100a0;
-		public static final int umanoInitialState = 0x7f0100a6;
-		public static final int umanoOverlay = 0x7f0100a3;
-		public static final int umanoPanelHeight = 0x7f01009c;
-		public static final int umanoParalaxOffset = 0x7f01009e;
-		public static final int umanoScrollableView = 0x7f0100a2;
-		public static final int umanoShadowHeight = 0x7f01009d;
+		public static final int umanoAnchorPoint = 0x7f0100b0;
+		public static final int umanoClipPanel = 0x7f0100af;
+		public static final int umanoDragView = 0x7f0100ac;
+		public static final int umanoFadeColor = 0x7f0100aa;
+		public static final int umanoFlingVelocity = 0x7f0100ab;
+		public static final int umanoInitialState = 0x7f0100b1;
+		public static final int umanoOverlay = 0x7f0100ae;
+		public static final int umanoPanelHeight = 0x7f0100a7;
+		public static final int umanoParalaxOffset = 0x7f0100a9;
+		public static final int umanoScrollableView = 0x7f0100ad;
+		public static final int umanoShadowHeight = 0x7f0100a8;
 	}
 	public static final class drawable {
 		public static final int above_shadow = 0x7f02003e;
@@ -31,7 +31,7 @@ public final class R {
 		public static final int hidden = 0x7f0c053f;
 	}
 	public static final class styleable {
-		public static final int[] SlidingUpPanelLayout = { 0x7f01009c, 0x7f01009d, 0x7f01009e, 0x7f01009f, 0x7f0100a0, 0x7f0100a1, 0x7f0100a2, 0x7f0100a3, 0x7f0100a4, 0x7f0100a5, 0x7f0100a6 };
+		public static final int[] SlidingUpPanelLayout = { 0x7f0100a7, 0x7f0100a8, 0x7f0100a9, 0x7f0100aa, 0x7f0100ab, 0x7f0100ac, 0x7f0100ad, 0x7f0100ae, 0x7f0100af, 0x7f0100b0, 0x7f0100b1 };
 		public static final int SlidingUpPanelLayout_umanoAnchorPoint = 9;
 		public static final int SlidingUpPanelLayout_umanoClipPanel = 8;
 		public static final int SlidingUpPanelLayout_umanoDragView = 5;
