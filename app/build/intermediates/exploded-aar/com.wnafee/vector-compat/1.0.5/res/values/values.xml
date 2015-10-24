@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/wnafee/code/vector-compat/library/src/main/res/values/attr.xml -->
+    <eat-comment/>
+    <attr format="boolean" name="vc_autoMirrored"/>
+    <attr format="string" name="vc_pathData"/>
+    <attr format="color" name="vc_tint"/>
+    <attr format="enum" name="vc_tintMode">
+        <!-- The tint is drawn on top of the drawable.
+             [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc] -->
+        <enum name="src_over" value="3"/>
+        <!-- The tint is masked by the alpha channel of the drawable. The drawable’s
+             color channels are thrown out. [Sa * Da, Sc * Da] -->
+        <enum name="src_in" value="5"/>
+        <!-- The tint is drawn above the drawable, but with the drawable’s alpha
+             channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc] -->
+        <enum name="src_atop" value="9"/>
+        <!-- Multiplies the color and alpha channels of the drawable with those of
+             the tint. [Sa * Da, Sc * Dc] -->
+        <enum name="multiply" value="14"/>
+        <!-- [Sa + Da - Sa * Da, Sc + Dc - Sc * Dc] -->
+        <enum name="screen" value="15"/>
+        <!-- Combines the tint and drawable color and alpha channels, clamping the
+             result to valid color values. Saturate(S + D) -->
+        <enum name="add" value="16"/>
+    </attr>
+    <declare-styleable name="AnimatedVectorDrawable"><attr name="android:drawable"/></declare-styleable>
+    <declare-styleable name="AnimatedVectorDrawableTarget"><attr name="android:name"/><attr name="android:animation"/></declare-styleable>
+    <declare-styleable name="Animator"><attr name="android:interpolator"/><attr name="android:duration"/><attr name="android:startOffset"/><attr name="android:repeatCount"/><attr name="android:repeatMode"/><attr name="android:valueFrom"/><attr name="android:valueTo"/><attr name="vc_valueType"><enum name="floatType" value="0"/><enum name="intType" value="1"/><enum name="pathType" value="2"/></attr></declare-styleable>
+    <declare-styleable name="MorphButton"><attr format="reference" name="vc_startDrawable"/><attr format="reference" name="vc_endDrawable"/><attr name="android:scaleType"/><attr format="boolean" name="vc_autoStartAnimation"/><attr format="color" name="vc_backgroundTint"/><attr name="vc_backgroundTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/><enum name="add" value="16"/></attr><attr format="color" name="vc_foregroundTint"/><attr name="vc_foregroundTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/><enum name="add" value="16"/></attr></declare-styleable>
+    <declare-styleable name="PropertyAnimator"><attr name="android:propertyName"/><attr name="vc_pathData"/></declare-styleable>
+    <declare-styleable name="Theme"><attr format="reference" name="morphButtonStyle"/></declare-styleable>
+    <declare-styleable name="VectorDrawable"><attr name="vc_tint"/><attr name="vc_tintMode"/><attr name="vc_autoMirrored"/><attr name="android:width"/><attr name="android:height"/><attr format="float" name="vc_viewportWidth"/><attr format="float" name="vc_viewportHeight"/><attr name="android:name"/><attr name="android:alpha"/></declare-styleable>
+    <declare-styleable name="VectorDrawableClipPath"><attr name="android:name"/><attr name="vc_pathData"/></declare-styleable>
+    <declare-styleable name="VectorDrawableGroup"><attr name="android:name"/><attr name="android:rotation"/><attr name="android:pivotX"/><attr name="android:pivotY"/><attr format="float" name="vc_translateX"/><attr format="float" name="vc_translateY"/><attr name="android:scaleX"/><attr name="android:scaleY"/></declare-styleable>
+    <declare-styleable name="VectorDrawablePath"><attr name="android:name"/><attr format="float" name="vc_strokeWidth"/><attr format="color" name="vc_strokeColor"/><attr format="float" name="vc_strokeAlpha"/><attr format="color" name="vc_fillColor"/><attr format="float" name="vc_fillAlpha"/><attr name="vc_pathData"/><attr format="float" name="vc_trimPathStart"/><attr format="float" name="vc_trimPathEnd"/><attr format="float" name="vc_trimPathOffset"/><attr format="enum" name="vc_strokeLineCap"><enum name="butt" value="0"/><enum name="round" value="1"/><enum name="square" value="2"/></attr><attr format="enum" name="vc_strokeLineJoin"><enum name="miter" value="0"/><enum name="round" value="1"/><enum name="bevel" value="2"/></attr><attr format="float" name="vc_strokeMiterLimit"/></declare-styleable>
+    <!-- From: file:/Users/wnafee/code/vector-compat/library/src/main/res/values/integers.xml -->
+    <eat-comment/>
+    <integer name="anim_duration">200</integer>
+    <!-- From: file:/Users/wnafee/code/vector-compat/library/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="path_arrow">M 12, 4 L 10.59,5.41 L 16.17,11 L 18.99,11 L 12,4 z M 4, 11 L 4, 13 L 18.99, 13 L 20, 12 L 18.99, 11 L 4, 11 z M 12,20 L 10.59, 18.59 L 16.17, 13 L 18.99, 13 L 12, 20z</string>
+    <string name="path_drawer">M 3,6 L 3,8 L 21,8 L 21,6 L 3,6 z M 3,11 L 3,13 L 21,13 L 21, 12 L 21,11 L 3,11 z M 3,18 L 3,16 L 21,16 L 21,18 L 3,18 z</string>
+    <string name="path_pause">M 6,19 L 10,19 L 10,5 L 6,5 L 6,19 z M 14,19 L 18,19 L 18,5 L 14,5 L 14,19 z</string>
+    <string name="path_play">M 5, 18.06 L 12,18.06 L 12,5.94 L 12,5.94 L 5,18.06 z M 12,18.06 L 19,18.06 L 12,5.94 L 12,5.94 L 12,18.06 z</string>
+    <string name="path_stop">M 6,18 L 12,18 L 12,6 L 6,6 L 6,18 z M 12,18 L 18,18 L 18,6 L 12,6 L 12,18z</string>
+    <!-- From: file:/Users/wnafee/code/vector-compat/library/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="Widget.MorphButton" parent="@android:style/Widget.Holo.Button">
+        <item name="vc_startDrawable">@null</item>
+        <item name="vc_endDrawable">@null</item>
+        <item name="vc_autoStartAnimation">false</item>
+    </style>
+</resources>
