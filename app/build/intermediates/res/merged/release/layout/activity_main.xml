@@ -83,13 +83,30 @@
              android:textSize="17sp"
              />
 
+
+             <ImageView
+                 android:layout_width="match_parent"
+                 android:layout_height="340dp"
+                 android:id="@+id/main_cover_blur"
+                 android:scaleType="fitXY"
+                 android:layout_below="@+id/Chapter_View"
+                 android:layout_centerHorizontal="true"
+                 android:paddingTop="10dp"
+                 android:paddingBottom="10dp"
+                 />
+
+
          <ImageView
              android:layout_width="match_parent"
-             android:layout_height="360dp"
+             android:layout_height="340dp"
              android:id="@+id/main_cover"
              android:layout_below="@+id/Chapter_View"
              android:layout_centerHorizontal="true"
-             android:padding="10dp" />
+             android:paddingTop="20dp"
+             android:paddingBottom="20dp" />
+
+
+
 
 
          <LinearLayout
@@ -105,13 +122,15 @@
                  android:layout_width="50dp"
                  app:porterduffxfermode="DST_IN"
                  app:mask="@drawable/masking_masking_01"
-                 android:layout_height="50dp">
+                 android:layout_height="50dp"
+                 android:layout_gravity="center">
              <com.balysv.materialripple.MaterialRippleLayout
                  android:layout_width="50dp"
                  android:layout_height="50dp"
                  app:mrl_rippleDuration="250"
                  app:mrl_rippleDelayClick="false"
                  android:id="@+id/back"
+                 android:layout_gravity="center"
                  >
              <Button
                  android:layout_width="50dp"
@@ -119,6 +138,7 @@
                  android:backgroundTint="@color/primary_dark"
                  android:background="@drawable/back"
                  android:foreground="?android:attr/selectableItemBackground"
+                 android:layout_gravity="center"
 
                  />
              </com.balysv.materialripple.MaterialRippleLayout>
@@ -133,18 +153,21 @@
                  android:layout_width="50dp"
                  app:porterduffxfermode="DST_IN"
                  app:mask="@drawable/masking_masking_01"
-                 android:layout_height="50dp">
+                 android:layout_height="50dp"
+                 android:layout_gravity="center">
              <com.balysv.materialripple.MaterialRippleLayout
                  android:layout_width="50dp"
                  android:layout_height="50dp"
                  app:mrl_rippleDuration="250"
                  app:mrl_rippleDelayClick="false"
-                 android:id="@+id/replay_30">
+                 android:id="@+id/replay_30"
+                 android:layout_gravity="center">
              <Button
                  android:layout_width="50dp"
                  android:layout_height="50dp"
                  android:backgroundTint="@color/primary_dark"
                  android:background="@drawable/replay_30"
+                 android:layout_gravity="center"
                  />
              </com.balysv.materialripple.MaterialRippleLayout>
              </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
@@ -158,18 +181,21 @@
                  android:layout_width="50dp"
                  app:porterduffxfermode="DST_IN"
                  app:mask="@drawable/masking_masking_01"
-                 android:layout_height="50dp">
+                 android:layout_height="50dp"
+                 android:layout_gravity="center">
              <com.balysv.materialripple.MaterialRippleLayout
                  android:layout_width="50dp"
                  android:layout_height="50dp"
                  app:mrl_rippleDuration="250"
                  app:mrl_rippleDelayClick="false"
-                 android:id="@+id/replay_10">
+                 android:id="@+id/replay_10"
+                 android:layout_gravity="center">
              <Button
                  android:layout_width="50dp"
                  android:layout_height="50dp"
                  android:backgroundTint="@color/primary_dark"
                  android:background="@drawable/replay_10"
+                 android:layout_gravity="center"
                  />
              </com.balysv.materialripple.MaterialRippleLayout>
              </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
@@ -179,16 +205,24 @@
                  android:layout_height="60dp"
                  android:layout_weight="1" />
 
+             <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
+                 android:layout_width="55dp"
+                 app:porterduffxfermode="DST_IN"
+                 app:mask="@drawable/masking_masking_01"
+                 android:layout_height="55dp"
+                 android:layout_gravity="center"
+                 >
              <com.wnafee.vector.MorphButton
                  android:id="@+id/playPauseButton"
-                 android:layout_width="60dp"
-                 android:layout_height="60dp"
-                 app:vc_foregroundTint="@color/primary_dark"
-                 app:vc_backgroundTint="@android:color/transparent"
-                 android:background="@null"
+                 android:layout_width="65dp"
+                 android:layout_height="70dp"
+                 app:vc_foregroundTint="#ffffff"
+                 app:vc_backgroundTint="@color/primary_dark"
+                 android:layout_gravity="center"
                  app:vc_startDrawable="@drawable/ic_pause_to_play"
                  app:vc_endDrawable="@drawable/ic_play_to_pause"
-                 android:paddingBottom="10dp" />
+                 />
+             </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
 
              <View
                  android:layout_width="0dp"
@@ -199,18 +233,21 @@
                  android:layout_width="50dp"
                  app:porterduffxfermode="DST_IN"
                  app:mask="@drawable/masking_masking_01"
-                 android:layout_height="50dp">
+                 android:layout_height="50dp"
+                 android:layout_gravity="center">
              <com.balysv.materialripple.MaterialRippleLayout
                  android:layout_width="50dp"
                  android:layout_height="50dp"
                  app:mrl_rippleDuration="250"
                  app:mrl_rippleDelayClick="false"
-                 android:id="@+id/forward_10">
+                 android:id="@+id/forward_10"
+                 android:layout_gravity="center">
              <Button
                  android:layout_width="50dp"
                  android:layout_height="50dp"
                  android:backgroundTint="@color/primary_dark"
                  android:background="@drawable/forward_10"
+                 android:layout_gravity="center"
                  />
              </com.balysv.materialripple.MaterialRippleLayout>
              </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
@@ -218,24 +255,28 @@
              <View
                  android:layout_width="0dp"
                  android:layout_height="60dp"
-                 android:layout_weight="1" />
+                 android:layout_weight="1"
+                 android:layout_gravity="center"/>
 
              <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
                  android:layout_width="50dp"
                  app:porterduffxfermode="DST_IN"
                  app:mask="@drawable/masking_masking_01"
-                 android:layout_height="50dp">
+                 android:layout_height="50dp"
+                 android:layout_gravity="center">
              <com.balysv.materialripple.MaterialRippleLayout
                  android:layout_width="50dp"
                  android:layout_height="50dp"
                  app:mrl_rippleDuration="250"
                  app:mrl_rippleDelayClick="false"
-                 android:id="@+id/forward_30">
+                 android:id="@+id/forward_30"
+                 android:layout_gravity="center">
              <Button
                  android:layout_width="50dp"
                  android:layout_height="50dp"
                  android:backgroundTint="@color/primary_dark"
                  android:background="@drawable/forward_30"
+                 android:layout_gravity="center"
                  />
              </com.balysv.materialripple.MaterialRippleLayout>
              </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
@@ -250,18 +291,21 @@
                  android:layout_width="50dp"
                  app:porterduffxfermode="DST_IN"
                  app:mask="@drawable/masking_masking_01"
-                 android:layout_height="50dp">
+                 android:layout_height="50dp"
+                 android:layout_gravity="center">
              <com.balysv.materialripple.MaterialRippleLayout
                  android:layout_width="50dp"
                  android:layout_height="50dp"
                  app:mrl_rippleDuration="250"
                  app:mrl_rippleDelayClick="false"
-                 android:id="@+id/next">
+                 android:id="@+id/next"
+                 android:layout_gravity="center">
              <Button
                  android:layout_width="50dp"
                  android:layout_height="50dp"
                  android:backgroundTint="@color/primary_dark"
                  android:background="@drawable/next"
+                 android:layout_gravity="center"
                  />
              </com.balysv.materialripple.MaterialRippleLayout>
              </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
