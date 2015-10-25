@@ -1,5 +1,5 @@
 # audibooks
 
 ------------
-![book chooser](https://github.com/BestintheVerse/audibooks/blob/master/Images/book_chooser.png)
-![play book](https://github.com/BestintheVerse/audibooks/blob/master/Images/play_book.png)
+![book chooser](https://raw.githubusercontent.com/BestintheVerse/audibooks/master/Images/book_chooser.png)
+![play book](https://raw.githubusercontent.com/BestintheVerse/audibooks/master/Images/play_book.png)
