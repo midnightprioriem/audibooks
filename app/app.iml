@@ -78,12 +78,14 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.balysv.materialmenu/material-menu/1.5.4/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.balysv/material-ripple/1.0.2/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.commit451/NativeStackBlur/1.0.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.daimajia.numberprogressbar/library/1.2/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.christophesmet/android_maskable_layout/557cb182b3/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.recruit-lifestyle/WaveSwipeRefreshLayout/1.2/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.nononsenseapps/filepicker/2.4.2/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.sothree.slidinguppanel/library/3.1.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.wnafee/vector-compat/1.0.5/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/jp.wasabeef/blurry/1.0.4/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/net.steamcrafted/materialiconlib/1.0.4/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jacoco" />
@@ -108,11 +110,14 @@
     <orderEntry type="library" exported="" name="cardview-v7-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="annotations-12.0" level="project" />
     <orderEntry type="library" exported="" name="materialiconlib-1.0.4" level="project" />
+    <orderEntry type="library" exported="" name="blurry-1.0.4" level="project" />
     <orderEntry type="library" exported="" name="material-ripple-1.0.2" level="project" />
     <orderEntry type="library" exported="" name="design-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="picasso-2.1.1" level="project" />
     <orderEntry type="library" exported="" name="android_maskable_layout-557cb182b3" level="project" />
+    <orderEntry type="library" exported="" name="NativeStackBlur-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-23.0.1" level="project" />
+    <orderEntry type="library" exported="" name="renderscript-v8" level="project" />
     <orderEntry type="library" exported="" name="library-1.2" level="project" />
     <orderEntry type="library" exported="" name="android-async-http-1.4.4" level="project" />
     <orderEntry type="library" exported="" name="material-menu-1.5.4" level="project" />

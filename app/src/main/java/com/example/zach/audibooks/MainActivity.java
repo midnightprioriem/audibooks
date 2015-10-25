@@ -16,13 +16,19 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Environment;
 import android.os.IBinder;
 import android.provider.MediaStore;
 import android.os.Bundle;
+import android.renderscript.Allocation;
+import android.renderscript.Element;
+import android.renderscript.RenderScript;
+import android.renderscript.ScriptIntrinsicBlur;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -35,6 +41,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -69,6 +76,7 @@ import android.database.Cursor;
 import android.content.Intent;
 
 import com.balysv.materialripple.MaterialRippleLayout;
+import com.commit451.nativestackblur.NativeStackBlur;
 import com.example.zach.audibooks.MediaService.MediaBinder;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -91,6 +99,8 @@ import android.widget.Toolbar;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import jp.wasabeef.blurry.Blurry;
 
 public class MainActivity extends Activity implements MediaPlayerControl, ServiceCallbacks {
 
@@ -116,6 +126,9 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     public TextView percentElapsedOne;
     public TextView durationLeft;
     public ImageView bookCover;
+    public ImageView bookCoverBlur;
+
+    public ViewGroup coverBlur;
 
     private BooksAdapter adapter;
     private BooksGridAdapter gridAdapter;
@@ -203,13 +216,23 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 mediaSrv.playBook();
                 slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
                 bookCover = (ImageView) findViewById(R.id.main_cover);
+                bookCoverBlur = (ImageView) findViewById(R.id.main_cover_blur);
                 File cover = new File(Environment.getExternalStorageDirectory() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg");
                 if(cover.exists()) {
                     Log.d("cover", "cover found!!");
                     bookCover.setImageURI(Uri.parse(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg"));
                 }
                 else if(!bookList.get(position).getCoverURL().equals("")){
-                    bookCover.setImageBitmap(BitmapFactory.decodeFile(bookList.get(position).getCoverURL()));
+                    Uri uri = Uri.fromFile(new File(bookList.get(position).getCoverURL()));
+                    Picasso.with(getApplicationContext()).load(uri).resize(600,800).centerInside().into(bookCover);
+                    BitmapFactory.Options opts = new BitmapFactory.Options();
+                    opts.inSampleSize = 5;
+                    Bitmap bitmap = NativeStackBlur.process(BitmapFactory.decodeFile(bookList.get(position).getCoverURL() , opts), 100);
+                    bookCoverBlur.setImageBitmap(bitmap);
+                    //bookCoverBlur.setColorFilter(Color.rgb(123, 123, 123), PorterDuff.Mode.MULTIPLY);
+
+
+
                 }
 
 

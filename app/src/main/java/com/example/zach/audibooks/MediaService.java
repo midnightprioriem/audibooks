@@ -1,5 +1,7 @@
 package com.example.zach.audibooks;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ContentUris;
 import android.content.Intent;
@@ -21,7 +23,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MediaService extends Service implements MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener,
-MediaPlayer.OnCompletionListener{
+MediaPlayer.OnCompletionListener {
 
     private MediaPlayer player;
     private ArrayList<Chapter> chapters;
@@ -42,7 +44,7 @@ MediaPlayer.OnCompletionListener{
 
     private final IBinder mediaBind = new MediaBinder();
 
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
 
         bookPos = 0;
@@ -51,7 +53,7 @@ MediaPlayer.OnCompletionListener{
         initMediaPlayer();
     }
 
-    public void playBook(){
+    public void playBook() {
         Chapter findChapter;
         Chapter playChapter = chapters.get(0);
         player.reset();
@@ -68,11 +70,10 @@ MediaPlayer.OnCompletionListener{
         chapterPos = playBook.currentChapter;
 
 
-       for(int i = 0; i < chapters.size(); i++)
-        {
+        for (int i = 0; i < chapters.size(); i++) {
             findChapter = chapters.get(i);
             int chapterNum = Integer.parseInt(findChapter.getChapter());
-            if(bookTitle.equals(findChapter.getTitle()) && chapterPos == chapterNum){
+            if (bookTitle.equals(findChapter.getTitle()) && chapterPos == chapterNum) {
                 playChapter = chapters.get(i);
                 break;
             }
@@ -80,19 +81,18 @@ MediaPlayer.OnCompletionListener{
 
         long currChapter = playChapter.getID();
         Uri trackUri = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, currChapter);
-       try{
-           player.setDataSource(getApplicationContext(), trackUri);
-       }
-       catch(Exception e){
-           Log.e("MEDIA SERVICE", "Error setting data source" , e);
-       }
-        if(player != null){
+        try {
+            player.setDataSource(getApplicationContext(), trackUri);
+        } catch (Exception e) {
+            Log.e("MEDIA SERVICE", "Error setting data source", e);
+        }
+        if (player != null) {
             player.prepareAsync();
         }
 
     }
 
-    public void initMediaPlayer(){
+    public void initMediaPlayer() {
         player.setWakeMode(getApplicationContext(),
                 PowerManager.PARTIAL_WAKE_LOCK);
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -101,24 +101,24 @@ MediaPlayer.OnCompletionListener{
         player.setOnErrorListener(this);
     }
 
-    public int getPosn(){
+    public int getPosn() {
         return player.getCurrentPosition();
     }
 
-    public int getDur(){
+    public int getDur() {
         return player.getDuration();
     }
 
-    public boolean isPng(){
-       playing = player.isPlaying();
+    public boolean isPng() {
+        playing = player.isPlaying();
         return playing;
     }
 
-    public void pausePlayer(){
+    public void pausePlayer() {
         player.pause();
     }
 
-    public void seek(int posn){
+    public void seek(int posn) {
         player.seekTo(posn);
     }
 
@@ -126,26 +126,55 @@ MediaPlayer.OnCompletionListener{
         player.start();
     }
 
-    public String getBooktitle(){return bookTitle;}
-    public String getAuthor(){return author;}
-    public int getChapter(){return chapterPos;}
-    public int getBookPos(){return bookPos;}
-    public ArrayList<String> getChapters(){return bookChapters;}
-    public boolean isPlaying(){return player.isPlaying();}
-    public int getChapterSize(){return chapterSize;}
-    public int getTotalDuration(){return totalDuration;}
-    public String getCoverURL(){return coverURL;}
-    public int getPercentCompleted(){return percentCompleted;}
+    public String getBooktitle() {
+        return bookTitle;
+    }
 
-    public void playPrev(){
-        if(chapterPos!=1 && player.getCurrentPosition()<10000) chapterPos--;
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getChapter() {
+        return chapterPos;
+    }
+
+    public int getBookPos() {
+        return bookPos;
+    }
+
+    public ArrayList<String> getChapters() {
+        return bookChapters;
+    }
+
+    public boolean isPlaying() {
+        return player.isPlaying();
+    }
+
+    public int getChapterSize() {
+        return chapterSize;
+    }
+
+    public int getTotalDuration() {
+        return totalDuration;
+    }
+
+    public String getCoverURL() {
+        return coverURL;
+    }
+
+    public int getPercentCompleted() {
+        return percentCompleted;
+    }
+
+    public void playPrev() {
+        if (chapterPos != 1 && player.getCurrentPosition() < 10000) chapterPos--;
         books.set(bookPos, new Books(bookTitle, author, bookChapters, chapterPos, 0, totalDuration, coverURL, percentCompleted));
         playBook();
     }
 
-    public void playNext(){
-        if(chapterPos == chapterSize){
-            if(!isPlaying()){
+    public void playNext() {
+        if (chapterPos == chapterSize) {
+            if (!isPlaying()) {
                 go();
             }
             return;
@@ -155,34 +184,34 @@ MediaPlayer.OnCompletionListener{
         playBook();
     }
 
-    public void stopPlaying(){
+    public void stopPlaying() {
     }
 
-    public void setChapterList(ArrayList<Chapter> chapterList){
+    public void setChapterList(ArrayList<Chapter> chapterList) {
         chapters = chapterList;
     }
 
-    public void setBookList(ArrayList<Books> bookList){
+    public void setBookList(ArrayList<Books> bookList) {
         books = bookList;
     }
 
     public class MediaBinder extends Binder {
-        MediaService getService(){
+        MediaService getService() {
             return MediaService.this;
         }
     }
 
-    public void setBook (int bookIndex){
+    public void setBook(int bookIndex) {
         bookPos = bookIndex;
     }
 
     @Override
-    public IBinder onBind(Intent ar0){
+    public IBinder onBind(Intent ar0) {
         return mediaBind;
     }
 
     @Override
-    public boolean onUnbind(Intent intent){
+    public boolean onUnbind(Intent intent) {
         player.stop();
         player.release();
         return false;
@@ -202,11 +231,10 @@ MediaPlayer.OnCompletionListener{
 
     @Override
     public void onCompletion(MediaPlayer mp) {
-        if(chapterPos == chapterSize){
+        if (chapterPos == chapterSize) {
             stopPlaying();
-        }
-        else{
-           playNext();
+        } else {
+            playNext();
             if (serviceCallbacks != null) {
                 serviceCallbacks.updateChapterText();
             }

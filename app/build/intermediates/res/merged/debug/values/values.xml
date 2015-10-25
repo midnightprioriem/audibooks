@@ -51,7 +51,7 @@
     <!-- From: file:/E:/AndroidStudioProjects/audibooks/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="accent">#ffc400</color>
-    <color name="accentBlue">#ffc400</color>
+    <color name="accentBlue">#F44336</color>
     <color name="accentNightOLED">#ffc400</color>
     <!-- From: file:/E:/AndroidStudioProjects/audibooks/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
@@ -155,7 +155,7 @@
     <color name="text">#D9000000</color>
     <color name="textBlue">#D9000000</color>
     <color name="textNightOLED">#D9000000</color>
-    <color name="text_primary">#D9FFFFFF</color>
+    <color name="text_primary">#F44336</color>
     <color name="text_primaryBlue">#D9FFFFFF</color>
     <color name="text_primaryNightOLED">#D9FFFFFF</color>
     <color name="text_secondary">#9E9E9E</color>

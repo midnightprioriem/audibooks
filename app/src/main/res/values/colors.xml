@@ -4,7 +4,7 @@
     <color name="primary">#3F51B5</color>
     <color name="primary_dark">#283593</color>
     <color name="accent">#ffc400</color>
-    <color name="text_primary">#D9FFFFFF</color>
+    <color name="text_primary">#F44336</color>
     <color name="text">#D9000000</color>
     <color name="text_secondary">#9E9E9E</color>
     <color name="icon_background">#ffff</color>
@@ -13,7 +13,7 @@
 
     <color name="primaryBlue">#3F51B5</color>
     <color name="primary_darkBlue">#283593</color>
-    <color name="accentBlue">#ffc400</color>
+    <color name="accentBlue">#F44336</color>
     <color name="text_primaryBlue">#D9FFFFFF</color>
     <color name="textBlue">#D9000000</color>
     <color name="text_secondaryBlue">#9E9E9E</color>

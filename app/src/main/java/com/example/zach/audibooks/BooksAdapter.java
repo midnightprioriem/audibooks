@@ -46,7 +46,9 @@ public class BooksAdapter extends ArrayAdapter<Books> {
             bookCover.setImageURI(Uri.parse(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Audibooks/Covers/" + books.title + ".jpg"));
         }
         else if(!books.getCoverURL().equals("")){
-            bookCover.setImageBitmap(BitmapFactory.decodeFile(books.getCoverURL()));
+            Uri uri = Uri.fromFile(new File(books.getCoverURL()));
+            Picasso.with(getContext()).load(uri).resize(225, 300).centerInside().into(bookCover);
+            //bookCover.setImageBitmap(BitmapFactory.decodeFile(books.getCoverURL()));
 
         }
         else bookCover.setImageResource(R.drawable.default_book);
