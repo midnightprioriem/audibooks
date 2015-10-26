@@ -973,6 +973,12 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     @Override
     protected void onStop() {
         super.onStop();
+        Collections.sort(bookList, new Comparator<Books>() {
+            @Override
+            public int compare(Books lhs, Books rhs) {
+                return lhs.getTitle().compareTo(rhs.getTitle());
+            }
+        });
         if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
             bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
         }
@@ -1151,7 +1157,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                                     });
                                     adapter.notifyDataSetChanged();
                                     sortState = 0;
-                                }
+                            }
                                 else if(which == 1) {
 
                                     Log.d("sort", "Sorting by Author");
