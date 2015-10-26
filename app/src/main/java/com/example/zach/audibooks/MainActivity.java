@@ -230,9 +230,9 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                     Picasso.with(getApplicationContext()).load(uri).resize(600,800).centerInside().into(bookCover);
                     BitmapFactory.Options opts = new BitmapFactory.Options();
                     opts.inSampleSize = 5;
-                    Bitmap bitmap = NativeStackBlur.process(BitmapFactory.decodeFile(bookList.get(position).getCoverURL() , opts), 100);
+                    Bitmap bitmap = NativeStackBlur.process(BitmapFactory.decodeFile(bookList.get(position).getCoverURL() , opts), 75);
                     bookCoverBlur.setImageBitmap(bitmap);
-                    //bookCoverBlur.setColorFilter(Color.rgb(123, 123, 123), PorterDuff.Mode.MULTIPLY);
+                    //bookCoverBlur.setColorFilter(Color.parseColor("#0f0f0f"), PorterDuff.Mode.MULTIPLY);
 
 
 
