@@ -75,6 +75,8 @@ import android.content.ContentResolver;
 import android.database.Cursor;
 import android.content.Intent;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.Theme;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.commit451.nativestackblur.NativeStackBlur;
 import com.example.zach.audibooks.MediaService.MediaBinder;
@@ -151,6 +153,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     public MaterialRippleLayout next;
     public SeekBar seekBar;
     private Handler mHandler = new Handler();
+    public int sortState = 0;
 
     private static final String QUERY_URL = "http://openlibrary.org/search.json?q=";
     private static final String IMAGE_URL_BASE = "http://covers.openlibrary.org/b/id/";
@@ -1126,6 +1129,47 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 }
 
                 return true;
+
+            case R.id.sort_button:
+                new MaterialDialog.Builder(this)
+                        .title(R.string.sort_dialog_title)
+                        .items(R.array.sort_array)
+                        .theme(Theme.LIGHT)
+                        .itemsCallbackSingleChoice(sortState, new MaterialDialog.ListCallbackSingleChoice() {
+                            @Override
+                            public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+
+                                Log.d("sort" , String.valueOf(which));
+
+                                if(which == 0) {
+                                    Log.d("sort", "Sorting by title");
+                                    Collections.sort(bookList, new Comparator<Books>() {
+                                        @Override
+                                        public int compare(Books lhs, Books rhs) {
+                                            return lhs.getTitle().compareTo(rhs.getTitle());
+                                        }
+                                    });
+                                    adapter.notifyDataSetChanged();
+                                    sortState = 0;
+                                }
+                                else if(which == 1) {
+
+                                    Log.d("sort", "Sorting by Author");
+                                    Collections.sort(bookList, new Comparator<Books>() {
+                                        @Override
+                                        public int compare(Books lhs, Books rhs) {
+                                            return lhs.getAuthor().compareTo(rhs.getAuthor());
+                                        }
+                                    });
+                                    adapter.notifyDataSetChanged();
+                                    sortState = 1;
+                                }
+
+                                return true;
+                            }
+                        })
+                        .show();
+
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

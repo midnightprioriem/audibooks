@@ -8,30 +8,30 @@ package com.sothree.slidinguppanel.library;
 
 public final class R {
 	public static final class attr {
-		public static final int umanoAnchorPoint = 0x7f0100b0;
-		public static final int umanoClipPanel = 0x7f0100af;
-		public static final int umanoDragView = 0x7f0100ac;
-		public static final int umanoFadeColor = 0x7f0100aa;
-		public static final int umanoFlingVelocity = 0x7f0100ab;
-		public static final int umanoInitialState = 0x7f0100b1;
-		public static final int umanoOverlay = 0x7f0100ae;
-		public static final int umanoPanelHeight = 0x7f0100a7;
-		public static final int umanoParalaxOffset = 0x7f0100a9;
-		public static final int umanoScrollableView = 0x7f0100ad;
-		public static final int umanoShadowHeight = 0x7f0100a8;
+		public static final int umanoAnchorPoint = 0x7f0100d3;
+		public static final int umanoClipPanel = 0x7f0100d2;
+		public static final int umanoDragView = 0x7f0100cf;
+		public static final int umanoFadeColor = 0x7f0100cd;
+		public static final int umanoFlingVelocity = 0x7f0100ce;
+		public static final int umanoInitialState = 0x7f0100d4;
+		public static final int umanoOverlay = 0x7f0100d1;
+		public static final int umanoPanelHeight = 0x7f0100ca;
+		public static final int umanoParalaxOffset = 0x7f0100cc;
+		public static final int umanoScrollableView = 0x7f0100d0;
+		public static final int umanoShadowHeight = 0x7f0100cb;
 	}
 	public static final class drawable {
-		public static final int above_shadow = 0x7f02003e;
-		public static final int below_shadow = 0x7f020041;
+		public static final int above_shadow = 0x7f020045;
+		public static final int below_shadow = 0x7f020048;
 	}
 	public static final class id {
-		public static final int anchored = 0x7f0c053c;
-		public static final int collapsed = 0x7f0c053d;
-		public static final int expanded = 0x7f0c053e;
-		public static final int hidden = 0x7f0c053f;
+		public static final int anchored = 0x7f0d053f;
+		public static final int collapsed = 0x7f0d0540;
+		public static final int expanded = 0x7f0d0541;
+		public static final int hidden = 0x7f0d0542;
 	}
 	public static final class styleable {
-		public static final int[] SlidingUpPanelLayout = { 0x7f0100a7, 0x7f0100a8, 0x7f0100a9, 0x7f0100aa, 0x7f0100ab, 0x7f0100ac, 0x7f0100ad, 0x7f0100ae, 0x7f0100af, 0x7f0100b0, 0x7f0100b1 };
+		public static final int[] SlidingUpPanelLayout = { 0x7f0100ca, 0x7f0100cb, 0x7f0100cc, 0x7f0100cd, 0x7f0100ce, 0x7f0100cf, 0x7f0100d0, 0x7f0100d1, 0x7f0100d2, 0x7f0100d3, 0x7f0100d4 };
 		public static final int SlidingUpPanelLayout_umanoAnchorPoint = 9;
 		public static final int SlidingUpPanelLayout_umanoClipPanel = 8;
 		public static final int SlidingUpPanelLayout_umanoDragView = 5;

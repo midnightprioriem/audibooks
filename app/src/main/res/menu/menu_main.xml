@@ -6,5 +6,14 @@
         android:title="@string/view_button"
         android:showAsAction="ifRoom"
         />
+    <item android:id="@+id/sort_button"
+        android:icon="@drawable/sort_books"
+        android:title="@string/sort_button"
+        android:showAsAction="ifRoom"
+        />
+
+    <item android:id="@+id/settings_button"
+        android:title="@string/settings"
+        />
 
 </menu>

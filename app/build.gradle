@@ -30,7 +30,7 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'net.steamcrafted:materialiconlib:1.0.4'
     compile 'com.balysv.materialmenu:material-menu:1.5.4'
     compile 'com.sothree.slidinguppanel:library:3.1.1'
@@ -43,9 +43,12 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.1.1'
     compile 'com.github.recruit-lifestyle:WaveSwipeRefreshLayout:1.2'
     compile 'com.nononsenseapps:filepicker:2.4.2'
-    compile 'com.android.support:design:23.0.1'
-    compile 'com.android.support:cardview-v7:23.0.1'
+    compile 'com.android.support:design:23.1.0'
+    compile 'com.android.support:cardview-v7:23.1.0'
     compile 'com.daimajia.numberprogressbar:library:1.2@aar'
     compile 'jp.wasabeef:blurry:1.0.4'
     compile 'com.commit451:NativeStackBlur:1.0.1'
+    compile('com.afollestad.material-dialogs:core:0.8.4.2@aar') {
+        transitive = true
+    }
 }

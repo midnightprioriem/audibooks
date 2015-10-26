@@ -8,31 +8,31 @@ package com.christophesmet.android.view.maskablelayout;
 
 public final class R {
 	public static final class attr {
-		public static final int mask = 0x7f01005f;
-		public static final int porterduffxfermode = 0x7f010060;
+		public static final int mask = 0x7f01007d;
+		public static final int porterduffxfermode = 0x7f01007e;
 	}
 	public static final class id {
-		public static final int ADD = 0x7f0c0035;
-		public static final int CLEAR = 0x7f0c0036;
-		public static final int DARKEN =  0x7f0c0037;
-		public static final int DST = 0x7f0c0038;
-		public static final int DST_ATOP = 0x7f0c0039;
-		public static final int DST_IN = 0x7f0c003a;
-		public static final int DST_OUT = 0x7f0c003b;
-		public static final int DST_OVER = 0x7f0c003c;
-		public static final int LIGHTEN = 0x7f0c003d;
-		public static final int MULTIPLY = 0x7f0c003e;
-		public static final int OVERLAY = 0x7f0c003f;
-		public static final int SCREEN = 0x7f0c0040;
-		public static final int SRC = 0x7f0c0041;
-		public static final int SRC_ATOP = 0x7f0c0042;
-		public static final int SRC_IN = 0x7f0c0043;
-		public static final int SRC_OUT = 0x7f0c0044;
-		public static final int SRC_OVER = 0x7f0c0045;
-		public static final int XOR = 0x7f0c0046;
+		public static final int ADD = 0x7f0d0036;
+		public static final int CLEAR = 0x7f0d0037;
+		public static final int DARKEN =  0x7f0d0038;
+		public static final int DST = 0x7f0d0039;
+		public static final int DST_ATOP = 0x7f0d003a;
+		public static final int DST_IN = 0x7f0d003b;
+		public static final int DST_OUT = 0x7f0d003c;
+		public static final int DST_OVER = 0x7f0d003d;
+		public static final int LIGHTEN = 0x7f0d003e;
+		public static final int MULTIPLY = 0x7f0d003f;
+		public static final int OVERLAY = 0x7f0d0040;
+		public static final int SCREEN = 0x7f0d0041;
+		public static final int SRC = 0x7f0d0042;
+		public static final int SRC_ATOP = 0x7f0d0043;
+		public static final int SRC_IN = 0x7f0d0044;
+		public static final int SRC_OUT = 0x7f0d0045;
+		public static final int SRC_OVER = 0x7f0d0046;
+		public static final int XOR = 0x7f0d0047;
 	}
 	public static final class styleable {
-		public static final int[] MaskableLayout = { 0x7f01005f, 0x7f010060 };
+		public static final int[] MaskableLayout = { 0x7f01007d, 0x7f01007e };
 		public static final int MaskableLayout_mask = 0;
 		public static final int MaskableLayout_porterduffxfermode = 1;
 	}
