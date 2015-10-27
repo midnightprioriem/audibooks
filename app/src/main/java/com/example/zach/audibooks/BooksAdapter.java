@@ -29,9 +29,7 @@ public class BooksAdapter extends ArrayAdapter<Books> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         Books books = getItem(position);
-        Log.d("books list adapter" , "entering books list adapter");
         if(convertView == null){
-            Log.d("list view" , "getting view");
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.book,parent,false);
         }
 

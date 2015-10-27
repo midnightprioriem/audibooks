@@ -13,17 +13,16 @@
         android:layout_height="match_parent"
         android:id="@+id/cv_grid"
         card_view:cardUseCompatPadding="true"
-        android:padding="4dp"
         >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="360dp"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="280dp"
                 android:scaleType="fitXY"
                 android:id="@+id/book_cover_grid"
                 android:backgroundTint="@color/primary"
@@ -35,9 +34,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/book_cover_grid"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:textSize="17sp"
                 android:paddingTop="5dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
                 />
 
             <TextView
@@ -45,8 +45,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/book_title_grid"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:textColor="@color/text_secondary"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
 
                 />
 

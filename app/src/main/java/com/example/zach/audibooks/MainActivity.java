@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -139,11 +140,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     public SwipeRefreshLayout refreshLayout;
 
-
-    DrawerLayout drawerLayout;
-    ListView drawerList;
-    private ArrayAdapter<String> drawerAdapter;
-
     public MaterialRippleLayout back;
     public MaterialRippleLayout replay30;
     public MaterialRippleLayout replay10;
@@ -157,6 +153,19 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     private static final String QUERY_URL = "http://openlibrary.org/search.json?q=";
     private static final String IMAGE_URL_BASE = "http://covers.openlibrary.org/b/id/";
+
+    public static final String PREFS_NAME = "AudibooksPref";
+    public static final String viewMode = "viewModePref";
+    public static final String sortMode = "sortModePref";
+
+    public String defaultViewMode = "listView";
+    public String defaultSortMode = "byTitle";
+
+    public String savedViewMode;
+    public String savedSortMode;
+
+    private Menu optionsMenu;
+
 
 
 
@@ -175,6 +184,8 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences prefs = this.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
         File folder2 = new File(Environment.getExternalStorageDirectory() + "/Audibooks/Covers");
         if(!folder2.exists()){
@@ -205,7 +216,40 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         bookView.setAdapter(adapter);
         gridAdapter = new BooksGridAdapter(this, bookList);
         bookViewGrid.setAdapter(gridAdapter);
-        bookViewGrid.setVisibility(View.GONE);
+
+
+        //GET PREFERENCES
+
+        savedViewMode = prefs.getString(viewMode, defaultViewMode);
+        savedSortMode = prefs.getString(sortMode, defaultSortMode);
+
+        if(savedSortMode.equals("byAuthor")){
+            Collections.sort(bookList, new Comparator<Books>() {
+                @Override
+                public int compare(Books lhs, Books rhs) {
+                    return lhs.getAuthor().compareTo(rhs.getAuthor());
+                }
+            });
+            adapter.notifyDataSetChanged();
+            gridAdapter.notifyDataSetChanged();
+            sortState = 1;
+        }
+
+        if(savedViewMode.equals("listView")){
+            bookViewGrid.setVisibility(View.GONE);
+            bookView.setVisibility(View.VISIBLE);
+            isListView = true;
+        }
+
+        if(savedViewMode.equals("gridView")){
+            bookView.setVisibility(View.GONE);
+            bookViewGrid.setVisibility(View.VISIBLE);
+            isListView = false;
+        }
+
+        //END SHARED PREFERENCES
+
+
 
 
         setButtons();
@@ -398,11 +442,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             }
         });
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerList = (ListView) findViewById(R.id.left_drawer);
-        addDrawerItems();
-        drawerListener();
-
     }
 
 
@@ -465,7 +504,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
                 }
             }
-            Log.d("search path", path);
             ContentResolver mediaResolver = getContentResolver();
             Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
             Cursor cursor = mediaResolver.query(uri, null, MediaStore.Images.Media.DATA + " like ? ", new String[]{"%" + path + "%"}, null);
@@ -473,7 +511,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 int coverID = cursor.getColumnIndex(MediaStore.Images.Media._ID);
                 int coverColumn = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
                 coverPath = cursor.getString(coverColumn);
-               Log.d("coverpath", coverPath);
                 cursor.close();
             }
 
@@ -954,10 +991,20 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+
+        if(savedViewMode.equals("listView")){
+            menu.findItem(R.id.view_button).setIcon(R.drawable.view_list);
+        }
+
+        if(savedViewMode.equals("gridView")){
+            menu.findItem(R.id.view_button).setIcon(R.drawable.view_grid);
+        }
+
+        return super.onCreateOptionsMenu(menu);
     }
+
 
     public String getBookTitle(){return mediaSrv.getBooktitle();}
     public String getBookAuthor(){return mediaSrv.getAuthor();}
@@ -1032,6 +1079,17 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
         }
         writeBookPositions();
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(viewMode , savedViewMode );
+        editor.putString(sortMode , savedSortMode);
+        editor.commit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(mediaConnection);
     }
 
     @SuppressLint("NewApi")
@@ -1088,40 +1146,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         getBookCovers();
 
     }
-
-    private void addDrawerItems(){
-        String[] drawerArray = {
-                "Choose custom Directory",
-                "Get Book Covers",
-                "Themes"
-
-        };
-        drawerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, drawerArray);
-        drawerList.setAdapter(drawerAdapter);
-    }
-
-    private void drawerListener() {
-
-        drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                switch (position) {
-                    case 0:
-                        startCustomDirectoryActivity();
-                    case 1:
-                        getBookCoversWrapper();
-
-                }
-
-
-            }
-        });
-    }
-
-
-
     public void startCustomDirectoryActivity(){
 
         Intent i = new Intent(getApplicationContext(), FilePickerActivity.class);
@@ -1175,13 +1199,14 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                     bookView.setVisibility(View.GONE);
                     bookViewGrid.setVisibility(View.VISIBLE);
                     isListView = false;
-                    Log.d("grid view", String.valueOf(bookViewGrid.getAdapter().getCount()));
+                    savedViewMode = "gridView";
                 }
                 else {
                     item.setIcon(R.drawable.view_list);
                     bookViewGrid.setVisibility(View.GONE);
                     bookView.setVisibility(View.VISIBLE);
                     isListView = true;
+                    savedViewMode = "listView";
                 }
 
                 return true;
@@ -1208,6 +1233,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                                     adapter.notifyDataSetChanged();
                                     gridAdapter.notifyDataSetChanged();
                                     sortState = 0;
+                                    savedSortMode = "byTitle";
                             }
                                 else if(which == 1) {
 
@@ -1221,6 +1247,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                                     adapter.notifyDataSetChanged();
                                     gridAdapter.notifyDataSetChanged();
                                     sortState = 1;
+                                    savedSortMode = "byAuthor";
                                 }
 
                                 return true;
