@@ -29,37 +29,27 @@ public class BooksGridAdapter extends ArrayAdapter<Books> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         Books books = getItem(position);
-
         if(convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.book_grid,parent,false);
         }
 
-        TextView titleView = (TextView) convertView.findViewById(R.id.book_title);
-        TextView authorView = (TextView) convertView.findViewById(R.id.book_author);
-        ImageView bookCover = (ImageView) convertView.findViewById(R.id.book_cover);
-        CardView cardView = (CardView) convertView.findViewById(R.id.cv);
-        NumberProgressBar numberProgressBar = (NumberProgressBar) convertView.findViewById(R.id.number_progress_bar);
+        TextView titleView = (TextView) convertView.findViewById(R.id.book_title_grid);
+        TextView authorView = (TextView) convertView.findViewById(R.id.book_author_grid);
+        ImageView bookCover = (ImageView) convertView.findViewById(R.id.book_cover_grid);
+        CardView cardView = (CardView) convertView.findViewById(R.id.cv_grid);
 
         File cover = new File(Environment.getExternalStorageDirectory() + "/Audibooks/Covers/" + books.title + ".jpg");
         if(cover.exists()) {
-            Log.d("cover", "cover found!!");
             bookCover.setImageURI(Uri.parse(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Audibooks/Covers/" + books.title + ".jpg"));
         }
         else if(!books.getCoverURL().equals("")){
-            bookCover.setImageBitmap(BitmapFactory.decodeFile(books.getCoverURL()));
-
+            Uri uri = Uri.fromFile(new File(books.getCoverURL()));
+            Picasso.with(getContext()).load(uri).resize(450, 600).centerInside().into(bookCover);
         }
         else bookCover.setImageResource(R.drawable.default_book);
 
         titleView.setText(books.title);
         authorView.setText("by " + books.author);
-        Log.d("percentComplete" , String.valueOf(books.percentCompleted));
-        if(books.percentCompleted != 0){
-            numberProgressBar.setProgress(books.percentCompleted);
-        }
-
-
-
 
         return convertView;
     }

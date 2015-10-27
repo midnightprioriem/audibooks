@@ -16,25 +16,27 @@
     sothree:umanoPanelHeight="100dp"
     >
 
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/refresh_layout">
-        <ListView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bookView"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="0dp"/>
-        <GridView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bookViewGrid"
-            android:numColumns="2"
-            />
-    </android.support.v4.widget.SwipeRefreshLayout>
-
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/bookView"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0dp"/>
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/bookViewGrid"
+                android:numColumns="2"
+                android:verticalSpacing="0dp"
+                android:horizontalSpacing="0dp"
+                android:stretchMode="columnWidth"
+                android:gravity="center"
+                android:padding="8dp"
+                />
+        </RelativeLayout>
 
 
      <RelativeLayout

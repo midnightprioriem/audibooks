@@ -29,8 +29,9 @@ public class BooksAdapter extends ArrayAdapter<Books> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         Books books = getItem(position);
-
+        Log.d("books list adapter" , "entering books list adapter");
         if(convertView == null){
+            Log.d("list view" , "getting view");
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.book,parent,false);
         }
 
@@ -38,7 +39,6 @@ public class BooksAdapter extends ArrayAdapter<Books> {
         TextView authorView = (TextView) convertView.findViewById(R.id.book_author);
         ImageView bookCover = (ImageView) convertView.findViewById(R.id.book_cover);
         CardView cardView = (CardView) convertView.findViewById(R.id.cv);
-        NumberProgressBar numberProgressBar = (NumberProgressBar) convertView.findViewById(R.id.number_progress_bar);
 
         File cover = new File(Environment.getExternalStorageDirectory() + "/Audibooks/Covers/" + books.title + ".jpg");
         if(cover.exists()) {
@@ -55,13 +55,6 @@ public class BooksAdapter extends ArrayAdapter<Books> {
 
         titleView.setText(books.title);
         authorView.setText("by " + books.author);
-        numberProgressBar.setVisibility(View.INVISIBLE);
-        if(books.percentCompleted != 0){
-            numberProgressBar.setProgress(books.percentCompleted);
-        }
-
-
-
 
         return convertView;
     }

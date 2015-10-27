@@ -199,12 +199,13 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         getBookPositions();
         bookView = (ListView) findViewById(R.id.bookView);
         bookViewGrid = (GridView) findViewById(R.id.bookViewGrid);
-        bookViewGrid.setVisibility(View.GONE);
+
 
         adapter = new BooksAdapter(this, bookList);
         bookView.setAdapter(adapter);
         gridAdapter = new BooksGridAdapter(this, bookList);
         bookViewGrid.setAdapter(gridAdapter);
+        bookViewGrid.setVisibility(View.GONE);
 
 
         setButtons();
@@ -221,19 +222,84 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 bookCover = (ImageView) findViewById(R.id.main_cover);
                 bookCoverBlur = (ImageView) findViewById(R.id.main_cover_blur);
                 File cover = new File(Environment.getExternalStorageDirectory() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg");
-                if(cover.exists()) {
+                if (cover.exists()) {
                     Log.d("cover", "cover found!!");
                     bookCover.setImageURI(Uri.parse(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg"));
-                }
-                else if(!bookList.get(position).getCoverURL().equals("")){
+                } else if (!bookList.get(position).getCoverURL().equals("")) {
                     Uri uri = Uri.fromFile(new File(bookList.get(position).getCoverURL()));
-                    Picasso.with(getApplicationContext()).load(uri).resize(600,800).centerInside().into(bookCover);
+                    Picasso.with(getApplicationContext()).load(uri).resize(600, 800).centerInside().into(bookCover);
                     BitmapFactory.Options opts = new BitmapFactory.Options();
                     opts.inSampleSize = 5;
-                    Bitmap bitmap = NativeStackBlur.process(BitmapFactory.decodeFile(bookList.get(position).getCoverURL() , opts), 75);
+                    Bitmap bitmap = NativeStackBlur.process(BitmapFactory.decodeFile(bookList.get(position).getCoverURL(), opts), 75);
                     bookCoverBlur.setImageBitmap(bitmap);
                     //bookCoverBlur.setColorFilter(Color.parseColor("#0f0f0f"), PorterDuff.Mode.MULTIPLY);
 
+
+                }
+
+
+                bookTitleView = (TextView) findViewById(R.id.Book_Title_View);
+                bookTitleView.setText(mediaSrv.getBooktitle());
+                bookAuthorView = (TextView) findViewById(R.id.Book_Author_View);
+                bookAuthorView.setText(mediaSrv.getAuthor());
+                chapterView = (TextView) findViewById(R.id.Chapter_View);
+                chapterView.setText("Chapter " + mediaSrv.getChapter() + " of " + mediaSrv.getChapterSize());
+                timeLeft = (TextView) findViewById(R.id.timeLeft);
+                timeElapsed = (TextView) findViewById(R.id.timeElapsed);
+                durationElapsed = (TextView) findViewById(R.id.totalDuration);
+                percentElapsed = (TextView) findViewById(R.id.percentElapsed);
+                percentElapsedOne = (TextView) findViewById(R.id.percentElapsedOne);
+                durationLeft = (TextView) findViewById(R.id.durationLeft);
+                controlLayout = (LinearLayout) findViewById(R.id.controlLayout);
+                final float scale = getApplicationContext().getResources().getDisplayMetrics().density;
+                int panelHeight = (int) (65 * scale + 0.5f);
+                slidingLayout.setPanelHeight(panelHeight);
+
+
+                playPauseButton.setState(MorphButton.MorphState.START, true);
+
+                if (mediaSrv.getChapterSize() == 1) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    durationElapsed.setVisibility(View.INVISIBLE);
+                    percentElapsed.setVisibility(View.INVISIBLE);
+                    durationLeft.setVisibility(View.INVISIBLE);
+                    percentElapsedOne.setVisibility(View.VISIBLE);
+
+                } else {
+                    progressBar.setVisibility(View.VISIBLE);
+                    durationElapsed.setVisibility(View.VISIBLE);
+                    percentElapsed.setVisibility(View.VISIBLE);
+                    durationLeft.setVisibility(View.VISIBLE);
+                    percentElapsedOne.setVisibility(View.INVISIBLE);
+                }
+
+
+            }
+        });
+
+        bookViewGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
+                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
+                }
+                mediaSrv.setBook(position);
+                mediaSrv.playBook();
+                slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+                bookCover = (ImageView) findViewById(R.id.main_cover);
+                bookCoverBlur = (ImageView) findViewById(R.id.main_cover_blur);
+                File cover = new File(Environment.getExternalStorageDirectory() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg");
+                if (cover.exists()) {
+                    Log.d("cover", "cover found!!");
+                    bookCover.setImageURI(Uri.parse(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg"));
+                } else if (!bookList.get(position).getCoverURL().equals("")) {
+                    Uri uri = Uri.fromFile(new File(bookList.get(position).getCoverURL()));
+                    Picasso.with(getApplicationContext()).load(uri).resize(600, 800).centerInside().into(bookCover);
+                    BitmapFactory.Options opts = new BitmapFactory.Options();
+                    opts.inSampleSize = 5;
+                    Bitmap bitmap = NativeStackBlur.process(BitmapFactory.decodeFile(bookList.get(position).getCoverURL(), opts), 75);
+                    bookCoverBlur.setImageBitmap(bitmap);
+                    //bookCoverBlur.setColorFilter(Color.parseColor("#0f0f0f"), PorterDuff.Mode.MULTIPLY);
 
 
                 }
@@ -331,23 +397,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 playing = true;
             }
         });
-
-        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_layout);
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        getChapterList();
-                        getBookList(chapterList, bookList);
-                        adapter.notifyDataSetChanged();
-                        refreshLayout.setRefreshing(false);
-                    }
-                }, 0);
-            }
-        });
-
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
@@ -1126,6 +1175,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                     bookView.setVisibility(View.GONE);
                     bookViewGrid.setVisibility(View.VISIBLE);
                     isListView = false;
+                    Log.d("grid view", String.valueOf(bookViewGrid.getAdapter().getCount()));
                 }
                 else {
                     item.setIcon(R.drawable.view_list);
@@ -1156,6 +1206,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                                         }
                                     });
                                     adapter.notifyDataSetChanged();
+                                    gridAdapter.notifyDataSetChanged();
                                     sortState = 0;
                             }
                                 else if(which == 1) {
@@ -1168,6 +1219,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                                         }
                                     });
                                     adapter.notifyDataSetChanged();
+                                    gridAdapter.notifyDataSetChanged();
                                     sortState = 1;
                                 }
 
