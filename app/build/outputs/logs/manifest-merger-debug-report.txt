@@ -163,6 +163,7 @@ MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\aud
 MERGED from [com.android.support:recyclerview-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [me.grantland:autofittextview:0.2.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\me.grantland\autofittextview\0.2.1\AndroidManifest.xml:7:5-9:41
 	tools:overrideLibrary
 		ADDED from [com.afollestad.material-dialogs:core:0.8.4.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\core\0.8.4.2\AndroidManifest.xml:11:9-72
 	android:targetSdkVersion

@@ -41,6 +41,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
@@ -76,6 +77,7 @@ import android.content.ContentResolver;
 import android.database.Cursor;
 import android.content.Intent;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.Theme;
 import com.balysv.materialripple.MaterialRippleLayout;
@@ -130,6 +132,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     public TextView durationLeft;
     public ImageView bookCover;
     public ImageView bookCoverBlur;
+    public ImageView expandButtonView;
 
     public ViewGroup coverBlur;
 
@@ -147,6 +150,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     public MaterialRippleLayout forward10;
     public MaterialRippleLayout forward30;
     public MaterialRippleLayout next;
+    public MaterialRippleLayout expandButton;
     public SeekBar seekBar;
     private Handler mHandler = new Handler();
     public int sortState = 0;
@@ -295,9 +299,9 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 percentElapsedOne = (TextView) findViewById(R.id.percentElapsedOne);
                 durationLeft = (TextView) findViewById(R.id.durationLeft);
                 controlLayout = (LinearLayout) findViewById(R.id.controlLayout);
-                final float scale = getApplicationContext().getResources().getDisplayMetrics().density;
-                int panelHeight = (int) (65 * scale + 0.5f);
-                slidingLayout.setPanelHeight(panelHeight);
+                int titleHeight = bookTitleView.getHeight();
+                int authorHeight = bookAuthorView.getHeight();
+                slidingLayout.setPanelHeight(titleHeight + authorHeight);
 
 
                 playPauseButton.setState(MorphButton.MorphState.START, true);
@@ -362,9 +366,10 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 percentElapsedOne = (TextView) findViewById(R.id.percentElapsedOne);
                 durationLeft = (TextView) findViewById(R.id.durationLeft);
                 controlLayout = (LinearLayout) findViewById(R.id.controlLayout);
-                final float scale = getApplicationContext().getResources().getDisplayMetrics().density;
-                int panelHeight = (int) (65 * scale + 0.5f);
-                slidingLayout.setPanelHeight(panelHeight);
+
+                int titleHeight = bookTitleView.getHeight();
+                int authorHeight = bookAuthorView.getHeight();
+                slidingLayout.setPanelHeight(titleHeight + authorHeight);
 
 
                 playPauseButton.setState(MorphButton.MorphState.START, true);
@@ -392,6 +397,36 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         slidingLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
 
+        expandButtonView = (ImageView) findViewById(R.id.expand_button_view);
+
+        slidingLayout.setPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+            @Override
+            public void onPanelSlide(View view, float v) {
+
+            }
+
+            @Override
+            public void onPanelCollapsed(View view) {
+                expandButtonView.setImageResource(R.drawable.expand_more_button);
+            }
+
+            @Override
+            public void onPanelExpanded(View view) {
+                expandButtonView.setImageResource(R.drawable.expand_less_button);
+            }
+
+            @Override
+            public void onPanelAnchored(View view) {
+
+            }
+
+            @Override
+            public void onPanelHidden(View view) {
+
+            }
+        });
+
+
         seekBar = (SeekBar) findViewById(R.id.seekBar);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -400,15 +435,18 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         MainActivity.this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (mediaSrv != null && mediaBound && isPlaying()) {
-                    seekBar.setMax(mediaSrv.getDur());
-                    int currentPosition = mediaSrv.getPosn();
-                    seekBar.setProgress(currentPosition);
-                    String timeElapsedOutput = getTimeElapsed(currentPosition);
-                    String timeLeftOutput = getTimeLeftOutput(getTimeLeft(currentPosition));
-                    timeElapsed.setText(timeElapsedOutput);
-                    timeLeft.setText(timeLeftOutput);
-                    setProgressBar(currentPosition);
+                if (mediaSrv != null && mediaBound) {
+                    if(isPlaying()){
+                        seekBar.setMax(mediaSrv.getDur());
+                        int currentPosition = mediaSrv.getPosn();
+                        seekBar.setProgress(currentPosition);
+                        String timeElapsedOutput = getTimeElapsed(currentPosition);
+                        String timeLeftOutput = getTimeLeftOutput(getTimeLeft(currentPosition));
+                        timeElapsed.setText(timeElapsedOutput);
+                        timeLeft.setText(timeLeftOutput);
+                        setProgressBar(currentPosition);
+                    }
+
                 }
                 mHandler.postDelayed(this, 10);
             }
@@ -443,8 +481,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         });
 
     }
-
-
 
     private ServiceConnection mediaConnection = new ServiceConnection() {
         @Override
@@ -817,6 +853,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         forward10 = (MaterialRippleLayout) findViewById(R.id.forward_10);
         forward30 = (MaterialRippleLayout) findViewById(R.id.forward_30);
         next = (MaterialRippleLayout) findViewById(R.id.next);
+        bookCoverBlur = (ImageView) findViewById(R.id.main_cover_blur);
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -895,6 +932,19 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         });
 
         playPauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaSrv != null && mediaBound && mediaSrv.isPlaying()) {
+                    playPauseButton.setState(MorphButton.MorphState.END, true);
+                    pause();
+                } else if (mediaSrv != null && mediaBound) {
+                    playPauseButton.setState(MorphButton.MorphState.START, true);
+                    start();
+                }
+            }
+        });
+
+        bookCoverBlur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mediaSrv != null && mediaBound && mediaSrv.isPlaying()) {
@@ -1091,6 +1141,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         editor.putString(viewMode , savedViewMode );
         editor.putString(sortMode , savedSortMode);
         editor.commit();
+        unbindService(mediaConnection);
     }
 
     @SuppressLint("NewApi")
@@ -1163,7 +1214,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         // dangerous. Always use Android's API calls to get paths to the SD-card or
         // internal memory.
         i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath());
-        startActivityForResult(i, FILE_CODE );
+        startActivityForResult(i, FILE_CODE);
 
     }
 
@@ -1264,8 +1315,15 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (slidingLayout != null &&
+                (slidingLayout.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED || slidingLayout.getPanelState() == SlidingUpPanelLayout.PanelState.ANCHORED)) {
+            slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        } else
+            moveTaskToBack(true);
 
-
+    }
 
 
 }
