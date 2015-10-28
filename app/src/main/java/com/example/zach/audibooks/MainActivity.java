@@ -1069,6 +1069,13 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     @Override
     protected void onStop() {
         super.onStop();
+       
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        super.onStop();
         Collections.sort(bookList, new Comparator<Books>() {
             @Override
             public int compare(Books lhs, Books rhs) {
@@ -1084,12 +1091,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         editor.putString(viewMode , savedViewMode );
         editor.putString(sortMode , savedSortMode);
         editor.commit();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unbindService(mediaConnection);
     }
 
     @SuppressLint("NewApi")
