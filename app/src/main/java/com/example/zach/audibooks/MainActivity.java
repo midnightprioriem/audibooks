@@ -77,12 +77,12 @@ import android.content.ContentResolver;
 import android.database.Cursor;
 import android.content.Intent;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.Theme;
+import com.afollestad.materialdialogs.folderselector.FolderChooserDialog;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.commit451.nativestackblur.NativeStackBlur;
-import com.example.zach.audibooks.MediaService.MediaBinder;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nononsenseapps.filepicker.FilePickerActivity;
@@ -93,21 +93,19 @@ import com.wnafee.vector.MorphButton;
 
 import android.widget.MediaController.MediaPlayerControl;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+
 import android.widget.SeekBar;
-import android.widget.Switch;
+
 import android.widget.TextView;
 import android.os.Handler;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import jp.wasabeef.blurry.Blurry;
 
-public class MainActivity extends Activity implements MediaPlayerControl, ServiceCallbacks {
+public class MainActivity extends Activity implements MediaPlayerControl, ServiceCallbacks, FolderChooserDialog.FolderCallback {
 
     ListView bookView;
     GridView bookViewGrid;
@@ -331,9 +329,9 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
                     bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
                 }
+
                 mediaSrv.setBook(position);
                 mediaSrv.playBook();
-                slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
                 bookCover = (ImageView) findViewById(R.id.main_cover);
                 bookCoverBlur = (ImageView) findViewById(R.id.main_cover_blur);
                 File cover = new File(Environment.getExternalStorageDirectory() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg");
@@ -344,10 +342,10 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                     Uri uri = Uri.fromFile(new File(bookList.get(position).getCoverURL()));
                     Picasso.with(getApplicationContext()).load(uri).resize(600, 800).centerInside().into(bookCover);
                     BitmapFactory.Options opts = new BitmapFactory.Options();
-                    opts.inSampleSize = 5;
-                    Bitmap bitmap = NativeStackBlur.process(BitmapFactory.decodeFile(bookList.get(position).getCoverURL(), opts), 75);
+                    opts.inSampleSize = 7;
+                    Bitmap bitmap = NativeStackBlur.process(BitmapFactory.decodeFile(bookList.get(position).getCoverURL(), opts), 70);
                     bookCoverBlur.setImageBitmap(bitmap);
-                    //bookCoverBlur.setColorFilter(Color.parseColor("#0f0f0f"), PorterDuff.Mode.MULTIPLY);
+                    bookCoverBlur.setColorFilter(Color.rgb(123, 123, 123), PorterDuff.Mode.MULTIPLY);
 
 
                 }
@@ -374,6 +372,8 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
                 playPauseButton.setState(MorphButton.MorphState.START, true);
 
+
+
                 if (mediaSrv.getChapterSize() == 1) {
                     progressBar.setVisibility(View.INVISIBLE);
                     durationElapsed.setVisibility(View.INVISIBLE);
@@ -389,6 +389,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                     percentElapsedOne.setVisibility(View.INVISIBLE);
                 }
 
+                slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
 
             }
         });
@@ -854,6 +855,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         forward30 = (MaterialRippleLayout) findViewById(R.id.forward_30);
         next = (MaterialRippleLayout) findViewById(R.id.next);
         bookCoverBlur = (ImageView) findViewById(R.id.main_cover_blur);
+        bookCover = (ImageView) findViewById(R.id.main_cover);
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -944,7 +946,15 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             }
         });
 
+        bookCoverBlur.setSoundEffectsEnabled(false);
         bookCoverBlur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        bookCover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mediaSrv != null && mediaBound && mediaSrv.isPlaying()) {
@@ -1045,11 +1055,11 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         if(savedViewMode.equals("listView")){
-            menu.findItem(R.id.view_button).setIcon(R.drawable.view_list);
+            menu.findItem(R.id.view_button).setIcon(R.drawable.view_grid);
         }
 
         if(savedViewMode.equals("gridView")){
-            menu.findItem(R.id.view_button).setIcon(R.drawable.view_grid);
+            menu.findItem(R.id.view_button).setIcon(R.drawable.view_list);
         }
 
         return super.onCreateOptionsMenu(menu);
@@ -1247,14 +1257,14 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         switch (item.getItemId()) {
             case R.id.view_button:
                 if(isListView){
-                    item.setIcon(R.drawable.view_grid);
+                    item.setIcon(R.drawable.view_list);
                     bookView.setVisibility(View.GONE);
                     bookViewGrid.setVisibility(View.VISIBLE);
                     isListView = false;
                     savedViewMode = "gridView";
                 }
                 else {
-                    item.setIcon(R.drawable.view_list);
+                    item.setIcon(R.drawable.view_grid);
                     bookViewGrid.setVisibility(View.GONE);
                     bookView.setVisibility(View.VISIBLE);
                     isListView = true;
@@ -1272,9 +1282,9 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                             @Override
                             public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
 
-                                Log.d("sort" , String.valueOf(which));
+                                Log.d("sort", String.valueOf(which));
 
-                                if(which == 0) {
+                                if (which == 0) {
                                     Log.d("sort", "Sorting by title");
                                     Collections.sort(bookList, new Comparator<Books>() {
                                         @Override
@@ -1286,8 +1296,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                                     gridAdapter.notifyDataSetChanged();
                                     sortState = 0;
                                     savedSortMode = "byTitle";
-                            }
-                                else if(which == 1) {
+                                } else if (which == 1) {
 
                                     Log.d("sort", "Sorting by Author");
                                     Collections.sort(bookList, new Comparator<Books>() {
@@ -1306,6 +1315,8 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                             }
                         })
                         .show();
+
+            case R.id.folder_chooser_button:
 
             default:
                 // If we got here, the user's action was not recognized.
@@ -1326,6 +1337,10 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     }
 
 
+    @Override
+    public void onFolderSelection(File file) {
+
+    }
 }
 
 

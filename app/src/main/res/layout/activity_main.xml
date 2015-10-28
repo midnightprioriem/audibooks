@@ -10,7 +10,6 @@
     android:layout_height="match_parent"
     android:gravity="bottom"
     android:backgroundTint="#fff"
-    sothree:umanoPanelHeight="100dp"
     sothree:umanoDragView="@+id/Book_Title_View"
     >
 
@@ -42,14 +41,23 @@
          android:layout_height="match_parent"
          android:gravity="center|top"
          android:id="@+id/slidingUpDrawer"
-         android:paddingBottom="10dp"
          android:clickable="true"
-         android:background="#ffffff">
+         android:background="@color/primary_dark">
+
+         <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/main_cover_blur"
+             android:scaleType="fitXY"
+             android:layout_centerHorizontal="true"
+
+             />
 
            <ImageView
                android:layout_width="35dp"
                android:layout_height="35dp"
                android:src="@drawable/expand_less_button"
+               android:tint="#fff"
                android:id="@+id/expand_button_view"
                />
 
@@ -57,6 +65,7 @@
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:text=""
+               android:textColor="#fff"
                android:id="@+id/Book_Title_View"
                android:textSize="20sp"
                autofit:minTextSize="10sp"
@@ -64,7 +73,7 @@
                android:singleLine = "true"
                android:paddingTop="5dp"
                android:paddingStart="30dp"
-               android:paddingEnd="15dp"
+               android:paddingEnd="30dp"
                android:gravity="center_horizontal"
                />
 
@@ -72,8 +81,8 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:text=""
-             android:textColor="@color/text_secondary"
              android:id="@+id/Book_Author_View"
+             android:textColor="@color/text_secondary"
              android:gravity="center_horizontal"
              android:layout_below="@+id/Book_Title_View"
              android:paddingTop="1dp"
@@ -93,26 +102,18 @@
              />
 
 
-             <ImageView
-                 android:layout_width="match_parent"
-                 android:layout_height="340dp"
-                 android:id="@+id/main_cover_blur"
-                 android:scaleType="fitXY"
-                 android:layout_below="@+id/Chapter_View"
-                 android:layout_centerHorizontal="true"
-                 android:paddingTop="10dp"
-                 android:paddingBottom="10dp"
-                 />
+
 
 
          <ImageView
-             android:layout_width="match_parent"
+             android:layout_width="255dp"
              android:layout_height="340dp"
              android:id="@+id/main_cover"
              android:layout_below="@+id/Chapter_View"
              android:layout_centerHorizontal="true"
-             android:paddingTop="20dp"
-             android:paddingBottom="20dp" />
+             android:paddingTop="5dp"
+             android:paddingBottom="10dp"
+              />
 
 
 
@@ -144,7 +145,7 @@
              <Button
                  android:layout_width="50dp"
                  android:layout_height="50dp"
-                 android:backgroundTint="@color/primary_dark"
+                 android:backgroundTint="#fff"
                  android:background="@drawable/back"
                  android:foreground="?android:attr/selectableItemBackground"
                  android:layout_gravity="center"
@@ -174,7 +175,7 @@
              <Button
                  android:layout_width="50dp"
                  android:layout_height="50dp"
-                 android:backgroundTint="@color/primary_dark"
+                 android:backgroundTint="#fff"
                  android:background="@drawable/replay_30"
                  android:layout_gravity="center"
                  />
@@ -202,7 +203,7 @@
              <Button
                  android:layout_width="50dp"
                  android:layout_height="50dp"
-                 android:backgroundTint="@color/primary_dark"
+                 android:backgroundTint="#fff"
                  android:background="@drawable/replay_10"
                  android:layout_gravity="center"
                  />
@@ -226,7 +227,7 @@
                  android:layout_width="65dp"
                  android:layout_height="70dp"
                  app:vc_foregroundTint="#ffffff"
-                 app:vc_backgroundTint="@color/primary_dark"
+                 app:vc_backgroundTint="@color/accent"
                  android:layout_gravity="center"
                  app:vc_startDrawable="@drawable/ic_pause_to_play"
                  app:vc_endDrawable="@drawable/ic_play_to_pause"
@@ -254,7 +255,7 @@
              <Button
                  android:layout_width="50dp"
                  android:layout_height="50dp"
-                 android:backgroundTint="@color/primary_dark"
+                 android:backgroundTint="#fff"
                  android:background="@drawable/forward_10"
                  android:layout_gravity="center"
                  />
@@ -283,7 +284,7 @@
              <Button
                  android:layout_width="50dp"
                  android:layout_height="50dp"
-                 android:backgroundTint="@color/primary_dark"
+                 android:backgroundTint="#fff"
                  android:background="@drawable/forward_30"
                  android:layout_gravity="center"
                  />
@@ -293,7 +294,7 @@
              <View
                  android:layout_width="0dp"
                  android:layout_height="60dp"
-                 android:backgroundTint="@color/primary_dark"
+                 android:layout_gravity="center"
                  android:layout_weight="1" />
 
              <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
@@ -312,7 +313,7 @@
              <Button
                  android:layout_width="50dp"
                  android:layout_height="50dp"
-                 android:backgroundTint="@color/primary_dark"
+                 android:backgroundTint="#fff"
                  android:background="@drawable/next"
                  android:layout_gravity="center"
                  />
@@ -325,8 +326,8 @@
          <SeekBar
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:progressTint="@color/primary"
-             android:thumbTint="@color/primary_dark"
+             android:thumbTint="#fff"
+             android:progressTint="#fff"
              android:layout_below="@+id/controlLayout"
              android:id="@+id/seekBar"
              android:paddingTop="10dp"
@@ -337,6 +338,7 @@
              android:layout_height="wrap_content"
              android:id="@+id/timeLeft"
              android:text=""
+             android:textColor="@color/text_secondary"
              android:layout_below="@id/seekBar"
              android:layout_alignParentEnd="true"
              android:paddingTop="0dp"
@@ -347,6 +349,7 @@
              android:layout_height="wrap_content"
              android:id="@+id/timeElapsed"
              android:text=""
+             android:textColor="@color/text_secondary"
              android:layout_below="@id/seekBar"
              android:layout_alignParentStart="true"
              android:paddingTop="0dp"
@@ -357,6 +360,7 @@
              android:layout_height="wrap_content"
              android:id="@+id/percentElapsedOne"
              android:text=""
+             android:textColor="@color/text_secondary"
              android:layout_below="@id/seekBar"
              android:layout_centerHorizontal="true"
              android:visibility="invisible"/>
@@ -371,8 +375,7 @@
              android:padding="5dp"
              android:paddingStart="5dp"
              android:paddingEnd="5dp"
-             android:progressTint="@color/primary"
-             android:progressBackgroundTint="#000"
+             android:progressTint="#fff"
              android:max="100"
              android:indeterminate="false"
              />
@@ -382,6 +385,7 @@
              android:layout_height="wrap_content"
              android:id="@+id/totalDuration"
              android:text=""
+             android:textColor="@color/text_secondary"
              android:layout_below="@id/progressBar"
              android:layout_alignParentStart="true"
              android:paddingTop="0dp"
@@ -392,6 +396,7 @@
              android:layout_height="wrap_content"
              android:id="@+id/percentElapsed"
              android:text=""
+             android:textColor="@color/text_secondary"
              android:layout_below="@id/progressBar"
              android:layout_centerHorizontal="true" />
          <TextView
@@ -399,6 +404,7 @@
              android:layout_height="wrap_content"
              android:id="@+id/durationLeft"
              android:text=""
+             android:textColor="@color/text_secondary"
              android:layout_below="@id/progressBar"
              android:layout_alignParentEnd="true"
              android:paddingTop="0dp"
