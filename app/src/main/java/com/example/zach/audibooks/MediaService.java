@@ -185,6 +185,8 @@ MediaPlayer.OnCompletionListener {
     }
 
     public void stopPlaying() {
+        books.set(bookPos, new Books(bookTitle, author, bookChapters, chapterPos, player.getCurrentPosition(), totalDuration, coverURL, percentCompleted));
+        player.stop();
     }
 
     public void setChapterList(ArrayList<Chapter> chapterList) {

@@ -35,13 +35,11 @@ dependencies {
     compile 'com.balysv.materialmenu:material-menu:1.5.4'
     compile 'com.sothree.slidinguppanel:library:3.1.1'
     compile 'com.wnafee:vector-compat:1.0.5'
-    compile 'com.wnafee:vector-compat:1.0.5'
     compile 'com.github.christophesmet:android_maskable_layout:557cb182b3'
     compile 'com.balysv:material-ripple:1.0.2'
     compile 'com.daimajia.numberprogressbar:library:1.2@aar'
     compile 'com.loopj.android:android-async-http:1.4.4'
     compile 'com.squareup.picasso:picasso:2.1.1'
-    compile 'com.github.recruit-lifestyle:WaveSwipeRefreshLayout:1.2'
     compile 'com.nononsenseapps:filepicker:2.4.2'
     compile 'com.android.support:design:23.1.0'
     compile 'com.android.support:cardview-v7:23.1.0'
@@ -55,4 +53,5 @@ dependencies {
         transitive = true
     }
     compile 'me.grantland:autofittextview:0.2.+'
+    compile 'com.github.emanzanoaxa:RippleEffect:52ea2a0ab6'
 }

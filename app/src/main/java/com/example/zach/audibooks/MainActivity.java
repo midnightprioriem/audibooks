@@ -148,7 +148,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     public MaterialRippleLayout forward10;
     public MaterialRippleLayout forward30;
     public MaterialRippleLayout next;
-    public MaterialRippleLayout expandButton;
+    public MaterialRippleLayout closeBook;
     public SeekBar seekBar;
     private Handler mHandler = new Handler();
     public int sortState = 0;
@@ -856,6 +856,15 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         next = (MaterialRippleLayout) findViewById(R.id.next);
         bookCoverBlur = (ImageView) findViewById(R.id.main_cover_blur);
         bookCover = (ImageView) findViewById(R.id.main_cover);
+        closeBook = (MaterialRippleLayout) findViewById(R.id.close_book_button);
+
+        closeBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+                mediaSrv.stopPlaying();
+            }
+        });
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -951,19 +960,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             @Override
             public void onClick(View v) {
 
-            }
-        });
-
-        bookCover.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mediaSrv != null && mediaBound && mediaSrv.isPlaying()) {
-                    playPauseButton.setState(MorphButton.MorphState.END, true);
-                    pause();
-                } else if (mediaSrv != null && mediaBound) {
-                    playPauseButton.setState(MorphButton.MorphState.START, true);
-                    start();
-                }
             }
         });
 

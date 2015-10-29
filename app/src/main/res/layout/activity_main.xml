@@ -10,7 +10,7 @@
     android:layout_height="match_parent"
     android:gravity="bottom"
     android:backgroundTint="#fff"
-    sothree:umanoDragView="@+id/Book_Title_View"
+    sothree:umanoDragView="@+id/title_author_container"
     >
 
         <RelativeLayout
@@ -21,7 +21,11 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/bookView"
                 android:divider="@android:color/transparent"
-                android:dividerHeight="0dp"/>
+                android:dividerHeight="0dp"
+                android:padding="8dp"
+                android:clipToPadding="false"
+                android:scrollbarStyle="outsideOverlay"
+                android:drawSelectorOnTop="true"/>
             <GridView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -29,8 +33,12 @@
                 android:numColumns="2"
                 android:verticalSpacing="0dp"
                 android:horizontalSpacing="0dp"
+                android:padding="8dp"
+                android:clipToPadding="false"
+                android:scrollbarStyle="outsideOverlay"
                 android:stretchMode="columnWidth"
                 android:gravity="center"
+                android:drawSelectorOnTop="true"
                 />
         </RelativeLayout>
 
@@ -60,34 +68,68 @@
                android:id="@+id/expand_button_view"
                />
 
-           <me.grantland.widget.AutofitTextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text=""
-               android:textColor="#fff"
-               android:id="@+id/Book_Title_View"
-               android:textSize="20sp"
-               autofit:minTextSize="10sp"
-               android:maxLines="1"
-               android:singleLine = "true"
-               android:paddingTop="5dp"
-               android:paddingStart="30dp"
-               android:paddingEnd="30dp"
-               android:gravity="center_horizontal"
-               />
-
-         <TextView
+         <RelativeLayout
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text=""
-             android:id="@+id/Book_Author_View"
-             android:textColor="@color/text_secondary"
-             android:gravity="center_horizontal"
-             android:layout_below="@+id/Book_Title_View"
-             android:paddingTop="1dp"
-             android:paddingBottom="5dp"
-             android:textSize="17sp"
+             android:id="@+id/title_author_container">
+
+             <me.grantland.widget.AutofitTextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text=""
+                 android:textColor="#fff"
+                 android:id="@+id/Book_Title_View"
+                 android:textSize="20sp"
+                 autofit:minTextSize="10sp"
+                 android:maxLines="1"
+                 android:singleLine = "true"
+                 android:paddingTop="5dp"
+                 android:paddingStart="35dp"
+                 android:paddingEnd="35dp"
+                 android:gravity="center_horizontal"
+                 />
+
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text=""
+                 android:id="@+id/Book_Author_View"
+                 android:textColor="@color/text_secondary"
+                 android:gravity="center_horizontal"
+                 android:layout_below="@+id/Book_Title_View"
+                 android:paddingTop="1dp"
+                 android:paddingBottom="5dp"
+                 android:textSize="17sp"
+                 />
+
+         </RelativeLayout>
+
+         <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
+             android:layout_width="35dp"
+             android:layout_height="35dp"
+             app:porterduffxfermode="DST_IN"
+             app:mask="@drawable/masking_masking_01"
+             android:layout_alignEnd="@id/title_author_container"
+             android:layout_gravity="center">
+
+         <com.balysv.materialripple.MaterialRippleLayout
+             android:layout_width="35dp"
+             android:layout_height="35dp"
+             app:mrl_rippleDuration="250"
+             app:mrl_rippleDelayClick="false"
+             app:mrl_rippleColor="#ffffff"
+             android:id="@+id/close_book_button"
+             android:layout_gravity="center"
+             >
+
+         <ImageView
+             android:layout_width="25dp"
+             android:layout_height="25dp"
+             android:src="@drawable/close_book"
+             android:layout_gravity="center"
              />
+         </com.balysv.materialripple.MaterialRippleLayout>
+         </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
 
          <TextView
              android:layout_width="match_parent"
@@ -95,7 +137,7 @@
              android:text=""
              android:textColor="@color/text_secondary"
              android:id="@+id/Chapter_View"
-             android:layout_below="@+id/Book_Author_View"
+             android:layout_below="@+id/title_author_container"
              android:gravity="center_horizontal"
              android:textSize="16sp"
              />
@@ -138,6 +180,7 @@
                  android:layout_height="50dp"
                  app:mrl_rippleDuration="250"
                  app:mrl_rippleDelayClick="false"
+                 app:mrl_rippleColor="#ffffff"
                  android:id="@+id/back"
                  android:layout_gravity="center"
                  >
@@ -169,6 +212,7 @@
                  android:layout_height="50dp"
                  app:mrl_rippleDuration="250"
                  app:mrl_rippleDelayClick="false"
+                 app:mrl_rippleColor="#ffffff"
                  android:id="@+id/replay_30"
                  android:layout_gravity="center">
              <Button
@@ -197,6 +241,7 @@
                  android:layout_height="50dp"
                  app:mrl_rippleDuration="250"
                  app:mrl_rippleDelayClick="false"
+                 app:mrl_rippleColor="#ffffff"
                  android:id="@+id/replay_10"
                  android:layout_gravity="center">
              <Button
@@ -226,7 +271,7 @@
                  android:layout_width="65dp"
                  android:layout_height="70dp"
                  app:vc_foregroundTint="#ffffff"
-                 app:vc_backgroundTint="@color/accent"
+                 app:vc_backgroundTint="#3F51B5"
                  android:layout_gravity="center"
                  app:vc_startDrawable="@drawable/ic_pause_to_play"
                  app:vc_endDrawable="@drawable/ic_play_to_pause"
@@ -249,6 +294,7 @@
                  android:layout_height="50dp"
                  app:mrl_rippleDuration="250"
                  app:mrl_rippleDelayClick="false"
+                 app:mrl_rippleColor="#ffffff"
                  android:id="@+id/forward_10"
                  android:layout_gravity="center">
              <Button
@@ -278,6 +324,7 @@
                  android:layout_height="50dp"
                  app:mrl_rippleDuration="250"
                  app:mrl_rippleDelayClick="false"
+                 app:mrl_rippleColor="#ffffff"
                  android:id="@+id/forward_30"
                  android:layout_gravity="center">
              <Button
@@ -307,6 +354,7 @@
                  android:layout_height="50dp"
                  app:mrl_rippleDuration="250"
                  app:mrl_rippleDelayClick="false"
+                 app:mrl_rippleColor="#ffffff"
                  android:id="@+id/next"
                  android:layout_gravity="center">
              <Button
