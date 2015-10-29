@@ -39,29 +39,47 @@ ADDED from E:\AndroidStudioProjects\audibooks\app\src\main\AndroidManifest.xml:1
 		ADDED from E:\AndroidStudioProjects\audibooks\app\src\main\AndroidManifest.xml:10:17-72
 application
 ADDED from E:\AndroidStudioProjects\audibooks\app\src\main\AndroidManifest.xml:12:5-39:19
-MERGED from [com.android.support:appcompat-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
 MERGED from [net.steamcrafted:materialiconlib:1.0.4] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\net.steamcrafted\materialiconlib\1.0.4\AndroidManifest.xml:11:5-12:19
 MERGED from [com.balysv.materialmenu:material-menu:1.5.4] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.balysv.materialmenu\material-menu\1.5.4\AndroidManifest.xml:12:5-20
 MERGED from [com.sothree.slidinguppanel:library:3.1.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.sothree.slidinguppanel\library\3.1.1\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.github.christophesmet:android_maskable_layout:557cb182b3] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.github.christophesmet\android_maskable_layout\557cb182b3\AndroidManifest.xml:11:5-20
 MERGED from [com.balysv:material-ripple:1.0.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.balysv\material-ripple\1.0.2\AndroidManifest.xml:12:5-20
-MERGED from [com.android.support:appcompat-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.nononsenseapps:filepicker:2.4.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.nononsenseapps\filepicker\2.4.2\AndroidManifest.xml:28:5-20
-MERGED from [com.android.support:appcompat-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:design:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\design\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:cardview-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.0.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.commit451:NativeStackBlur:1.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.commit451\NativeStackBlur\1.0.1\AndroidManifest.xml:12:5-20
+MERGED from [com.afollestad.material-dialogs:core:0.8.4.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\core\0.8.4.2\AndroidManifest.xml:13:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.afollestad.material-dialogs:commons:0.8.4.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\commons\0.8.4.2\AndroidManifest.xml:12:5-20
+MERGED from [com.afollestad.material-dialogs:core:0.8.4.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\core\0.8.4.2\AndroidManifest.xml:13:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from E:\AndroidStudioProjects\audibooks\app\src\main\AndroidManifest.xml:16:9-41
 	android:fullBackupContent
@@ -116,34 +134,60 @@ ADDED from E:\AndroidStudioProjects\audibooks\app\src\main\AndroidManifest.xml:3
 		ADDED from E:\AndroidStudioProjects\audibooks\app\src\main\AndroidManifest.xml:38:18-72
 uses-sdk
 INJECTED from E:\AndroidStudioProjects\audibooks\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:appcompat-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
 MERGED from [net.steamcrafted:materialiconlib:1.0.4] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\net.steamcrafted\materialiconlib\1.0.4\AndroidManifest.xml:7:5-9:41
 MERGED from [com.balysv.materialmenu:material-menu:1.5.4] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.balysv.materialmenu\material-menu\1.5.4\AndroidManifest.xml:8:5-10:41
 MERGED from [com.sothree.slidinguppanel:library:3.1.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.sothree.slidinguppanel\library\3.1.1\AndroidManifest.xml:7:5-43
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
 MERGED from [com.wnafee:vector-compat:1.0.5] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.wnafee\vector-compat\1.0.5\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
 MERGED from [com.github.christophesmet:android_maskable_layout:557cb182b3] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.github.christophesmet\android_maskable_layout\557cb182b3\AndroidManifest.xml:7:5-9:41
 MERGED from [com.balysv:material-ripple:1.0.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.balysv\material-ripple\1.0.2\AndroidManifest.xml:8:5-10:41
 MERGED from [com.daimajia.numberprogressbar:library:1.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.daimajia.numberprogressbar\library\1.2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.recruit-lifestyle:WaveSwipeRefreshLayout:1.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.github.recruit-lifestyle\WaveSwipeRefreshLayout\1.2\AndroidManifest.xml:8:5-10:41
-MERGED from [com.android.support:appcompat-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
 MERGED from [com.nononsenseapps:filepicker:2.4.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.nononsenseapps\filepicker\2.4.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.android.support:appcompat-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:recyclerview-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:design:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\design\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:cardview-v7:23.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.0.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:design:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.0\AndroidManifest.xml:20:5-43
 MERGED from [jp.wasabeef:blurry:1.0.4] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\jp.wasabeef\blurry\1.0.4\AndroidManifest.xml:8:5-10:41
 MERGED from [com.commit451:NativeStackBlur:1.0.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.commit451\NativeStackBlur\1.0.1\AndroidManifest.xml:8:5-10:41
+MERGED from [com.afollestad.material-dialogs:core:0.8.4.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\core\0.8.4.2\AndroidManifest.xml:8:5-11:75
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.1.4] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\me.zhanghai.android.materialprogressbar\library\1.1.4\AndroidManifest.xml:11:5-13:41
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.afollestad.material-dialogs:commons:0.8.4.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\commons\0.8.4.2\AndroidManifest.xml:8:5-10:41
+MERGED from [com.afollestad.material-dialogs:core:0.8.4.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\core\0.8.4.2\AndroidManifest.xml:8:5-11:75
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.1.4] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\me.zhanghai.android.materialprogressbar\library\1.1.4\AndroidManifest.xml:11:5-13:41
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+MERGED from [me.grantland:autofittextview:0.2.1] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\me.grantland\autofittextview\0.2.1\AndroidManifest.xml:7:5-9:41
+	tools:overrideLibrary
+		ADDED from [com.afollestad.material-dialogs:core:0.8.4.2] E:\AndroidStudioProjects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\core\0.8.4.2\AndroidManifest.xml:11:9-72
 	android:targetSdkVersion
 		INJECTED from E:\AndroidStudioProjects\audibooks\app\src\main\AndroidManifest.xml
 		INJECTED from E:\AndroidStudioProjects\audibooks\app\src\main\AndroidManifest.xml
