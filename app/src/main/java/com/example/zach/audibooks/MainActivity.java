@@ -1129,13 +1129,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     @Override
     protected void onStop() {
         super.onStop();
-       
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        super.onStop();
         Collections.sort(bookList, new Comparator<Books>() {
             @Override
             public int compare(Books lhs, Books rhs) {
@@ -1146,6 +1139,30 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
         }
         writeBookPositions();
+        if(sortState == 0){
+            Collections.sort(bookList, new Comparator<Books>() {
+                @Override
+                public int compare(Books lhs, Books rhs) {
+                    return lhs.getTitle().compareTo(rhs.getTitle());
+                }
+            });
+        }
+        if(sortState == 1){
+            Collections.sort(bookList, new Comparator<Books>() {
+                @Override
+                public int compare(Books lhs, Books rhs) {
+                    return lhs.getAuthor().compareTo(rhs.getAuthor());
+                }
+            });
+        }
+       
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        super.onStop();
+
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(viewMode , savedViewMode );
