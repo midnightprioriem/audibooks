@@ -1083,26 +1083,33 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         int durationElapsed = 0;
         for(int i=0; i < bookList.size(); i++){
             books = bookList.get(i);
-            Cursor cursor = db.queryBooks(books.title);
-            cursor.moveToFirst();
-            bookTitle = cursor.getString(1);
-            chapPos = cursor.getInt(2);
-            seekPos = cursor.getInt(3);
-            Log.d("Database" , bookTitle + " " + chapPos + " " + seekPos);
-            if(books.title.equals(bookTitle)){
-                for(int k = 0; k < chapterList.size(); k++){
-                    Chapter chapter = chapterList.get(k);
-                    if(bookTitle.equals(chapter.getTitle()) && chapPos > Integer.parseInt(chapter.getChapter())){
-                        durationElapsed = durationElapsed + chapter.getDuration();
-                    }
+            String titleQuery = books.title;
+            if(books.title.contains("'")){
+                titleQuery = titleQuery.replaceAll("'" , "''");
+            }
+            Cursor cursor = db.queryBooks(titleQuery);
+            if (cursor != null && cursor.getCount() > 0){
+                cursor.moveToFirst();
+                bookTitle = cursor.getString(1);
+                chapPos = cursor.getInt(2);
+                seekPos = cursor.getInt(3);
+                Log.d("Database" , bookTitle + " " + chapPos + " " + seekPos);
 
+                if(books.title.equals(bookTitle)) {
+                    for (int k = 0; k < chapterList.size(); k++) {
+                        Chapter chapter = chapterList.get(k);
+                        if (bookTitle.equals(chapter.getTitle()) && chapPos > Integer.parseInt(chapter.getChapter())) {
+                            durationElapsed = durationElapsed + chapter.getDuration();
+                        }
+
+                    }
+                    double dDurElapsed = (double) durationElapsed;
+                    double dTotalDur = (double) books.totalDuration;
+                    double rElapsed = (dDurElapsed / dTotalDur) * 100;
+                    int pElapsed = (int) rElapsed;
+                    bookList.set(i, new Books(books.title, books.author, books.chapters, chapPos, seekPos, books.totalDuration, books.coverURL, pElapsed));
+                    cursor.moveToNext();
                 }
-                double dDurElapsed = (double) durationElapsed;
-                double dTotalDur = (double) books.totalDuration;
-                double rElapsed = (dDurElapsed/dTotalDur)*100;
-                int pElapsed = (int) rElapsed;
-                bookList.set(i, new Books(books.title, books.author, books.chapters, chapPos, seekPos, books.totalDuration, books.coverURL, pElapsed));
-                cursor.moveToNext();
             }
             durationElapsed = 0;
 
@@ -1112,11 +1119,30 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     public void writeBookPositions(){
         db = new DataBaseHelper(this);
-        db.deleteAllBooks();
         Books books;
         for(int i = 0; i < bookList.size(); i++ ){
             books = bookList.get(i);
-            db.insertData(books.title, books.currentChapter, books.seekPos);
+            String titleQuery = books.title;
+            Log.d("WRITE BOOKS" , books.title);
+            if(books.currentChapter == 1 && books.seekPos == 0){
+                continue;
+            }
+            if(books.title.contains("'")){
+                titleQuery = titleQuery.replaceAll("'" , "''");
+            }
+            Cursor cursor = db.queryBooks(titleQuery);
+            if (cursor != null && cursor.getCount() > 0){
+                cursor.moveToFirst();
+                int id = cursor.getInt(0);
+                boolean result = db.updateData(books.title, books.currentChapter, books.seekPos, id);
+                if(!result){
+                    Log.d("DB" , "FAILED TO UPDATE DATA");
+                }
+            }
+            else {
+                db.insertData(books.title, books.currentChapter, books.seekPos);
+            }
+
         }
 
     }
@@ -1126,32 +1152,10 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     @Override
     protected void onStop() {
         super.onStop();
-        Collections.sort(bookList, new Comparator<Books>() {
-            @Override
-            public int compare(Books lhs, Books rhs) {
-                return lhs.getTitle().compareTo(rhs.getTitle());
-            }
-        });
         if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
             bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
         }
         writeBookPositions();
-        if(sortState == 0){
-            Collections.sort(bookList, new Comparator<Books>() {
-                @Override
-                public int compare(Books lhs, Books rhs) {
-                    return lhs.getTitle().compareTo(rhs.getTitle());
-                }
-            });
-        }
-        if(sortState == 1){
-            Collections.sort(bookList, new Comparator<Books>() {
-                @Override
-                public int compare(Books lhs, Books rhs) {
-                    return lhs.getAuthor().compareTo(rhs.getAuthor());
-                }
-            });
-        }
        
     }
 
