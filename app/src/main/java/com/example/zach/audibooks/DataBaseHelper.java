@@ -63,5 +63,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public Cursor queryBooks(String query){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, new String[] {COL_1, COL_2, COL_3},
+                "TITLE like " + "'%" + query + "%'", null, null, null, null);
+        return cursor;
+    }
+
 
 }

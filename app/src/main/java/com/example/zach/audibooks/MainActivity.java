@@ -1077,21 +1077,18 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     public void getBookPositions() {
         Books books;
         db = new DataBaseHelper(this);
-        Cursor cursor = db.getAllBooks();
-        if(cursor.getCount() == 0){
-            return;
-        }
         String bookTitle;
         int chapPos;
         int seekPos;
-        cursor.moveToNext();
         int durationElapsed = 0;
         for(int i=0; i < bookList.size(); i++){
             books = bookList.get(i);
-            if(cursor.isLast()) break;
+            Cursor cursor = db.queryBooks(books.title);
+            cursor.moveToFirst();
             bookTitle = cursor.getString(1);
             chapPos = cursor.getInt(2);
             seekPos = cursor.getInt(3);
+            Log.d("Database" , bookTitle + " " + chapPos + " " + seekPos);
             if(books.title.equals(bookTitle)){
                 for(int k = 0; k < chapterList.size(); k++){
                     Chapter chapter = chapterList.get(k);
