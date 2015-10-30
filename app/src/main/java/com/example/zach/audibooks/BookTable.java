@@ -11,7 +11,7 @@ import android.util.Log;
 import java.io.File;
 
 
-public class DataBaseHelper extends SQLiteOpenHelper {
+public class BookTable extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "book_positions.db";
     public static final String TABLE_NAME = "position_table";
@@ -21,7 +21,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COL_4 = "SEEK_POSITION";
     public static final String FILE_DIR = "/Audibooks/positions";
 
-    public DataBaseHelper(Context context) {
+    public BookTable(Context context) {
         super(context, Environment.getExternalStorageDirectory() + File.separator + FILE_DIR + File.separator + DATABASE_NAME, null, 1);
 
     }
@@ -50,18 +50,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return false;
         else
             return true;
-    }
-
-    public Cursor getAllBooks(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME, null);
-        return cursor;
-    }
-
-    public void deleteAllBooks(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, null, null);
-        db.close();
     }
 
     public boolean updateData(String title, int chapPos, int seekPos, int ID){
