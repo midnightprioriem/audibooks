@@ -14,8 +14,12 @@
         />
 
     <item android:id="@+id/folder_chooser_button"
-        android:title="Add a Folder"
+        android:title="Change Default Directory"
         />
+
+    <item android:id="@+id/refresh_button"
+        android:title="Refresh"
+    />
 
     <item android:id="@+id/settings_button"
         android:title="@string/settings"

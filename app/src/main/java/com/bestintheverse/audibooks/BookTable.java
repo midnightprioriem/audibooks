@@ -19,10 +19,9 @@ public class BookTable extends SQLiteOpenHelper {
     public static final String COL_2 = "TITLE";
     public static final String COL_3 = "CHAPTER_POS";
     public static final String COL_4 = "SEEK_POSITION";
-    public static final String FILE_DIR = "/Audibooks/positions";
 
     public BookTable(Context context) {
-        super(context, Environment.getExternalStorageDirectory() + File.separator + FILE_DIR + File.separator + DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 1);
 
     }
 
