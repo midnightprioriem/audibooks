@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.zach.audibooks" >
+    package="com.bestintheverse.audibooks" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme.Blue" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.bestintheverse.audibooks.MainActivity"
             android:label="@string/app_name"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
@@ -35,7 +35,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <service android:name="com.example.zach.audibooks.MediaService"/>
+        <service android:name="com.bestintheverse.audibooks.MediaService"/>
     </application>
 
 </manifest>
