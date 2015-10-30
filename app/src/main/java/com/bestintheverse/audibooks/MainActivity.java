@@ -156,13 +156,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         SharedPreferences prefs = this.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-
-        File folder = new File(Environment.getExternalStorageDirectory() + "/Audibooks");
-        if(!folder.exists()){
-            folder.mkdir();
-        }
 
         defaultDirectory = prefs.getString(DIRECTORY, DEFAULT_DIRECTORY);
 
@@ -186,6 +180,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 return lhs.getTitle().compareTo(rhs.getTitle());
             }
         });
+
         bookList = new ArrayList<>();
         getBookList(chapterList, bookList);
         getBookPositions();
@@ -214,6 +209,18 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             adapter.notifyDataSetChanged();
             gridAdapter.notifyDataSetChanged();
             sortState = 1;
+        }
+
+        if(savedSortMode.equals("byTitle")){
+            Collections.sort(bookList, new Comparator<Books>() {
+                @Override
+                public int compare(Books lhs, Books rhs) {
+                    return lhs.getTitle().compareTo(rhs.getTitle());
+                }
+            });
+            adapter.notifyDataSetChanged();
+            gridAdapter.notifyDataSetChanged();
+            sortState = 0;
         }
 
         if(savedViewMode.equals("listView")){
@@ -1206,29 +1213,12 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 .title("Choose a directory")
                 .theme(Theme.LIGHT)
                 .content("You do not have any audiobook directories." +
-                        " Please select a default directory. A folder /Audibooks" +
-                        " has been created for you to place your books in,"
-                        + " or you may choose your own directory.")
-                .positiveText("Choose my own directory")
-                .negativeText("Use /Audibooks")
+                        " Please select a default directory.")
+                .positiveText("Choose a Folder")
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(MaterialDialog materialDialog, DialogAction dialogAction) {
                         startCustomDirectoryActivity();
-                    }
-                })
-                .onNegative(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(MaterialDialog materialDialog, DialogAction dialogAction) {
-                        defaultDirectory = "/Audibooks";
-                        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
-                            getChapterListWrapper();
-                        else
-                            getChapterList();
-                        getBookList(chapterList, bookList);
-                        getBookPositions();
-                        adapter.notifyDataSetChanged();
-                        gridAdapter.notifyDataSetChanged();
                     }
                 })
                 .show();
@@ -1241,7 +1231,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         // Intent i = new Intent(Intent.ACTION_GET_CONTENT);
 
         // Set these depending on your use case. These are the defaults.
-        i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, true);
+        i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
         i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_DIR);
 
         // Configure initial directory by specifying a String.
@@ -1258,11 +1248,18 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         if (requestCode == FILE_CODE && resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
             defaultDirectory = uri.getPath();
-            Log.d("Change directory", defaultDirectory);
+            chapterList.clear();
+            bookList.clear();
             if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
                 getChapterListWrapper();
             else
                 getChapterList();
+            Collections.sort(chapterList, new Comparator<Chapter>() {
+                @Override
+                public int compare(Chapter lhs, Chapter rhs) {
+                    return lhs.getTitle().compareTo(rhs.getTitle());
+                }
+            });
             getBookList(chapterList, bookList);
             getBookPositions();
             adapter.notifyDataSetChanged();
@@ -1341,6 +1338,20 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 return true;
 
             case R.id.refresh_button:
+                chapterList.clear();
+                bookList.clear();
+                if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
+                    getChapterListWrapper();
+                else
+                    getChapterList();
+                Collections.sort(chapterList, new Comparator<Chapter>() {
+                    @Override
+                    public int compare(Chapter lhs, Chapter rhs) {
+                        return lhs.getTitle().compareTo(rhs.getTitle());
+                    }
+                });
+                getBookList(chapterList, bookList);
+                getBookPositions();
                 adapter.notifyDataSetChanged();
                 gridAdapter.notifyDataSetChanged();
                 return true;
