@@ -7,6 +7,8 @@ import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.provider.MediaStore;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.os.Binder;
 import android.net.Uri;
@@ -15,7 +17,7 @@ import android.net.Uri;
 import java.util.ArrayList;
 
 public class MediaService extends Service implements MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener,
-MediaPlayer.OnCompletionListener {
+MediaPlayer.OnCompletionListener, AudioManager.OnAudioFocusChangeListener {
 
     private MediaPlayer player;
     private ArrayList<Chapter> chapters;
@@ -46,6 +48,7 @@ MediaPlayer.OnCompletionListener {
     }
 
     public void playBook() {
+        registerPhoneListener();
         Chapter findChapter;
         Chapter playChapter = chapters.get(0);
         player.reset();
@@ -82,6 +85,26 @@ MediaPlayer.OnCompletionListener {
             player.prepareAsync();
         }
 
+    }
+
+    public void registerPhoneListener(){
+        PhoneStateListener phoneStateListener = new PhoneStateListener() {
+            @Override
+            public void onCallStateChanged(int state, String incomingNumber) {
+                if (state == TelephonyManager.CALL_STATE_RINGING) {
+                    player.pause();
+                } else if(state == TelephonyManager.CALL_STATE_IDLE) {
+                    player.start();
+                } else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
+                    player.pause();
+                }
+                super.onCallStateChanged(state, incomingNumber);
+            }
+        };
+        TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        if(mgr != null) {
+            mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+        }
     }
 
     public void initMediaPlayer() {
@@ -187,6 +210,38 @@ MediaPlayer.OnCompletionListener {
 
     public void setBookList(ArrayList<Books> bookList) {
         books = bookList;
+    }
+
+    @Override
+    public void onAudioFocusChange(int focusChange) {
+        switch (focusChange) {
+            case AudioManager.AUDIOFOCUS_GAIN:
+                // resume playback
+                if (player == null) initMediaPlayer();
+                else if (!player.isPlaying()) player.start();
+                player.setVolume(1.0f, 1.0f);
+                break;
+
+            case AudioManager.AUDIOFOCUS_LOSS:
+                // Lost focus for an unbounded amount of time: stop playback and release media player
+                if (player.isPlaying()) player.stop();
+                player.release();
+                player = null;
+                break;
+
+            case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
+                // Lost focus for a short time, but we have to stop
+                // playback. We don't release the media player because playback
+                // is likely to resume
+                if (player.isPlaying()) player.pause();
+                break;
+
+            case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
+                // Lost focus for a short time, but it's ok to keep playing
+                // at an attenuated level
+                if (player.isPlaying()) player.setVolume(0.1f, 0.1f);
+                break;
+        }
     }
 
     public class MediaBinder extends Binder {
