@@ -259,24 +259,32 @@
                  android:layout_height="60dp"
                  android:layout_weight="1" />
 
-             <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
-                 android:layout_width="55dp"
-                 app:porterduffxfermode="DST_IN"
-                 app:mask="@drawable/masking_masking_01"
-                 android:layout_height="55dp"
-                 android:layout_gravity="center"
-                 >
-             <com.wnafee.vector.MorphButton
-                 android:id="@+id/playPauseButton"
-                 android:layout_width="65dp"
-                 android:layout_height="70dp"
-                 app:vc_foregroundTint="#ffffff"
-                 app:vc_backgroundTint="#3F51B5"
-                 android:layout_gravity="center"
-                 app:vc_startDrawable="@drawable/ic_pause_to_play"
-                 app:vc_endDrawable="@drawable/ic_play_to_pause"
-                 />
-             </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
+             <RelativeLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center">
+                 <ImageView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerHorizontal="true"
+                     android:layout_centerVertical="true"
+                     android:padding="3dp"
+                     android:src="@drawable/circle"/>
+                 <com.wnafee.vector.MorphButton
+                     android:id="@+id/playPauseButton"
+                     android:layout_width="50dp"
+                     android:layout_height="50dp"
+                     app:vc_foregroundTint="#ffffff"
+                     android:background="@android:color/transparent"
+                     android:layout_centerHorizontal="true"
+                     android:layout_centerVertical="true"
+                     app:vc_startDrawable="@drawable/ic_pause_to_play"
+                     app:vc_endDrawable="@drawable/ic_play_to_pause"
+                     />
+
+             </RelativeLayout>
+
+
 
              <View
                  android:layout_width="0dp"
