@@ -288,8 +288,34 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             }
         });
 
-        SeekBarListener sbl = new SeekBarListener();
-        sbl.setListener(mediaSrv, mActivity);
+        seekBar = (SeekBar) findViewById(R.id.seekBar);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            boolean playing = true;
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (mediaSrv != null && fromUser) {
+                    mediaSrv.seek(progress);
+                }
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                if (!mActivity.isPlaying()) {
+                    mediaSrv.go();
+                    playing = false;
+                }
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                if (!playing) {
+                    mActivity.pause();
+                }
+                playing = true;
+            }
+        });
 
     }
 
