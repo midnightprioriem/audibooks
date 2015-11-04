@@ -242,135 +242,14 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         bookView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
-                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
-                }
-                mediaSrv.setBook(position);
-                mediaSrv.playBook();
-                slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
-                bookCover = (ImageView) findViewById(R.id.main_cover);
-                bookCoverBlur = (ImageView) findViewById(R.id.main_cover_blur);
-                File cover = new File(Environment.getExternalStorageDirectory() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg");
-                if (cover.exists()) {
-                    Log.d("cover", "cover found!!");
-                    bookCover.setImageURI(Uri.parse(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg"));
-                } else if (!bookList.get(position).getCoverURL().equals("")) {
-                    Uri uri = Uri.fromFile(new File(bookList.get(position).getCoverURL()));
-                    Picasso.with(getApplicationContext()).load(uri).resize(600, 800).centerInside().into(bookCover);
-                    BitmapFactory.Options opts = new BitmapFactory.Options();
-                    opts.inSampleSize = 5;
-                    Bitmap bitmap = NativeStackBlur.process(BitmapFactory.decodeFile(bookList.get(position).getCoverURL(), opts), 75);
-                    bookCoverBlur.setImageBitmap(bitmap);
-                    //bookCoverBlur.setColorFilter(Color.parseColor("#0f0f0f"), PorterDuff.Mode.MULTIPLY);
-
-
-                }
-
-
-                bookTitleView = (TextView) findViewById(R.id.Book_Title_View);
-                bookTitleView.setText(mediaSrv.getBooktitle());
-                bookAuthorView = (TextView) findViewById(R.id.Book_Author_View);
-                bookAuthorView.setText(mediaSrv.getAuthor());
-                chapterView = (TextView) findViewById(R.id.Chapter_View);
-                chapterView.setText("Chapter " + mediaSrv.getChapter() + " of " + mediaSrv.getChapterSize());
-                timeLeft = (TextView) findViewById(R.id.timeLeft);
-                timeElapsed = (TextView) findViewById(R.id.timeElapsed);
-                durationElapsed = (TextView) findViewById(R.id.totalDuration);
-                percentElapsed = (TextView) findViewById(R.id.percentElapsed);
-                percentElapsedOne = (TextView) findViewById(R.id.percentElapsedOne);
-                durationLeft = (TextView) findViewById(R.id.durationLeft);
-                controlLayout = (LinearLayout) findViewById(R.id.controlLayout);
-                int titleHeight = bookTitleView.getHeight();
-                int authorHeight = bookAuthorView.getHeight();
-                slidingLayout.setPanelHeight(titleHeight + authorHeight);
-
-
-                playPauseButton.setState(MorphButton.MorphState.START, true);
-
-                if (mediaSrv.getChapterSize() == 1) {
-                    progressBar.setVisibility(View.INVISIBLE);
-                    durationElapsed.setVisibility(View.INVISIBLE);
-                    percentElapsed.setVisibility(View.INVISIBLE);
-                    durationLeft.setVisibility(View.INVISIBLE);
-                    percentElapsedOne.setVisibility(View.VISIBLE);
-
-                } else {
-                    progressBar.setVisibility(View.VISIBLE);
-                    durationElapsed.setVisibility(View.VISIBLE);
-                    percentElapsed.setVisibility(View.VISIBLE);
-                    durationLeft.setVisibility(View.VISIBLE);
-                    percentElapsedOne.setVisibility(View.INVISIBLE);
-                }
-
-
+                onBookClick(position);
             }
         });
 
         bookViewGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
-                    bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
-                }
-                mediaSrv.setBook(position);
-                mediaSrv.playBook();
-                bookCover = (ImageView) findViewById(R.id.main_cover);
-                bookCoverBlur = (ImageView) findViewById(R.id.main_cover_blur);
-                File cover = new File(Environment.getExternalStorageDirectory() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg");
-                if (cover.exists()) {
-                    Log.d("cover", "cover found!!");
-                    bookCover.setImageURI(Uri.parse(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg"));
-                } else if (!bookList.get(position).getCoverURL().equals("")) {
-                    Uri uri = Uri.fromFile(new File(bookList.get(position).getCoverURL()));
-                    Picasso.with(getApplicationContext()).load(uri).resize(600, 800).centerInside().into(bookCover);
-                    BitmapFactory.Options opts = new BitmapFactory.Options();
-                    opts.inSampleSize = 7;
-                    Bitmap bitmap = NativeStackBlur.process(BitmapFactory.decodeFile(bookList.get(position).getCoverURL(), opts), 70);
-                    bookCoverBlur.setImageBitmap(bitmap);
-                    bookCoverBlur.setColorFilter(Color.rgb(123, 123, 123), PorterDuff.Mode.MULTIPLY);
-
-
-                }
-                bookTitleView = (TextView) findViewById(R.id.Book_Title_View);
-                bookTitleView.setText(mediaSrv.getBooktitle());
-                bookAuthorView = (TextView) findViewById(R.id.Book_Author_View);
-                bookAuthorView.setText(mediaSrv.getAuthor());
-                chapterView = (TextView) findViewById(R.id.Chapter_View);
-                chapterView.setText("Chapter " + mediaSrv.getChapter() + " of " + mediaSrv.getChapterSize());
-                timeLeft = (TextView) findViewById(R.id.timeLeft);
-                timeElapsed = (TextView) findViewById(R.id.timeElapsed);
-                durationElapsed = (TextView) findViewById(R.id.totalDuration);
-                percentElapsed = (TextView) findViewById(R.id.percentElapsed);
-                percentElapsedOne = (TextView) findViewById(R.id.percentElapsedOne);
-                durationLeft = (TextView) findViewById(R.id.durationLeft);
-                controlLayout = (LinearLayout) findViewById(R.id.controlLayout);
-
-                int titleHeight = bookTitleView.getHeight();
-                int authorHeight = bookAuthorView.getHeight();
-                slidingLayout.setPanelHeight(titleHeight + authorHeight);
-
-
-                playPauseButton.setState(MorphButton.MorphState.START, true);
-
-
-
-                if (mediaSrv.getChapterSize() == 1) {
-                    progressBar.setVisibility(View.INVISIBLE);
-                    durationElapsed.setVisibility(View.INVISIBLE);
-                    percentElapsed.setVisibility(View.INVISIBLE);
-                    durationLeft.setVisibility(View.INVISIBLE);
-                    percentElapsedOne.setVisibility(View.VISIBLE);
-
-                } else {
-                    progressBar.setVisibility(View.VISIBLE);
-                    durationElapsed.setVisibility(View.VISIBLE);
-                    percentElapsed.setVisibility(View.VISIBLE);
-                    durationLeft.setVisibility(View.VISIBLE);
-                    percentElapsedOne.setVisibility(View.INVISIBLE);
-                }
-
-                slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
-
+                onBookClick(position);
             }
         });
 
@@ -378,48 +257,20 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         slidingLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
 
-        expandButtonView = (ImageView) findViewById(R.id.expand_button_view);
-
-        slidingLayout.setPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
-            @Override
-            public void onPanelSlide(View view, float v) {
-
-            }
-
-            @Override
-            public void onPanelCollapsed(View view) {
-                expandButtonView.setImageResource(R.drawable.expand_more_button);
-            }
-
-            @Override
-            public void onPanelExpanded(View view) {
-                expandButtonView.setImageResource(R.drawable.expand_less_button);
-            }
-
-            @Override
-            public void onPanelAnchored(View view) {
-
-            }
-
-            @Override
-            public void onPanelHidden(View view) {
-
-            }
-        });
 
 
-        seekBar = (SeekBar) findViewById(R.id.seekBar);
+
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-
-
+        PanelStateListener panelStateListener = new PanelStateListener();
+        panelStateListener.setListener(slidingLayout, mActivity);
 
         MainActivity.this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if (mediaSrv != null && mediaBound) {
-                    if(isPlaying()){
+                    if (isPlaying()) {
                         CalculateTime ct = new CalculateTime();
                         ct.calculateTime(mediaSrv, mActivity, chapterList);
                         seekBar.setMax(mediaSrv.getDur());
@@ -437,33 +288,8 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             }
         });
 
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            boolean playing = true;
-
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (mediaSrv != null && fromUser) {
-                    mediaSrv.seek(progress);
-                }
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                if (!isPlaying()) {
-                    mediaSrv.go();
-                    playing = false;
-                }
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                if (!playing) {
-                    pause();
-                }
-                playing = true;
-            }
-        });
+        SeekBarListener sbl = new SeekBarListener();
+        sbl.setListener(mediaSrv, mActivity);
 
     }
 
@@ -751,6 +577,71 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         percentElapsed.setText(String.valueOf(pElapsed + "%" + " Read"));
         percentElapsedOne.setText(String.valueOf(pElapsed + "%" + " Read"));
 
+
+    }
+
+    public void onBookClick(int position){
+        if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
+            bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
+        }
+        mediaSrv.setBook(position);
+        mediaSrv.playBook();
+        bookCover = (ImageView) findViewById(R.id.main_cover);
+        bookCoverBlur = (ImageView) findViewById(R.id.main_cover_blur);
+        File cover = new File(Environment.getExternalStorageDirectory() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg");
+        if (cover.exists()) {
+            Log.d("cover", "cover found!!");
+            bookCover.setImageURI(Uri.parse(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Audibooks/Covers/" + bookList.get(position).title + ".jpg"));
+        } else if (!bookList.get(position).getCoverURL().equals("")) {
+            Uri uri = Uri.fromFile(new File(bookList.get(position).getCoverURL()));
+            Picasso.with(getApplicationContext()).load(uri).resize(600, 800).centerInside().into(bookCover);
+            BitmapFactory.Options opts = new BitmapFactory.Options();
+            opts.inSampleSize = 7;
+            Bitmap bitmap = NativeStackBlur.process(BitmapFactory.decodeFile(bookList.get(position).getCoverURL(), opts), 70);
+            bookCoverBlur.setImageBitmap(bitmap);
+            bookCoverBlur.setColorFilter(Color.rgb(123, 123, 123), PorterDuff.Mode.MULTIPLY);
+
+
+        }
+        bookTitleView = (TextView) findViewById(R.id.Book_Title_View);
+        bookTitleView.setText(mediaSrv.getBooktitle());
+        bookAuthorView = (TextView) findViewById(R.id.Book_Author_View);
+        bookAuthorView.setText(mediaSrv.getAuthor());
+        chapterView = (TextView) findViewById(R.id.Chapter_View);
+        chapterView.setText("Chapter " + mediaSrv.getChapter() + " of " + mediaSrv.getChapterSize());
+        timeLeft = (TextView) findViewById(R.id.timeLeft);
+        timeElapsed = (TextView) findViewById(R.id.timeElapsed);
+        durationElapsed = (TextView) findViewById(R.id.totalDuration);
+        percentElapsed = (TextView) findViewById(R.id.percentElapsed);
+        percentElapsedOne = (TextView) findViewById(R.id.percentElapsedOne);
+        durationLeft = (TextView) findViewById(R.id.durationLeft);
+        controlLayout = (LinearLayout) findViewById(R.id.controlLayout);
+
+        int titleHeight = bookTitleView.getHeight();
+        int authorHeight = bookAuthorView.getHeight();
+        slidingLayout.setPanelHeight(titleHeight + authorHeight);
+
+
+        playPauseButton.setState(MorphButton.MorphState.START, true);
+
+
+
+        if (mediaSrv.getChapterSize() == 1) {
+            progressBar.setVisibility(View.INVISIBLE);
+            durationElapsed.setVisibility(View.INVISIBLE);
+            percentElapsed.setVisibility(View.INVISIBLE);
+            durationLeft.setVisibility(View.INVISIBLE);
+            percentElapsedOne.setVisibility(View.VISIBLE);
+
+        } else {
+            progressBar.setVisibility(View.VISIBLE);
+            durationElapsed.setVisibility(View.VISIBLE);
+            percentElapsed.setVisibility(View.VISIBLE);
+            durationLeft.setVisibility(View.VISIBLE);
+            percentElapsedOne.setVisibility(View.INVISIBLE);
+        }
+
+        slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
 
     }
 
