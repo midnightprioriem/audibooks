@@ -84,13 +84,10 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     private ArrayList<Chapter> chapterList;
     private ArrayList<Books> bookList;
     private MediaService mediaSrv;
-
-
-
     private Intent playIntent;
     private boolean mediaBound = false;
-    public SlidingUpPanelLayout slidingLayout;
 
+    public SlidingUpPanelLayout slidingLayout;
     public TextView bookTitleView;
     public TextView bookAuthorView;
     public TextView chapterView;
@@ -148,6 +145,8 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     public ProgressBar progressBar;
 
     public boolean isListView = true;
+    public MainActivity mActivity = this;
+
 
 
     @Override
@@ -313,7 +312,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
                     bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
                 }
-
                 mediaSrv.setBook(position);
                 mediaSrv.playBook();
                 bookCover = (ImageView) findViewById(R.id.main_cover);
@@ -333,8 +331,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
 
                 }
-
-
                 bookTitleView = (TextView) findViewById(R.id.Book_Title_View);
                 bookTitleView.setText(mediaSrv.getBooktitle());
                 bookAuthorView = (TextView) findViewById(R.id.Book_Author_View);
@@ -417,16 +413,20 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
 
+
+
         MainActivity.this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if (mediaSrv != null && mediaBound) {
                     if(isPlaying()){
+                        CalculateTime ct = new CalculateTime();
+                        ct.calculateTime(mediaSrv, mActivity, chapterList);
                         seekBar.setMax(mediaSrv.getDur());
                         int currentPosition = mediaSrv.getPosn();
                         seekBar.setProgress(currentPosition);
-                        String timeElapsedOutput = getTimeElapsed(currentPosition);
-                        String timeLeftOutput = getTimeLeftOutput(getTimeLeft(currentPosition));
+                        String timeElapsedOutput = ct.getTimeElapsed(currentPosition);
+                        String timeLeftOutput = ct.getTimeLeftOutput(ct.getTimeLeft(currentPosition));
                         timeElapsed.setText(timeElapsedOutput);
                         timeLeft.setText(timeLeftOutput);
                         setProgressBar(currentPosition);
@@ -733,76 +733,17 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     }
 
-    public String getTimeElapsed(int currentPosition){
-        int daysElapsed = (currentPosition / (1000*60*60*24)) % 364;
-        int hoursElapsed = (currentPosition / (1000*60*60)) %24;
-        int minutesElapsed = (currentPosition / (1000*60)) % 60;
-        int secondsElapsed = (currentPosition / 1000) % 60;
-
-        return formatTime(daysElapsed, hoursElapsed, minutesElapsed, secondsElapsed);
-    }
-
-    public int getTimeLeft(int currentPosition){
-        return getDuration() - currentPosition;
-    }
-
-    public String getTimeLeftOutput(int durLeft){
-        int daysLeft = (durLeft / (1000*60*60*24)) % 364;
-        int hoursLeft = (durLeft / (1000*60*60)) %24;
-        int minutesLeft = (durLeft / (1000*60)) % 60;
-        int secondsLeft = (durLeft / 1000) % 60;
-
-        return formatTime(daysLeft, hoursLeft, minutesLeft, secondsLeft);
-
-    }
-
-    public int getDurationElapsed(int currentPosition){
-        int currChap = mediaSrv.getChapter();
-        int durElapsed = 0;
-        for(int i =0; i < chapterList.size(); i++){
-            Chapter chapter = chapterList.get(i);
-            if(getBookTitle().equals(chapter.getTitle()) && currChap > Integer.parseInt(chapter.getChapter())){
-                durElapsed = durElapsed + chapter.getDuration();
-            }
-
-        }
-        durElapsed = durElapsed + currentPosition;
-        return durElapsed;
-
-    }
-
-    public String getDurationElapsedOutput(int durElapsed){
-        int daysElapsed = (durElapsed / (1000*60*60*24)) % 364;
-        int hoursElapsed = (durElapsed / (1000*60*60)) %24;
-        int minutesElapsed = (durElapsed / (1000*60)) % 60;
-        int secondsElapsed = (durElapsed / 1000) % 60;
-
-        return formatTime(daysElapsed, hoursElapsed, minutesElapsed, secondsElapsed);
-    }
-
-    public int getDurationLeft(int currentPosition){
-        return getTotalDuration() - getDurationElapsed(currentPosition);
-    }
-
-    public String getDurationLeftOutput(int durLeft){
-        int daysLeft = (durLeft / (1000*60*60*24)) % 364;
-        int hoursLeft = (durLeft / (1000*60*60)) %24;
-        int minutesLeft = (durLeft / (1000*60)) % 60;
-        int secondsLeft = (durLeft / 1000) % 60;
-
-        return formatTime(daysLeft, hoursLeft, minutesLeft, secondsLeft);
-
-    }
-
     public void setProgressBar(int currentPosition){
-        int durElapsed = getDurationElapsed(currentPosition);
+        CalculateTime ct = new CalculateTime();
+        ct.calculateTime(mediaSrv, mActivity, chapterList);
+        int durElapsed = ct.getDurationElapsed(currentPosition);
         int totalDur = getTotalDuration();
-        int durLeft = getDurationLeft(currentPosition);
+        int durLeft = ct.getDurationLeft(currentPosition);
         double dDurElapsed = (double) durElapsed;
         double dTotalDur = (double) totalDur;
-        String durationElapsedOutput = getDurationElapsedOutput(durElapsed);
-        String durationLeftOutput = getDurationLeftOutput(durLeft);
-        durationElapsed.setText(durationElapsedOutput + " of " + getDurationElapsedOutput(totalDur));
+        String durationElapsedOutput = ct.getDurationElapsedOutput(durElapsed);
+        String durationLeftOutput = ct.getDurationLeftOutput(durLeft);
+        durationElapsed.setText(durationElapsedOutput + " of " + ct.getDurationElapsedOutput(totalDur));
         durationLeft.setText(durationLeftOutput);
         double rElapsed = (dDurElapsed/dTotalDur)*100;
         int pElapsed = (int) rElapsed;
@@ -813,22 +754,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     }
 
-    public String formatTime(int days, int hours, int minutes, int seconds){
-        String timeOutput;
-        if(days != 0){
-            timeOutput = String.format("%02d:%02d:%02d:%02d",
-                    days, hours, minutes, seconds);
-        }
-        else if(hours != 0){
-            timeOutput = String.format("%02d:%02d:%02d",
-                    hours, minutes, seconds);
-        }
-        else{
-            timeOutput = String.format("%02d:%02d",
-                    minutes, seconds);
-        }
-        return timeOutput;
-    }
+
 
     public void setButtons() {
         back = (MaterialRippleLayout) findViewById(R.id.back);
