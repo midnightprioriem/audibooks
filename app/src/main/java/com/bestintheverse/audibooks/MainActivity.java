@@ -22,6 +22,8 @@ import android.os.IBinder;
 import android.provider.MediaStore;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -102,14 +104,10 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     public ImageView bookCoverBlur;
     public ImageView expandButtonView;
 
-    public ViewGroup coverBlur;
-
     private BooksAdapter adapter;
     private BooksGridAdapter gridAdapter;
 
     public LinearLayout controlLayout;
-
-    public SwipeRefreshLayout refreshLayout;
 
     public MaterialRippleLayout back;
     public MaterialRippleLayout replay30;
@@ -238,7 +236,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         //END SHARED PREFERENCES
 
 
-
+        registerPhoneListener();
 
         setButtons();
 
@@ -435,7 +433,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                     }
 
                 }
-                mHandler.postDelayed(this, 10);
+                mHandler.postDelayed(this, 100);
             }
         });
 
@@ -1075,7 +1073,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 bookTitle = cursor.getString(1);
                 chapPos = cursor.getInt(2);
                 seekPos = cursor.getInt(3);
-                Log.d("Database" , bookTitle + " " + chapPos + " " + seekPos);
 
                 if(books.title.equals(bookTitle)) {
                     for (int k = 0; k < chapterList.size(); k++) {
@@ -1104,7 +1101,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         for(int i = 0; i < bookList.size(); i++ ){
             books = bookList.get(i);
             String titleQuery = books.title;
-            Log.d("WRITE BOOKS" , books.title);
             if(books.currentChapter == 1 && books.seekPos == 0){
                 continue;
             }
@@ -1126,6 +1122,37 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
         }
 
+    }
+
+    public void registerPhoneListener(){
+        PhoneStateListener phoneStateListener = new PhoneStateListener() {
+            @Override
+            public void onCallStateChanged(int state, String incomingNumber) {
+                if (state == TelephonyManager.CALL_STATE_RINGING) {
+                    if (mediaSrv != null && mediaBound && mediaSrv.isPlaying()) {
+                        playPauseButton.setState(MorphButton.MorphState.END, true);
+                        pause();
+                    }
+
+                } else if(state == TelephonyManager.CALL_STATE_IDLE) {
+                    if (mediaSrv != null && mediaBound) {
+                        playPauseButton.setState(MorphButton.MorphState.START, true);
+                        start();
+                        seekTo(getCurrentPosition()-5000);
+                    }
+                } else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
+                    if (mediaSrv != null && mediaBound && mediaSrv.isPlaying()) {
+                        playPauseButton.setState(MorphButton.MorphState.END, true);
+                        pause();
+                    }
+                }
+                super.onCallStateChanged(state, incomingNumber);
+            }
+        };
+        TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        if(mgr != null) {
+            mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+        }
     }
 
 

@@ -48,7 +48,6 @@ MediaPlayer.OnCompletionListener, AudioManager.OnAudioFocusChangeListener {
     }
 
     public void playBook() {
-        registerPhoneListener();
         Chapter findChapter;
         Chapter playChapter = chapters.get(0);
         player.reset();
@@ -87,25 +86,7 @@ MediaPlayer.OnCompletionListener, AudioManager.OnAudioFocusChangeListener {
 
     }
 
-    public void registerPhoneListener(){
-        PhoneStateListener phoneStateListener = new PhoneStateListener() {
-            @Override
-            public void onCallStateChanged(int state, String incomingNumber) {
-                if (state == TelephonyManager.CALL_STATE_RINGING) {
-                    player.pause();
-                } else if(state == TelephonyManager.CALL_STATE_IDLE) {
-                    player.start();
-                } else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
-                    player.pause();
-                }
-                super.onCallStateChanged(state, incomingNumber);
-            }
-        };
-        TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-        if(mgr != null) {
-            mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
-        }
-    }
+
 
     public void initMediaPlayer() {
         player.setWakeMode(getApplicationContext(),
