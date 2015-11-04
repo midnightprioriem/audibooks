@@ -23,7 +23,7 @@
             <RelativeLayout
 
                 android:layout_width="match_parent"
-                android:layout_height="380dp"
+                android:layout_height="360dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -62,32 +62,6 @@
                     android:paddingBottom="2dp"
 
                     />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="0dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/time_icon"
-                    android:tint="@color/text_secondary"
-                    android:layout_below="@+id/book_author_grid"
-                    android:id="@+id/time_icon_grid"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/total_time_label_grid"
-                    android:paddingStart="3dp"
-                    android:paddingEnd="0dp"
-                    android:paddingTop="2dp"
-                    android:layout_gravity="center"
-                    android:layout_below="@+id/book_author_grid"
-                    android:layout_toEndOf="@+id/time_icon_grid"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="15sp"
-                    android:text="20 hours"
-                    />
-
 
 
 
