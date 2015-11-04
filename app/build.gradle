@@ -55,4 +55,6 @@ dependencies {
     }
     compile 'me.grantland:autofittextview:0.2.+'
     compile 'com.github.emanzanoaxa:RippleEffect:52ea2a0ab6'
+    compile 'com.github.ACRA:acra:acra-4.6.2'
+
 }

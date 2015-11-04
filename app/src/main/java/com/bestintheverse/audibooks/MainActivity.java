@@ -37,6 +37,7 @@ import android.widget.ListView;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -154,7 +155,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SharedPreferences prefs = this.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-
         defaultDirectory = prefs.getString(DIRECTORY, DEFAULT_DIRECTORY);
 
         if(defaultDirectory.equals("")){
@@ -1023,6 +1023,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         editor.commit();
         unbindService(mediaConnection);
     }
+
 
     @SuppressLint("NewApi")
     private void getChapterListWrapper() {

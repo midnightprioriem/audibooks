@@ -13,4 +13,5 @@
     <string name="sort_dialog_title">Sort by</string>
     <string name="sort_by_author">Title</string>
     <string name="sort_by_book">Author</string>
+    <string name="send_crash_report">Send crash report</string>
 </resources>
