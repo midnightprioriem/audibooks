@@ -259,30 +259,17 @@
                  android:layout_height="60dp"
                  android:layout_weight="1" />
 
-             <RelativeLayout
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_gravity="center">
-                 <ImageView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_centerHorizontal="true"
-                     android:layout_centerVertical="true"
-                     android:padding="3dp"
-                     android:src="@drawable/circle"/>
                  <com.wnafee.vector.MorphButton
                      android:id="@+id/playPauseButton"
-                     android:layout_width="50dp"
-                     android:layout_height="50dp"
+                     android:layout_width="70dp"
+                     android:layout_height="70dp"
                      app:vc_foregroundTint="#ffffff"
                      android:background="@android:color/transparent"
-                     android:layout_centerHorizontal="true"
-                     android:layout_centerVertical="true"
+                     android:layout_gravity="center"
                      app:vc_startDrawable="@drawable/ic_pause_to_play"
                      app:vc_endDrawable="@drawable/ic_play_to_pause"
                      />
 
-             </RelativeLayout>
 
 
 

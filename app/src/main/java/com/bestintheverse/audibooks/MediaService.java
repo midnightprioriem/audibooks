@@ -1,18 +1,27 @@
 package com.bestintheverse.audibooks;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
+import android.app.TaskStackBuilder;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.provider.MediaStore;
+import android.support.v4.app.NotificationCompat;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.os.Binder;
 import android.net.Uri;
 
+
+import com.commit451.nativestackblur.NativeStackBlur;
 
 import java.util.ArrayList;
 
@@ -34,6 +43,9 @@ MediaPlayer.OnCompletionListener, AudioManager.OnAudioFocusChangeListener {
     public volatile boolean playing;
 
     private ServiceCallbacks serviceCallbacks;
+
+
+
 
 
     private final IBinder mediaBind = new MediaBinder();
@@ -84,6 +96,12 @@ MediaPlayer.OnCompletionListener, AudioManager.OnAudioFocusChangeListener {
             player.prepareAsync();
         }
 
+
+    }
+
+    @Override
+    public void onRebind(Intent intent) {
+        super.onRebind(intent);
     }
 
 
@@ -242,6 +260,7 @@ MediaPlayer.OnCompletionListener, AudioManager.OnAudioFocusChangeListener {
 
     @Override
     public boolean onUnbind(Intent intent) {
+
         player.stop();
         player.release();
         return false;
@@ -256,6 +275,7 @@ MediaPlayer.OnCompletionListener, AudioManager.OnAudioFocusChangeListener {
 
     @Override
     public boolean onError(MediaPlayer mp, int what, int extra) {
+        mp.reset();
         return false;
     }
 

@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.ClipData;
 import android.content.ComponentName;
 import android.content.Context;
@@ -21,6 +24,7 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.provider.MediaStore;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
@@ -147,6 +151,8 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     public boolean isListView = true;
     public MainActivity mActivity = this;
+    NotificationCompat.Builder mBuilder;
+    NotificationManager mNotificationManager;
 
 
 
@@ -266,11 +272,10 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         PanelStateListener panelStateListener = new PanelStateListener();
         panelStateListener.setListener(slidingLayout, mActivity);
 
-        MainActivity.this.runOnUiThread(new Runnable() {
+      MainActivity.this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (mediaSrv != null && mediaBound) {
-                    if (isPlaying()) {
+                if (mediaSrv != null && mediaBound && !slidingLayout.getPanelState().equals(SlidingUpPanelLayout.PanelState.HIDDEN)) {
                         CalculateTime ct = new CalculateTime();
                         ct.calculateTime(mediaSrv, mActivity, chapterList);
                         seekBar.setMax(mediaSrv.getDur());
@@ -281,8 +286,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                         timeElapsed.setText(timeElapsedOutput);
                         timeLeft.setText(timeLeftOutput);
                         setProgressBar(currentPosition);
-                    }
-
                 }
                 mHandler.postDelayed(this, 100);
             }
@@ -607,6 +610,8 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     }
 
     public void onBookClick(int position){
+
+        slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
         if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
             bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
         }
@@ -667,9 +672,41 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             percentElapsedOne.setVisibility(View.INVISIBLE);
         }
 
-        slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+        showNotification();
+
+
 
     }
+
+    public void showNotification(){
+
+        BitmapFactory.Options opts = new BitmapFactory.Options();
+        opts.inSampleSize = 7;
+        Bitmap bitmap = BitmapFactory.decodeFile(bookList.get(getBookPos()).getCoverURL(), opts);
+
+        Intent resultIntent = new Intent(this, MainActivity.class);
+        resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(this,0,
+                resultIntent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_UPDATE_CURRENT);
+
+        mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setLargeIcon(bitmap)
+                        .setSmallIcon(R.drawable.default_book)
+                        .setContentTitle(getBookTitle() + " - " + getChapterPos())
+                        .setContentText(getBookAuthor())
+                        .setOngoing(true)
+                        .setContentIntent(resultPendingIntent)
+        ;
+
+
+        mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        mNotificationManager.notify(123, mBuilder.build());
+    }
+
+
 
 
 
@@ -690,6 +727,8 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             public void onClick(View v) {
                 slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
                 mediaSrv.stopPlaying();
+                mNotificationManager.cancel(123);
+
             }
         });
 
@@ -1014,7 +1053,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     protected void onDestroy() {
         super.onDestroy();
         super.onStop();
-
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(viewMode , savedViewMode );
@@ -1022,8 +1060,16 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         editor.putString(DIRECTORY, defaultDirectory);
         editor.commit();
         unbindService(mediaConnection);
+        mNotificationManager.cancel(123);
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(mediaSrv != null && mediaBound && !slidingLayout.getPanelState().equals(SlidingUpPanelLayout.PanelState.HIDDEN))
+            showNotification();
+    }
 
     @SuppressLint("NewApi")
     private void getChapterListWrapper() {
