@@ -275,7 +275,7 @@ MediaPlayer.OnCompletionListener, AudioManager.OnAudioFocusChangeListener {
 
     @Override
     public boolean onError(MediaPlayer mp, int what, int extra) {
-        mp.reset();
+
         return false;
     }
 

@@ -275,7 +275,8 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
       MainActivity.this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (mediaSrv != null && mediaBound && !slidingLayout.getPanelState().equals(SlidingUpPanelLayout.PanelState.HIDDEN)) {
+                if(mediaSrv != null && mediaBound) {
+                    if (isPlaying() && !slidingLayout.getPanelState().equals(SlidingUpPanelLayout.PanelState.HIDDEN)) {
                         CalculateTime ct = new CalculateTime();
                         ct.calculateTime(mediaSrv, mActivity, chapterList);
                         seekBar.setMax(mediaSrv.getDur());
@@ -286,6 +287,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                         timeElapsed.setText(timeElapsedOutput);
                         timeLeft.setText(timeLeftOutput);
                         setProgressBar(currentPosition);
+                    }
                 }
                 mHandler.postDelayed(this, 100);
             }
@@ -1060,7 +1062,9 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         editor.putString(DIRECTORY, defaultDirectory);
         editor.commit();
         unbindService(mediaConnection);
-        mNotificationManager.cancel(123);
+        if(mediaSrv != null && mediaBound && !slidingLayout.getPanelState().equals(SlidingUpPanelLayout.PanelState.HIDDEN)) {
+            mNotificationManager.cancel(123);
+        }
     }
 
 

@@ -34,7 +34,6 @@ public class BooksAdapter extends ArrayAdapter<Books> {
         TextView authorView = (TextView) convertView.findViewById(R.id.book_author);
         ImageView bookCover = (ImageView) convertView.findViewById(R.id.book_cover);
         CardView cardView = (CardView) convertView.findViewById(R.id.cv);
-        TextView totalTime = (TextView) convertView.findViewById(R.id.total_time_label);
 
         File cover = new File(Environment.getExternalStorageDirectory() + "/Audibooks/Covers/" + books.title + ".jpg");
         if(cover.exists()) {

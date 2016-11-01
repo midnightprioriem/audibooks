@@ -1,0 +1,68 @@
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:autofit="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="1dp"
+    >
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cv_grid"
+        card_view:cardUseCompatPadding="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        >
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:scaleType="fitXY"
+                android:id="@+id/book_cover_grid"
+
+                />
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/book_title_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/book_cover_grid"
+                android:textSize="17sp"
+                autofit:minTextSize="8sp"
+                android:maxLines="2"
+                android:paddingTop="5dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
+                />
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/book_author_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/book_title_grid"
+                android:textSize="16sp"
+                autofit:minTextSize="8sp"
+                android:maxLines="1"
+                android:singleLine = "true"
+                android:textColor="@color/text_secondary"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="2dp"
+
+                />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
