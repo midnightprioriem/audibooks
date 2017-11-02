@@ -1,145 +1,145 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:2:1-46:12
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:2:1-46:12
 	package
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:3:5-43
-		INJECTED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:3:5-43
+		INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:2:11-69
 	android:versionCode
-		INJECTED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:5:5-80
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:5:5-80
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:5:22-78
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:5:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:6:5-79
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:6:5-79
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:6:22-77
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:6:22-77
 uses-permission#android.permission.WAKE_LOCK
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:7:5-68
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:7:5-68
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:7:22-65
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:7:22-65
 uses-permission#android.permission.MANAGE_DOCUMENTS
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:8:5-75
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:8:5-75
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:8:22-72
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:8:22-72
 uses-permission#android.permission.INTERNET
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:9:5-66
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:9:5-66
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:9:22-64
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:9:22-64
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:10:5-74
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:10:5-74
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:10:22-72
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:10:22-72
 uses-permission#android.permission.MEDIA_CONTENT_CONTROL
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:11:5-80
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:11:5-80
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:11:22-77
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:11:22-77
 application
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:14:5-44:19
-MERGED from [net.steamcrafted:materialiconlib:1.0.4] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\net.steamcrafted\materialiconlib\1.0.4\AndroidManifest.xml:11:5-12:19
-MERGED from [com.balysv.materialmenu:material-menu:1.5.4] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.balysv.materialmenu\material-menu\1.5.4\AndroidManifest.xml:12:5-20
-MERGED from [com.sothree.slidinguppanel:library:3.1.1] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.sothree.slidinguppanel\library\3.1.1\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support:support-v4:23.1.1] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:23.1.1] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\AndroidManifest.xml:22:5-20
-MERGED from [com.github.christophesmet:android_maskable_layout:557cb182b3] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.github.christophesmet\android_maskable_layout\557cb182b3\AndroidManifest.xml:11:5-20
-MERGED from [com.balysv:material-ripple:1.0.2] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.balysv\material-ripple\1.0.2\AndroidManifest.xml:12:5-20
-MERGED from [com.nononsenseapps:filepicker:2.4.2] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.nononsenseapps\filepicker\2.4.2\AndroidManifest.xml:28:5-20
-MERGED from [com.android.support:design:23.1.0] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:cardview-v7:23.1.0] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.github.Commit451:NativeStackBlur:1.0.5] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.github.Commit451\NativeStackBlur\1.0.5\AndroidManifest.xml:12:5-20
-MERGED from [com.afollestad.material-dialogs:commons:0.8.4.2] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\commons\0.8.4.2\AndroidManifest.xml:12:5-20
-MERGED from [com.afollestad.material-dialogs:core:0.8.4.2] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\core\0.8.4.2\AndroidManifest.xml:13:5-20
-MERGED from [com.github.emanzanoaxa:RippleEffect:52ea2a0ab6] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.github.emanzanoaxa\RippleEffect\52ea2a0ab6\AndroidManifest.xml:12:5-20
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:14:5-44:19
+MERGED from [net.steamcrafted:materialiconlib:1.0.4] C:\Users\zacha\.android\build-cache\5b20cc269a64a49c94813316a49f78903f58e38b\output\AndroidManifest.xml:11:5-12:19
+MERGED from [com.balysv.materialmenu:material-menu:1.5.4] C:\Users\zacha\.android\build-cache\f9b362eff895a31898818da8e2f6c13b736320fb\output\AndroidManifest.xml:12:5-20
+MERGED from [com.sothree.slidinguppanel:library:3.1.1] C:\Users\zacha\.android\build-cache\4ccff548640a1e2c1e171daa3a5bff91aaac5b46\output\AndroidManifest.xml:9:5-20
+MERGED from [com.github.christophesmet:android_maskable_layout:557cb182b3] C:\Users\zacha\.android\build-cache\cec572e8258224074ae38b19ad7a217c56a89558\output\AndroidManifest.xml:11:5-20
+MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\zacha\.android\build-cache\406dabecc7a7aaa1b273c58dfedcb8701a0e4d0f\output\AndroidManifest.xml:12:5-20
+MERGED from [com.nononsenseapps:filepicker:2.4.2] C:\Users\zacha\.android\build-cache\0878c7da086c1fc8f6d358d5ee58cb8870bfbee2\output\AndroidManifest.xml:28:5-20
+MERGED from [com.android.support:design:23.1.0] C:\Users\zacha\.android\build-cache\e0c6add93678e3e879eaf761e2423f8bd42deec4\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:23.1.0] C:\Users\zacha\.android\build-cache\df7557f1a64fa28dfebcd887efc23ef06a37137c\output\AndroidManifest.xml:22:5-20
+MERGED from [com.github.Commit451:NativeStackBlur:1.0.5] C:\Users\zacha\.android\build-cache\e3bb1d032942f8f061b1c7f968cacb9a6803ecd7\output\AndroidManifest.xml:12:5-20
+MERGED from [com.afollestad.material-dialogs:commons:0.8.4.2] C:\Users\zacha\.android\build-cache\e836937e4f582cf14d01e947288fda0241491f17\output\AndroidManifest.xml:12:5-20
+MERGED from [com.afollestad.material-dialogs:core:0.8.4.2] C:\Users\zacha\.android\build-cache\8a1159856dd4cbab4218bd2a24bc9c5bef9c5e6d\output\AndroidManifest.xml:13:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\zacha\.android\build-cache\d4535e1dacc135ba8d4ebf8f88bb5c8b35b4da5b\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.1] C:\Users\zacha\.android\build-cache\13927ef569e85df0b9c86c4ca1d6177338fea95e\output\AndroidManifest.xml:22:5-20
+MERGED from [com.github.emanzanoaxa:RippleEffect:52ea2a0ab6] C:\Users\zacha\.android\build-cache\1b94c9953a93e4a299106c2f261deee8465c3992\output\AndroidManifest.xml:12:5-20
 	android:label
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:18:9-41
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:18:9-41
 	android:fullBackupContent
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:15:9-41
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:15:9-41
 	android:allowBackup
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:16:9-35
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:16:9-35
 	android:icon
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:17:9-43
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:17:9-43
 	android:theme
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:19:9-45
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:19:9-45
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:20:9-38
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:20:9-38
 activity#com.bestintheverse.audibooks.MainActivity
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:22:9-33:20
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:22:9-33:20
 	android:screenOrientation
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:26:13-49
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:26:13-49
 	android:label
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:24:13-45
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:24:13-45
 	android:launchMode
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:27:13-48
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:27:13-48
 	android:configChanges
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:25:13-48
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:25:13-48
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:23:13-69
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:23:13-69
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:28:13-32:29
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:28:13-32:29
 action#android.intent.action.MAIN
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:29:17-69
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:29:17-69
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:29:25-66
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:31:17-77
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:31:17-77
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:31:27-74
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:31:27-74
 activity#com.nononsenseapps.filepicker.FilePickerActivity
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:34:9-42:20
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:34:9-42:20
 	android:label
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:36:13-45
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:36:13-45
 	android:theme
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:37:13-51
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:37:13-51
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:35:13-76
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:35:13-76
 intent-filter#android.intent.action.GET_CONTENT+android.intent.category.DEFAULT
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:38:13-41:29
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:38:13-41:29
 action#android.intent.action.GET_CONTENT
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:39:17-76
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:39:17-76
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:39:25-73
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:39:25-73
 category#android.intent.category.DEFAULT
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:40:17-76
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:40:17-76
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:40:27-73
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:40:27-73
 service#com.bestintheverse.audibooks.MediaService
-ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:43:9-76
+ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:43:9-76
 	android:name
-		ADDED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml:43:18-74
+		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:43:18-74
 uses-sdk
-INJECTED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [net.steamcrafted:materialiconlib:1.0.4] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\net.steamcrafted\materialiconlib\1.0.4\AndroidManifest.xml:7:5-9:41
-MERGED from [com.balysv.materialmenu:material-menu:1.5.4] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.balysv.materialmenu\material-menu\1.5.4\AndroidManifest.xml:8:5-10:41
-MERGED from [com.sothree.slidinguppanel:library:3.1.1] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.sothree.slidinguppanel\library\3.1.1\AndroidManifest.xml:7:5-43
-MERGED from [com.android.support:support-v4:23.1.1] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\AndroidManifest.xml:20:5-43
-MERGED from [com.wnafee:vector-compat:1.0.5] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.wnafee\vector-compat\1.0.5\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:23.1.1] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\AndroidManifest.xml:20:5-43
-MERGED from [com.github.christophesmet:android_maskable_layout:557cb182b3] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.github.christophesmet\android_maskable_layout\557cb182b3\AndroidManifest.xml:7:5-9:41
-MERGED from [com.balysv:material-ripple:1.0.2] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.balysv\material-ripple\1.0.2\AndroidManifest.xml:8:5-10:41
-MERGED from [com.daimajia.numberprogressbar:library:1.2] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.daimajia.numberprogressbar\library\1.2\AndroidManifest.xml:7:5-9:41
-MERGED from [com.nononsenseapps:filepicker:2.4.2] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.nononsenseapps\filepicker\2.4.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.android.support:recyclerview-v7:23.1.1] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:design:23.1.0] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:cardview-v7:23.1.0] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.0\AndroidManifest.xml:20:5-43
-MERGED from [jp.wasabeef:blurry:1.0.4] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\jp.wasabeef\blurry\1.0.4\AndroidManifest.xml:8:5-10:41
-MERGED from [com.github.Commit451:NativeStackBlur:1.0.5] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.github.Commit451\NativeStackBlur\1.0.5\AndroidManifest.xml:8:5-10:41
-MERGED from [com.afollestad.material-dialogs:commons:0.8.4.2] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\commons\0.8.4.2\AndroidManifest.xml:8:5-10:41
-MERGED from [com.afollestad.material-dialogs:core:0.8.4.2] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\core\0.8.4.2\AndroidManifest.xml:8:5-11:75
-MERGED from [me.zhanghai.android.materialprogressbar:library:1.1.4] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\me.zhanghai.android.materialprogressbar\library\1.1.4\AndroidManifest.xml:11:5-13:41
-MERGED from [me.grantland:autofittextview:0.2.1] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\me.grantland\autofittextview\0.2.1\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.emanzanoaxa:RippleEffect:52ea2a0ab6] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.github.emanzanoaxa\RippleEffect\52ea2a0ab6\AndroidManifest.xml:8:5-10:41
+INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [net.steamcrafted:materialiconlib:1.0.4] C:\Users\zacha\.android\build-cache\5b20cc269a64a49c94813316a49f78903f58e38b\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.balysv.materialmenu:material-menu:1.5.4] C:\Users\zacha\.android\build-cache\f9b362eff895a31898818da8e2f6c13b736320fb\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.sothree.slidinguppanel:library:3.1.1] C:\Users\zacha\.android\build-cache\4ccff548640a1e2c1e171daa3a5bff91aaac5b46\output\AndroidManifest.xml:7:5-43
+MERGED from [com.wnafee:vector-compat:1.0.5] C:\Users\zacha\.android\build-cache\75efe4cad654d58ed3595cb4e271d1dce97d6fc3\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.christophesmet:android_maskable_layout:557cb182b3] C:\Users\zacha\.android\build-cache\cec572e8258224074ae38b19ad7a217c56a89558\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\zacha\.android\build-cache\406dabecc7a7aaa1b273c58dfedcb8701a0e4d0f\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.daimajia.numberprogressbar:library:1.2] C:\Users\zacha\.android\build-cache\aafe867be5f254ee4517e53028d39cd25a4de5b9\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.nononsenseapps:filepicker:2.4.2] C:\Users\zacha\.android\build-cache\0878c7da086c1fc8f6d358d5ee58cb8870bfbee2\output\AndroidManifest.xml:24:5-26:41
+MERGED from [com.android.support:design:23.1.0] C:\Users\zacha\.android\build-cache\e0c6add93678e3e879eaf761e2423f8bd42deec4\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:23.1.0] C:\Users\zacha\.android\build-cache\df7557f1a64fa28dfebcd887efc23ef06a37137c\output\AndroidManifest.xml:20:5-43
+MERGED from [jp.wasabeef:blurry:1.0.4] C:\Users\zacha\.android\build-cache\1e864c710b3dc9ab7f4082068337d733748d7a25\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.Commit451:NativeStackBlur:1.0.5] C:\Users\zacha\.android\build-cache\e3bb1d032942f8f061b1c7f968cacb9a6803ecd7\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.afollestad.material-dialogs:commons:0.8.4.2] C:\Users\zacha\.android\build-cache\e836937e4f582cf14d01e947288fda0241491f17\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.afollestad.material-dialogs:core:0.8.4.2] C:\Users\zacha\.android\build-cache\8a1159856dd4cbab4218bd2a24bc9c5bef9c5e6d\output\AndroidManifest.xml:8:5-11:75
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.1.4] C:\Users\zacha\.android\build-cache\b9dc11908d9f9643ff97860bb226c1b1bb022662\output\AndroidManifest.xml:11:5-13:41
+MERGED from [com.android.support:recyclerview-v7:23.1.1] C:\Users\zacha\.android\build-cache\50edc891ee459a6d32621ba8cf44a64ab32b8acf\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\zacha\.android\build-cache\d4535e1dacc135ba8d4ebf8f88bb5c8b35b4da5b\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.1] C:\Users\zacha\.android\build-cache\13927ef569e85df0b9c86c4ca1d6177338fea95e\output\AndroidManifest.xml:20:5-43
+MERGED from [me.grantland:autofittextview:0.2.1] C:\Users\zacha\.android\build-cache\0dd0a3dac0442cc878d8292cdded301e05441f54\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.emanzanoaxa:RippleEffect:52ea2a0ab6] C:\Users\zacha\.android\build-cache\1b94c9953a93e4a299106c2f261deee8465c3992\output\AndroidManifest.xml:8:5-10:41
 	tools:overrideLibrary
-		ADDED from [com.afollestad.material-dialogs:core:0.8.4.2] D:\Android Projects\audibooks\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\core\0.8.4.2\AndroidManifest.xml:11:9-72
+		ADDED from [com.afollestad.material-dialogs:core:0.8.4.2] C:\Users\zacha\.android\build-cache\8a1159856dd4cbab4218bd2a24bc9c5bef9c5e6d\output\AndroidManifest.xml:11:9-72
 	android:targetSdkVersion
-		INJECTED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Android Projects\audibooks\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml
