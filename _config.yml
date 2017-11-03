@@ -1,1 +1,4 @@
 theme: jekyll-theme-minimal
+
+#blog logo
+logo: "app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
