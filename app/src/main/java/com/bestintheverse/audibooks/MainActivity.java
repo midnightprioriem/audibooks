@@ -1,4 +1,5 @@
 package com.bestintheverse.audibooks;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -24,6 +25,7 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.provider.MediaStore;
 import android.os.Bundle;
+import android.support.percent.PercentRelativeLayout;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.telephony.PhoneStateListener;
@@ -34,7 +36,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -82,7 +86,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-public class MainActivity extends Activity implements MediaPlayerControl, ServiceCallbacks{
+public class MainActivity extends Activity implements MediaPlayerControl, ServiceCallbacks {
 
     ListView bookView;
     GridView bookViewGrid;
@@ -109,16 +113,18 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     private BooksAdapter adapter;
     private BooksGridAdapter gridAdapter;
 
-    public LinearLayout controlLayout;
 
-    public MaterialRippleLayout back;
-    public MaterialRippleLayout replay30;
-    public MaterialRippleLayout replay10;
+    public PercentRelativeLayout controlLayout;
+    public PercentRelativeLayout titleContainer;
+
+    public Button back;
+    public Button replay30;
+    public Button replay10;
     public MorphButton playPauseButton;
-    public MaterialRippleLayout forward10;
-    public MaterialRippleLayout forward30;
-    public MaterialRippleLayout next;
-    public MaterialRippleLayout closeBook;
+    public Button forward10;
+    public Button forward30;
+    public Button next;
+    public Button closeBook;
     public SeekBar seekBar;
     private Handler mHandler = new Handler();
     public int sortState = 0;
@@ -155,7 +161,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     NotificationManager mNotificationManager;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,20 +168,20 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         SharedPreferences prefs = this.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         defaultDirectory = prefs.getString(DIRECTORY, DEFAULT_DIRECTORY);
 
-        if(defaultDirectory.equals("")){
-            directoryChooserDialog();
+        if (defaultDirectory.equals("")) {
+            instructionsDialog();
         }
 
         //Retrieve Chapters
         chapterList = new ArrayList<>();
-        if(!defaultDirectory.equals("")){
-            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
+        if (!defaultDirectory.equals("")) {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
                 getChapterListWrapper();
             else
                 getChapterList();
         }
 
-        
+
         Collections.sort(chapterList, new Comparator<Chapter>() {
             @Override
             public int compare(Chapter lhs, Chapter rhs) {
@@ -202,7 +207,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         savedViewMode = prefs.getString(viewMode, defaultViewMode);
         savedSortMode = prefs.getString(sortMode, defaultSortMode);
 
-        if(savedSortMode.equals("byAuthor")){
+        if (savedSortMode.equals("byAuthor")) {
             Collections.sort(bookList, new Comparator<Books>() {
                 @Override
                 public int compare(Books lhs, Books rhs) {
@@ -214,7 +219,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             sortState = 1;
         }
 
-        if(savedSortMode.equals("byTitle")){
+        if (savedSortMode.equals("byTitle")) {
             Collections.sort(bookList, new Comparator<Books>() {
                 @Override
                 public int compare(Books lhs, Books rhs) {
@@ -226,13 +231,13 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             sortState = 0;
         }
 
-        if(savedViewMode.equals("listView")){
+        if (savedViewMode.equals("listView")) {
             bookViewGrid.setVisibility(View.GONE);
             bookView.setVisibility(View.VISIBLE);
             isListView = true;
         }
 
-        if(savedViewMode.equals("gridView")){
+        if (savedViewMode.equals("gridView")) {
             bookView.setVisibility(View.GONE);
             bookViewGrid.setVisibility(View.VISIBLE);
             isListView = false;
@@ -264,18 +269,15 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
 
 
-
-
-
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         PanelStateListener panelStateListener = new PanelStateListener();
         panelStateListener.setListener(slidingLayout, mActivity);
 
-      MainActivity.this.runOnUiThread(new Runnable() {
+        MainActivity.this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if(mediaSrv != null && mediaBound) {
+                if (mediaSrv != null && mediaBound) {
                     if (isPlaying() && !slidingLayout.getPanelState().equals(SlidingUpPanelLayout.PanelState.HIDDEN)) {
                         CalculateTime ct = new CalculateTime();
                         ct.calculateTime(mediaSrv, mActivity, chapterList);
@@ -344,7 +346,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     @Override
     protected void onStart() {
         super.onStart();
-        if(playIntent==null){
+        if (playIntent == null) {
             playIntent = new Intent(this, MediaService.class);
             bindService(playIntent, mediaConnection, Context.BIND_AUTO_CREATE);
             startService(playIntent);
@@ -352,7 +354,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     }
 
 
-    public void getBookList(ArrayList<Chapter> chapters, ArrayList<Books> books){
+    public void getBookList(ArrayList<Chapter> chapters, ArrayList<Books> books) {
         Chapter currChapter;
         Books currBook;
         int totalDur = 0;
@@ -366,7 +368,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             String path = currChapter.getPath();
             String coverPath = "";
             ArrayList<String> bookChapters = new ArrayList<>();
-            for(int j = i; j < chapterList.size(); j++){
+            for (int j = i; j < chapterList.size(); j++) {
                 currChapter = chapters.get(j);
                 if (bTitle.equals(currChapter.getTitle())) {
                     bookChapters.add(currChapter.getChapter());
@@ -374,7 +376,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
                 }
             }
-            for(int c = 0; c < bookList.size(); c++) {
+            for (int c = 0; c < bookList.size(); c++) {
                 currBook = books.get(c);
                 if (bTitle.equals(currBook.getTitle())) {
                     totalDur = 0;
@@ -385,7 +387,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             ContentResolver mediaResolver = getContentResolver();
             Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
             Cursor cursor = mediaResolver.query(uri, null, MediaStore.Images.Media.DATA + " like ? ", new String[]{"%" + path + "%"}, null);
-            if(cursor !=null && cursor.moveToFirst()){
+            if (cursor != null && cursor.moveToFirst()) {
                 int coverID = cursor.getColumnIndex(MediaStore.Images.Media._ID);
                 int coverColumn = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
                 coverPath = cursor.getString(coverColumn);
@@ -398,12 +400,12 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     }
 
-    public void getChapterList(){
+    public void getChapterList() {
         ContentResolver musicResolver = getContentResolver();
         Uri mediaUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         Cursor mediaCursor = musicResolver.query(mediaUri, null, MediaStore.Audio.Media.DATA + " like ? ",
                 new String[]{"%" + defaultDirectory + "%"}, null);
-        if(mediaCursor != null && mediaCursor.moveToFirst()){
+        if (mediaCursor != null && mediaCursor.moveToFirst()) {
             int titleColumn = mediaCursor.getColumnIndex(MediaStore.Audio.Media.ALBUM);
             int idColumn = mediaCursor.getColumnIndex(MediaStore.Audio.Media._ID);
             int authorColumn = mediaCursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
@@ -422,14 +424,14 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             }
             while (mediaCursor.moveToNext());
         }
-        if(mediaCursor != null){
+        if (mediaCursor != null) {
             mediaCursor.close();
         }
     }
 
-    public void getBookCovers(){
+    public void getBookCovers() {
 
-        if(coverCounter == bookList.size())
+        if (coverCounter == bookList.size())
             return;
         Books book;
         book = bookList.get(coverCounter);
@@ -474,14 +476,14 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 });
     }
 
-    public void setBookCover(JSONObject jsonObject){
+    public void setBookCover(JSONObject jsonObject) {
 
         JSONArray jsonArray = jsonObject.optJSONArray("docs");
         JSONObject jsonBook = jsonArray.optJSONObject(0);
-        if(jsonBook != null){
-            for(int i=0; i < jsonArray.length(); i ++){
+        if (jsonBook != null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
                 jsonBook = jsonArray.optJSONObject(i);
-                if(jsonBook.has("cover_i")){
+                if (jsonBook.has("cover_i")) {
                     Log.d("json", jsonBook.toString());
                     String imageID = jsonBook.optString("cover_i");
                     String imageURL = IMAGE_URL_BASE + imageID + "-L.jpg";
@@ -501,10 +503,9 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                                     try {
                                         file.createNewFile();
                                         FileOutputStream ostream = new FileOutputStream(file);
-                                        bitmap.compress(Bitmap.CompressFormat.JPEG,100,ostream);
+                                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, ostream);
                                         ostream.close();
-                                    }
-                                    catch (Exception e) {
+                                    } catch (Exception e) {
                                         e.printStackTrace();
                                     }
                                 }
@@ -512,10 +513,12 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                         }
 
                         @Override
-                        public void onBitmapFailed(Drawable errorDrawable) {}
+                        public void onBitmapFailed(Drawable errorDrawable) {
+                        }
 
                         @Override
-                        public void onPrepareLoad(Drawable placeHolderDrawable) {}
+                        public void onPrepareLoad(Drawable placeHolderDrawable) {
+                        }
                     };
 
                     Picasso.with(getApplicationContext()).load(imageURL).error(R.drawable.default_book).into(target);
@@ -531,7 +534,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         getBookCovers();
     }
 
-    public void playNext(){
+    public void playNext() {
         mediaSrv.playNext();
         updateChapterText();
         if (playPauseButton.getState() == MorphButton.MorphState.END) {
@@ -540,10 +543,10 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     }
 
-    public void playPrev(){
+    public void playPrev() {
         mediaSrv.playPrev();
         updateChapterText();
-        if(playPauseButton.getState() == MorphButton.MorphState.END){
+        if (playPauseButton.getState() == MorphButton.MorphState.END) {
             playPauseButton.setState(MorphButton.MorphState.START, true);
         }
     }
@@ -568,18 +571,18 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     @Override
     public int getDuration() {
-        if(mediaSrv!=null && mediaBound && mediaSrv.getDur() != 0 )
+        if (mediaSrv != null && mediaBound && mediaSrv.getDur() != 0)
             return mediaSrv.getDur();
         else return 0;
     }
 
-    public int getTotalDuration(){
+    public int getTotalDuration() {
         return mediaSrv.getTotalDuration();
     }
 
     @Override
     public int getCurrentPosition() {
-        if(mediaSrv!=null && mediaBound)
+        if (mediaSrv != null && mediaBound)
             return mediaSrv.getPosn();
         else return 0;
     }
@@ -590,7 +593,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     }
 
-    public void setProgressBar(int currentPosition){
+    public void setProgressBar(int currentPosition) {
         CalculateTime ct = new CalculateTime();
         ct.calculateTime(mediaSrv, mActivity, chapterList);
         int durElapsed = ct.getDurationElapsed(currentPosition);
@@ -602,7 +605,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         String durationLeftOutput = ct.getDurationLeftOutput(durLeft);
         durationElapsed.setText(durationElapsedOutput + " of " + ct.getDurationElapsedOutput(totalDur));
         durationLeft.setText(durationLeftOutput);
-        double rElapsed = (dDurElapsed/dTotalDur)*100;
+        double rElapsed = (dDurElapsed / dTotalDur) * 100;
         int pElapsed = (int) rElapsed;
         progressBar.setProgress(pElapsed);
         percentElapsed.setText(String.valueOf(pElapsed + "%" + " Read"));
@@ -611,7 +614,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     }
 
-    public void onBookClick(int position){
+    public void onBookClick(int position) {
 
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
         if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
@@ -648,15 +651,15 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         percentElapsed = (TextView) findViewById(R.id.percentElapsed);
         percentElapsedOne = (TextView) findViewById(R.id.percentElapsedOne);
         durationLeft = (TextView) findViewById(R.id.durationLeft);
-        controlLayout = (LinearLayout) findViewById(R.id.controlLayout);
+        controlLayout = (PercentRelativeLayout) findViewById(R.id.controlLayout);
+        titleContainer = (PercentRelativeLayout) findViewById(R.id.title_line);
 
-        int titleHeight = bookTitleView.getHeight();
         int authorHeight = bookAuthorView.getHeight();
+        int titleHeight = titleContainer.getHeight();
         slidingLayout.setPanelHeight(titleHeight + authorHeight);
 
 
         playPauseButton.setState(MorphButton.MorphState.START, true);
-
 
 
         if (mediaSrv.getChapterSize() == 1) {
@@ -677,10 +680,9 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         showNotification();
 
 
-
     }
 
-    public void showNotification(){
+    public void showNotification() {
 
         BitmapFactory.Options opts = new BitmapFactory.Options();
         opts.inSampleSize = 7;
@@ -688,7 +690,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
         Intent resultIntent = new Intent(this, MainActivity.class);
         resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent resultPendingIntent = PendingIntent.getActivity(this,0,
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0,
                 resultIntent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_UPDATE_CURRENT);
 
         mBuilder =
@@ -709,20 +711,17 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     }
 
 
-
-
-
     public void setButtons() {
-        back = (MaterialRippleLayout) findViewById(R.id.back);
-        replay10 = (MaterialRippleLayout) findViewById(R.id.replay_10);
-        replay30 = (MaterialRippleLayout) findViewById(R.id.replay_30);
+        back = (Button) findViewById(R.id.back);
+        replay10 = (Button) findViewById(R.id.replay_10);
+        replay30 = (Button) findViewById(R.id.replay_30);
         playPauseButton = (MorphButton) findViewById(R.id.playPauseButton);
-        forward10 = (MaterialRippleLayout) findViewById(R.id.forward_10);
-        forward30 = (MaterialRippleLayout) findViewById(R.id.forward_30);
-        next = (MaterialRippleLayout) findViewById(R.id.next);
+        forward10 = (Button) findViewById(R.id.forward_10);
+        forward30 = (Button) findViewById(R.id.forward_30);
+        next = (Button) findViewById(R.id.next);
         bookCoverBlur = (ImageView) findViewById(R.id.main_cover_blur);
         bookCover = (ImageView) findViewById(R.id.main_cover);
-        closeBook = (MaterialRippleLayout) findViewById(R.id.close_book_button);
+        closeBook = (Button) findViewById(R.id.close_book_button);
 
         closeBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -883,7 +882,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     @Override
     public boolean isPlaying() {
-        if (mediaSrv!=null && mediaBound)
+        if (mediaSrv != null && mediaBound)
             return mediaSrv.isPng();
         return false;
     }
@@ -918,11 +917,11 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        if(savedViewMode.equals("listView")){
+        if (savedViewMode.equals("listView")) {
             menu.findItem(R.id.view_button).setIcon(R.drawable.view_grid);
         }
 
-        if(savedViewMode.equals("gridView")){
+        if (savedViewMode.equals("gridView")) {
             menu.findItem(R.id.view_button).setIcon(R.drawable.view_list);
         }
 
@@ -930,13 +929,33 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     }
 
 
-    public String getBookTitle(){return mediaSrv.getBooktitle();}
-    public String getBookAuthor(){return mediaSrv.getAuthor();}
-    public ArrayList<String> getChapters(){return mediaSrv.getChapters();}
-    public int getChapterPos(){return mediaSrv.getChapter();}
-    public int getBookPos(){return mediaSrv.getBookPos();}
-    public String getCoverURL(){return mediaSrv.getCoverURL();}
-    public int getPercentCompleted(){return mediaSrv.getPercentCompleted();}
+    public String getBookTitle() {
+        return mediaSrv.getBooktitle();
+    }
+
+    public String getBookAuthor() {
+        return mediaSrv.getAuthor();
+    }
+
+    public ArrayList<String> getChapters() {
+        return mediaSrv.getChapters();
+    }
+
+    public int getChapterPos() {
+        return mediaSrv.getChapter();
+    }
+
+    public int getBookPos() {
+        return mediaSrv.getBookPos();
+    }
+
+    public String getCoverURL() {
+        return mediaSrv.getCoverURL();
+    }
+
+    public int getPercentCompleted() {
+        return mediaSrv.getPercentCompleted();
+    }
 
     public void getBookPositions() {
         Books books;
@@ -945,20 +964,20 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         int chapPos;
         int seekPos;
         int durationElapsed = 0;
-        for(int i=0; i < bookList.size(); i++){
+        for (int i = 0; i < bookList.size(); i++) {
             books = bookList.get(i);
             String titleQuery = books.title;
-            if(books.title.contains("'")){
-                titleQuery = titleQuery.replaceAll("'" , "''");
+            if (books.title.contains("'")) {
+                titleQuery = titleQuery.replaceAll("'", "''");
             }
             Cursor cursor = db.queryBooks(titleQuery);
-            if (cursor != null && cursor.getCount() > 0){
+            if (cursor != null && cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 bookTitle = cursor.getString(1);
                 chapPos = cursor.getInt(2);
                 seekPos = cursor.getInt(3);
 
-                if(books.title.equals(bookTitle)) {
+                if (books.title.equals(bookTitle)) {
                     for (int k = 0; k < chapterList.size(); k++) {
                         Chapter chapter = chapterList.get(k);
                         if (bookTitle.equals(chapter.getTitle()) && chapPos > Integer.parseInt(chapter.getChapter())) {
@@ -979,28 +998,27 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         }
     }
 
-    public void writeBookPositions(){
+    public void writeBookPositions() {
         db = new BookTable(this);
         Books books;
-        for(int i = 0; i < bookList.size(); i++ ){
+        for (int i = 0; i < bookList.size(); i++) {
             books = bookList.get(i);
             String titleQuery = books.title;
-            if(books.currentChapter == 1 && books.seekPos == 0){
+            if (books.currentChapter == 1 && books.seekPos == 0) {
                 continue;
             }
-            if(books.title.contains("'")){
-                titleQuery = titleQuery.replaceAll("'" , "''");
+            if (books.title.contains("'")) {
+                titleQuery = titleQuery.replaceAll("'", "''");
             }
             Cursor cursor = db.queryBooks(titleQuery);
-            if (cursor != null && cursor.getCount() > 0){
+            if (cursor != null && cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 int id = cursor.getInt(0);
                 boolean result = db.updateData(books.title, books.currentChapter, books.seekPos, id);
-                if(!result){
-                    Log.d("DB" , "FAILED TO UPDATE DATA");
+                if (!result) {
+                    Log.d("DB", "FAILED TO UPDATE DATA");
                 }
-            }
-            else {
+            } else {
                 db.insertData(books.title, books.currentChapter, books.seekPos);
             }
 
@@ -1008,7 +1026,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
 
     }
 
-    public void registerPhoneListener(){
+    public void registerPhoneListener() {
         PhoneStateListener phoneStateListener = new PhoneStateListener() {
             @Override
             public void onCallStateChanged(int state, String incomingNumber) {
@@ -1018,13 +1036,13 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                         pause();
                     }
 
-                } else if(state == TelephonyManager.CALL_STATE_IDLE) {
+                } else if (state == TelephonyManager.CALL_STATE_IDLE) {
                     if (mediaSrv != null && mediaBound) {
                         playPauseButton.setState(MorphButton.MorphState.START, true);
                         start();
-                        seekTo(getCurrentPosition()-5000);
+                        seekTo(getCurrentPosition() - 5000);
                     }
-                } else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
+                } else if (state == TelephonyManager.CALL_STATE_OFFHOOK) {
                     if (mediaSrv != null && mediaBound && mediaSrv.isPlaying()) {
                         playPauseButton.setState(MorphButton.MorphState.END, true);
                         pause();
@@ -1034,11 +1052,10 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             }
         };
         TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-        if(mgr != null) {
+        if (mgr != null) {
             mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
         }
     }
-
 
 
     @Override
@@ -1048,7 +1065,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             bookList.set(getBookPos(), new Books(getBookTitle(), getBookAuthor(), getChapters(), getChapterPos(), getCurrentPosition(), getTotalDuration(), getCoverURL(), getPercentCompleted()));
         }
         writeBookPositions();
-       
+
     }
 
     @Override
@@ -1057,12 +1074,12 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         super.onStop();
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(viewMode , savedViewMode );
-        editor.putString(sortMode , savedSortMode);
+        editor.putString(viewMode, savedViewMode);
+        editor.putString(sortMode, savedSortMode);
         editor.putString(DIRECTORY, defaultDirectory);
         editor.commit();
         unbindService(mediaConnection);
-        if(mediaSrv != null && mediaBound && !slidingLayout.getPanelState().equals(SlidingUpPanelLayout.PanelState.HIDDEN)) {
+        if (mediaSrv != null && mediaBound && !slidingLayout.getPanelState().equals(SlidingUpPanelLayout.PanelState.HIDDEN)) {
             mNotificationManager.cancel(123);
         }
     }
@@ -1071,7 +1088,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     @Override
     protected void onResume() {
         super.onResume();
-        if(mediaSrv != null && mediaBound && !slidingLayout.getPanelState().equals(SlidingUpPanelLayout.PanelState.HIDDEN))
+        if (mediaSrv != null && mediaBound && !slidingLayout.getPanelState().equals(SlidingUpPanelLayout.PanelState.HIDDEN))
             showNotification();
     }
 
@@ -1084,7 +1101,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
+                                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                                         123);
                             }
                         });
@@ -1116,7 +1133,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                requestPermissions(new String[] {Manifest.permission.INTERNET},
+                                requestPermissions(new String[]{Manifest.permission.INTERNET},
                                         123);
                             }
                         });
@@ -1129,7 +1146,8 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         getBookCovers();
 
     }
-    public void directoryChooserDialog(){
+
+    public void directoryChooserDialog() {
         new MaterialDialog.Builder(this)
                 .title("Choose a directory")
                 .theme(Theme.LIGHT)
@@ -1145,7 +1163,30 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
                 .show();
 
     }
-    public void startCustomDirectoryActivity(){
+
+    public void instructionsDialog() {
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Thank you for downloading Audibooks! Audibooks is made to play audiobooks in .mp3 format. If your .mp3's are chapterized, each .mp3 should be ordered using the 'track' metadata. Also, the 'album' and 'artist' metadata should contain the book title and author respectively. A desktop app like Mp3Tag makes it easy to edit this metadata. The app may not work correctly without the proper metadata." +
+                "\n \n You will also need to select your default audiobook directory. The files should be set up like so: Audibooks_Directory/Book_Title/chapters.mp3." +
+                "\n \n The app will also use any book cover images placed inside the book folder. " +
+                "\n \n Thanks, and enjoy!"
+        );
+        alertDialogBuilder.setPositiveButton("Okay",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        directoryChooserDialog();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+
+    }
+
+    public void startCustomDirectoryActivity() {
 
         Intent i = new Intent(getApplicationContext(), FilePickerActivity.class);
         // This works if you defined the intent filter
@@ -1171,7 +1212,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             defaultDirectory = uri.getPath();
             chapterList.clear();
             bookList.clear();
-            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
                 getChapterListWrapper();
             else
                 getChapterList();
@@ -1193,14 +1234,13 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.view_button:
-                if(isListView){
+                if (isListView) {
                     item.setIcon(R.drawable.view_list);
                     bookView.setVisibility(View.GONE);
                     bookViewGrid.setVisibility(View.VISIBLE);
                     isListView = false;
                     savedViewMode = "gridView";
-                }
-                else {
+                } else {
                     item.setIcon(R.drawable.view_grid);
                     bookViewGrid.setVisibility(View.GONE);
                     bookView.setVisibility(View.VISIBLE);
@@ -1261,7 +1301,7 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             case R.id.refresh_button:
                 chapterList.clear();
                 bookList.clear();
-                if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
+                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
                     getChapterListWrapper();
                 else
                     getChapterList();

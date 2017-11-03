@@ -1,465 +1,317 @@
-
-<com.sothree.slidinguppanel.SlidingUpPanelLayout
-    xmlns:sothree="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:autofit="http://schemas.android.com/apk/res-auto"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
 
     android:id="@+id/sliding_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="bottom"
     android:backgroundTint="#fff"
-    sothree:umanoDragView="@+id/title_author_container"
-    >
+    android:gravity="bottom"
+    sothree:umanoDragView="@+id/title_author_container">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/bookView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:drawSelectorOnTop="true"
+            android:padding="8dp"
+            android:scrollbarStyle="outsideOverlay" />
+
+        <GridView
+            android:id="@+id/bookViewGrid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:drawSelectorOnTop="true"
+            android:gravity="center"
+            android:horizontalSpacing="0dp"
+            android:numColumns="2"
+            android:padding="8dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="0dp" />
+    </RelativeLayout>
+
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/slidingUpDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_dark"
+        android:clickable="true"
+        android:gravity="center|top">
+
+        <ImageView
+            android:id="@+id/main_cover_blur"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+
+            />
+
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/title_line"
+            android:layout_width="match_parent"
+            app:layout_heightPercent="7%">
+
+            <ImageView
+                android:id="@+id/expand_button_view"
+                android:layout_centerVertical="true"
+                android:layout_height="match_parent"
+                android:src="@drawable/expand_less_button"
+                android:tint="#fff"
+                app:layout_widthPercent="10%" />
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/Book_Title_View"
+                android:layout_centerVertical="true"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/expand_button_view"
+                android:gravity="center_horizontal"
+                android:maxLines="1"
+                android:paddingEnd="35dp"
+                android:paddingStart="35dp"
+                android:paddingTop="5dp"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="#fff"
+                android:textSize="20sp"
+                app:layout_widthPercent="83%"
+                autofit:minTextSize="10sp" />
+
+            <Button
+                android:id="@+id/close_book_button"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/Book_Title_View"
+                android:background="@drawable/close"
+                app:layout_aspectRatio="100%"
+                app:layout_widthPercent="7%" />
+
+
+        </android.support.percent.PercentRelativeLayout>
+
+
+        <TextView
+            android:id="@+id/Book_Author_View"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/title_line"
+            android:gravity="center_horizontal"
+            android:text=""
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            app:layout_heightPercent="4%" />
+
+        <TextView
+            android:id="@+id/Chapter_View"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/Book_Author_View"
+            android:gravity="center_horizontal"
+            android:text=""
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            android:paddingBottom="4dp"
+            app:layout_heightPercent="6%" />
+
+
+        <ImageView
+            android:id="@+id/main_cover"
+            android:layout_below="@+id/Chapter_View"
+            android:layout_centerHorizontal="true"
+            app:layout_aspectRatio="62%"
+            app:layout_heightPercent="53%" />
+
+
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/controlLayout"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/main_cover"
+            app:layout_heightPercent="15%">
+
+            <Button
+                android:id="@+id/back"
+                android:layout_centerVertical="true"
+                android:background="@drawable/back"
+                android:backgroundTint="#fff"
+                app:layout_aspectRatio="100%"
+                app:layout_widthPercent="13%" />
+
+            <Button
+                android:id="@+id/replay_30"
+                android:layout_toRightOf="@+id/back"
+                app:layout_aspectRatio="100%"
+                app:layout_widthPercent="13%"
+                android:layout_centerVertical="true"
+                android:background="@drawable/replay_30"
+                android:backgroundTint="#fff" />
+
+            <Button
+                android:id="@+id/replay_10"
+                android:layout_toRightOf="@+id/replay_30"
+                app:layout_aspectRatio="100%"
+                app:layout_widthPercent="13%"
+                android:layout_centerVertical="true"
+                android:background="@drawable/replay_10"
+                android:backgroundTint="#fff" />
+
+
+            <com.wnafee.vector.MorphButton
+                android:id="@+id/playPauseButton"
+                android:layout_toRightOf="@+id/replay_10"
+                app:layout_aspectRatio="100%"
+                app:layout_widthPercent="22%"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                app:vc_endDrawable="@drawable/ic_play_to_pause"
+                app:vc_foregroundTint="#ffffff"
+                app:vc_startDrawable="@drawable/ic_pause_to_play" />
+
+            <Button
+                android:id="@+id/forward_10"
+                android:layout_toRightOf="@+id/playPauseButton"
+                app:layout_aspectRatio="100%"
+                app:layout_widthPercent="13%"
+                android:layout_centerVertical="true"
+                android:background="@drawable/forward_10"
+                android:backgroundTint="#fff" />
+
+            <Button
+                android:id="@+id/forward_30"
+                android:layout_toRightOf="@+id/forward_10"
+                app:layout_aspectRatio="100%"
+                app:layout_widthPercent="13%"
+                android:layout_centerVertical="true"
+                android:background="@drawable/forward_30"
+                android:backgroundTint="#fff" />
+
+            <Button
+                android:id="@+id/next"
+                android:layout_toRightOf="@+id/forward_30"
+                app:layout_aspectRatio="100%"
+                app:layout_widthPercent="13%"
+                android:layout_centerVertical="true"
+                android:background="@drawable/next"
+                android:backgroundTint="#fff" />
+
+        </android.support.percent.PercentRelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ListView
+            app:layout_heightPercent="7.5%"
+            android:layout_below="@+id/controlLayout"
+            android:id="@+id/seekBar_container">
+            <SeekBar
+                android:id="@+id/seekBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/bookView"
-                android:divider="@android:color/transparent"
-                android:dividerHeight="0dp"
-                android:padding="8dp"
-                android:clipToPadding="false"
-                android:scrollbarStyle="outsideOverlay"
-                android:drawSelectorOnTop="true"/>
-            <GridView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/bookViewGrid"
-                android:numColumns="2"
-                android:verticalSpacing="0dp"
-                android:horizontalSpacing="0dp"
-                android:padding="8dp"
-                android:clipToPadding="false"
-                android:scrollbarStyle="outsideOverlay"
-                android:stretchMode="columnWidth"
-                android:gravity="center"
-                android:drawSelectorOnTop="true"
-                />
+                android:progressTint="#fff"
+                android:thumbTint="#fff" />
+
+            <TextView
+                android:id="@+id/timeLeft"
+                android:textSize="13sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/seekBar"
+                android:paddingEnd="13dp"
+                android:paddingStart="0dp"
+                android:paddingTop="0dp"
+                android:text=""
+                android:textColor="@color/text_secondary" />
+
+            <TextView
+                android:id="@+id/timeElapsed"
+                android:textSize="13sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/seekBar"
+                android:paddingEnd="0dp"
+                android:paddingStart="13dp"
+                android:paddingTop="0dp"
+                android:text=""
+                android:textColor="@color/text_secondary" />
+
+            <TextView
+                android:id="@+id/percentElapsedOne"
+                android:textSize="13sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seekBar"
+                android:layout_centerHorizontal="true"
+                android:text=""
+                android:textColor="@color/text_secondary"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            app:layout_heightPercent="7.5%"
+            android:layout_below="@+id/seekBar_container"
+            android:id="@+id/progressBar_container">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="false"
+            android:max="100"
+            android:paddingEnd="13dp"
+            android:paddingStart="13dp"
+            android:progressTint="#fff" />
+
+        <TextView
+            android:id="@+id/totalDuration"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/progressBar"
+            android:paddingEnd="0dp"
+            android:paddingStart="13dp"
+            android:paddingTop="0dp"
+            android:text=""
+            android:textColor="@color/text_secondary" />
+
+        <TextView
+            android:id="@+id/percentElapsed"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progressBar"
+            android:layout_centerHorizontal="true"
+            android:text=""
+            android:textColor="@color/text_secondary" />
+
+        <TextView
+            android:id="@+id/durationLeft"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/progressBar"
+            android:paddingEnd="13dp"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            android:text=""
+            android:textColor="@color/text_secondary" />
         </RelativeLayout>
 
 
-     <RelativeLayout
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:gravity="center|top"
-         android:id="@+id/slidingUpDrawer"
-         android:clickable="true"
-         android:background="@color/primary_dark">
+    </android.support.percent.PercentRelativeLayout>
 
-         <ImageView
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:id="@+id/main_cover_blur"
-             android:scaleType="fitXY"
-             android:layout_centerHorizontal="true"
-
-             />
-
-           <ImageView
-               android:layout_width="35dp"
-               android:layout_height="35dp"
-               android:src="@drawable/expand_less_button"
-               android:tint="#fff"
-               android:id="@+id/expand_button_view"
-               />
-
-         <RelativeLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:id="@+id/title_author_container">
-
-             <me.grantland.widget.AutofitTextView
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:text=""
-                 android:textColor="#fff"
-                 android:id="@+id/Book_Title_View"
-                 android:textSize="20sp"
-                 autofit:minTextSize="10sp"
-                 android:maxLines="1"
-                 android:singleLine = "true"
-                 android:paddingTop="5dp"
-                 android:paddingStart="35dp"
-                 android:paddingEnd="35dp"
-                 android:gravity="center_horizontal"
-                 />
-
-             <TextView
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:text=""
-                 android:id="@+id/Book_Author_View"
-                 android:textColor="@color/text_secondary"
-                 android:gravity="center_horizontal"
-                 android:layout_below="@+id/Book_Title_View"
-                 android:paddingTop="1dp"
-                 android:paddingBottom="5dp"
-                 android:textSize="17sp"
-                 />
-
-         </RelativeLayout>
-
-         <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
-             android:layout_width="35dp"
-             android:layout_height="35dp"
-             app:porterduffxfermode="DST_IN"
-             app:mask="@drawable/masking_masking_01"
-             android:layout_alignEnd="@id/title_author_container"
-             android:layout_gravity="center">
-
-         <com.balysv.materialripple.MaterialRippleLayout
-             android:layout_width="35dp"
-             android:layout_height="35dp"
-             app:mrl_rippleDuration="250"
-             app:mrl_rippleDelayClick="false"
-             app:mrl_rippleColor="#ffffff"
-             android:id="@+id/close_book_button"
-             android:layout_gravity="center"
-             >
-
-         <ImageView
-             android:layout_width="25dp"
-             android:layout_height="25dp"
-             android:src="@drawable/close_book"
-             android:layout_gravity="center"
-             />
-         </com.balysv.materialripple.MaterialRippleLayout>
-         </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
-
-         <TextView
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text=""
-             android:textColor="@color/text_secondary"
-             android:id="@+id/Chapter_View"
-             android:layout_below="@+id/title_author_container"
-             android:gravity="center_horizontal"
-             android:textSize="16sp"
-             />
-
-
-
-
-
-         <ImageView
-             android:layout_width="255dp"
-             android:layout_height="340dp"
-             android:id="@+id/main_cover"
-             android:layout_below="@+id/Chapter_View"
-             android:layout_centerHorizontal="true"
-             android:paddingTop="5dp"
-             android:paddingBottom="10dp"
-              />
-
-
-
-
-
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:weightSum="6"
-             android:paddingStart="5dp"
-             android:paddingEnd="5dp"
-             android:id="@+id/controlLayout"
-             android:layout_below="@+id/main_cover">
-
-             <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
-                 android:layout_width="50dp"
-                 app:porterduffxfermode="DST_IN"
-                 app:mask="@drawable/masking_masking_01"
-                 android:layout_height="50dp"
-                 android:layout_gravity="center">
-             <com.balysv.materialripple.MaterialRippleLayout
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 app:mrl_rippleDuration="250"
-                 app:mrl_rippleDelayClick="false"
-                 app:mrl_rippleColor="#ffffff"
-                 android:id="@+id/back"
-                 android:layout_gravity="center"
-                 >
-             <Button
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 android:backgroundTint="#fff"
-                 android:background="@drawable/back"
-                 android:foreground="?android:attr/selectableItemBackground"
-                 android:layout_gravity="center"
-
-                 />
-             </com.balysv.materialripple.MaterialRippleLayout>
-             </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
-
-             <View
-                 android:layout_width="0dp"
-                 android:layout_height="60dp"
-                 android:layout_weight="1" />
-
-             <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
-                 android:layout_width="50dp"
-                 app:porterduffxfermode="DST_IN"
-                 app:mask="@drawable/masking_masking_01"
-                 android:layout_height="50dp"
-                 android:layout_gravity="center">
-             <com.balysv.materialripple.MaterialRippleLayout
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 app:mrl_rippleDuration="250"
-                 app:mrl_rippleDelayClick="false"
-                 app:mrl_rippleColor="#ffffff"
-                 android:id="@+id/replay_30"
-                 android:layout_gravity="center">
-             <Button
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 android:backgroundTint="#fff"
-                 android:background="@drawable/replay_30"
-                 android:layout_gravity="center"
-                 />
-             </com.balysv.materialripple.MaterialRippleLayout>
-             </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
-
-             <View
-                 android:layout_width="0dp"
-                 android:layout_height="60dp"
-                 android:layout_weight="1" />
-
-             <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
-                 android:layout_width="50dp"
-                 app:porterduffxfermode="DST_IN"
-                 app:mask="@drawable/masking_masking_01"
-                 android:layout_height="50dp"
-                 android:layout_gravity="center">
-             <com.balysv.materialripple.MaterialRippleLayout
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 app:mrl_rippleDuration="250"
-                 app:mrl_rippleDelayClick="false"
-                 app:mrl_rippleColor="#ffffff"
-                 android:id="@+id/replay_10"
-                 android:layout_gravity="center">
-             <Button
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 android:backgroundTint="#fff"
-                 android:background="@drawable/replay_10"
-                 android:layout_gravity="center"
-                 />
-             </com.balysv.materialripple.MaterialRippleLayout>
-             </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
-
-             <View
-                 android:layout_width="0dp"
-                 android:layout_height="60dp"
-                 android:layout_weight="1" />
-
-                 <com.wnafee.vector.MorphButton
-                     android:id="@+id/playPauseButton"
-                     android:layout_width="70dp"
-                     android:layout_height="70dp"
-                     app:vc_foregroundTint="#ffffff"
-                     android:background="@android:color/transparent"
-                     android:layout_gravity="center"
-                     app:vc_startDrawable="@drawable/ic_pause_to_play"
-                     app:vc_endDrawable="@drawable/ic_play_to_pause"
-                     />
-
-
-
-
-             <View
-                 android:layout_width="0dp"
-                 android:layout_height="60dp"
-                 android:layout_weight="1" />
-
-             <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
-                 android:layout_width="50dp"
-                 app:porterduffxfermode="DST_IN"
-                 app:mask="@drawable/masking_masking_01"
-                 android:layout_height="50dp"
-                 android:layout_gravity="center">
-             <com.balysv.materialripple.MaterialRippleLayout
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 app:mrl_rippleDuration="250"
-                 app:mrl_rippleDelayClick="false"
-                 app:mrl_rippleColor="#ffffff"
-                 android:id="@+id/forward_10"
-                 android:layout_gravity="center">
-             <Button
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 android:backgroundTint="#fff"
-                 android:background="@drawable/forward_10"
-                 android:layout_gravity="center"
-                 />
-             </com.balysv.materialripple.MaterialRippleLayout>
-             </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
-
-             <View
-                 android:layout_width="0dp"
-                 android:layout_height="60dp"
-                 android:layout_weight="1"
-                 android:layout_gravity="center"/>
-
-             <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
-                 android:layout_width="50dp"
-                 app:porterduffxfermode="DST_IN"
-                 app:mask="@drawable/masking_masking_01"
-                 android:layout_height="50dp"
-                 android:layout_gravity="center">
-             <com.balysv.materialripple.MaterialRippleLayout
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 app:mrl_rippleDuration="250"
-                 app:mrl_rippleDelayClick="false"
-                 app:mrl_rippleColor="#ffffff"
-                 android:id="@+id/forward_30"
-                 android:layout_gravity="center">
-             <Button
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 android:backgroundTint="#fff"
-                 android:background="@drawable/forward_30"
-                 android:layout_gravity="center"
-                 />
-             </com.balysv.materialripple.MaterialRippleLayout>
-             </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
-
-             <View
-                 android:layout_width="0dp"
-                 android:layout_height="60dp"
-                 android:layout_gravity="center"
-                 android:layout_weight="1" />
-
-             <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
-                 android:layout_width="50dp"
-                 app:porterduffxfermode="DST_IN"
-                 app:mask="@drawable/masking_masking_01"
-                 android:layout_height="50dp"
-                 android:layout_gravity="center">
-             <com.balysv.materialripple.MaterialRippleLayout
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 app:mrl_rippleDuration="250"
-                 app:mrl_rippleDelayClick="false"
-                 app:mrl_rippleColor="#ffffff"
-                 android:id="@+id/next"
-                 android:layout_gravity="center">
-             <Button
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 android:backgroundTint="#fff"
-                 android:background="@drawable/next"
-                 android:layout_gravity="center"
-                 />
-             </com.balysv.materialripple.MaterialRippleLayout>
-             </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
-
-
-         </LinearLayout>
-
-         <SeekBar
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:thumbTint="#fff"
-             android:progressTint="#fff"
-             android:layout_below="@+id/controlLayout"
-             android:id="@+id/seekBar"
-             android:paddingTop="10dp"
-             />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:id="@+id/timeLeft"
-             android:text=""
-             android:textColor="@color/text_secondary"
-             android:layout_below="@id/seekBar"
-             android:layout_alignParentEnd="true"
-             android:paddingTop="0dp"
-             android:paddingEnd="13dp"
-             android:paddingStart="0dp"/>
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:id="@+id/timeElapsed"
-             android:text=""
-             android:textColor="@color/text_secondary"
-             android:layout_below="@id/seekBar"
-             android:layout_alignParentStart="true"
-             android:paddingTop="0dp"
-             android:paddingEnd="0dp"
-             android:paddingStart="13dp"/>
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:id="@+id/percentElapsedOne"
-             android:text=""
-             android:textColor="@color/text_secondary"
-             android:layout_below="@id/seekBar"
-             android:layout_centerHorizontal="true"
-             android:visibility="invisible"/>
-
-         <ProgressBar
-             style="?android:attr/progressBarStyleHorizontal"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:id="@+id/progressBar"
-             android:layout_below="@+id/timeElapsed"
-             android:layout_centerHorizontal="true"
-             android:padding="5dp"
-             android:paddingStart="13dp"
-             android:paddingEnd="13dp"
-             android:progressTint="#fff"
-             android:max="100"
-             android:indeterminate="false"
-             />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:id="@+id/totalDuration"
-             android:text=""
-             android:textColor="@color/text_secondary"
-             android:layout_below="@id/progressBar"
-             android:layout_alignParentStart="true"
-             android:paddingTop="0dp"
-             android:paddingEnd="0dp"
-             android:paddingStart="13dp"/>
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:id="@+id/percentElapsed"
-             android:text=""
-             android:textColor="@color/text_secondary"
-             android:layout_below="@id/progressBar"
-             android:layout_centerHorizontal="true" />
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:id="@+id/durationLeft"
-             android:text=""
-             android:textColor="@color/text_secondary"
-             android:layout_below="@id/progressBar"
-             android:layout_alignParentEnd="true"
-             android:paddingTop="0dp"
-             android:paddingEnd="13dp"
-             android:paddingStart="0dp"/>
-
-
-
-
-
-     </RelativeLayout>
-
-    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
 
 
