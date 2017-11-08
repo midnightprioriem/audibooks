@@ -1,6 +1,0 @@
-theme: jekyll-theme-minimal
-
-baseurl: /audibooks
-
-#blog logo
-logo: "app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
