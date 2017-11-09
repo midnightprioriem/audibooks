@@ -43,21 +43,21 @@ ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifes
 		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:11:22-77
 application
 ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:14:5-44:19
-MERGED from [net.steamcrafted:materialiconlib:1.0.4] C:\Users\zacha\.android\build-cache\8fd1381ab1b9e381de249ec1e376898ac02b3df6\output\AndroidManifest.xml:11:5-12:19
-MERGED from [com.balysv.materialmenu:material-menu:1.5.4] C:\Users\zacha\.android\build-cache\f803407caa6f972e8fafe9cfcd571b8167ea1064\output\AndroidManifest.xml:12:5-20
-MERGED from [com.sothree.slidinguppanel:library:3.1.1] C:\Users\zacha\.android\build-cache\78aa936f73f9a2752cd161e3f4f141c835e387bb\output\AndroidManifest.xml:9:5-20
-MERGED from [com.github.christophesmet:android_maskable_layout:557cb182b3] C:\Users\zacha\.android\build-cache\63f9680086bf1b64f7d115f64e0dcd3c6699d54b\output\AndroidManifest.xml:11:5-20
-MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\zacha\.android\build-cache\67556aa70273bf3cb80556ddb8df53bcab670481\output\AndroidManifest.xml:12:5-20
-MERGED from [com.nononsenseapps:filepicker:2.4.2] C:\Users\zacha\.android\build-cache\ff919f8949bdf2e7125eefe30a6be58b4803e3bd\output\AndroidManifest.xml:28:5-20
-MERGED from [com.android.support:design:23.1.0] C:\Users\zacha\.android\build-cache\feb85b546954cd5759b56c22a92d8ef790a943d4\output\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:cardview-v7:23.1.0] C:\Users\zacha\.android\build-cache\2b836e85b3ae51e36dc67ca35989d96146a29191\output\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:percent:23.1.0] C:\Users\zacha\.android\build-cache\e5aac393c26e041d0c00134689b2fcde5e485137\output\AndroidManifest.xml:22:5-20
-MERGED from [com.github.Commit451:NativeStackBlur:1.0.5] C:\Users\zacha\.android\build-cache\94b3d01cedfb80c7e14a0bbe2209e6a4d34fc443\output\AndroidManifest.xml:12:5-20
-MERGED from [com.afollestad.material-dialogs:commons:0.8.4.2] C:\Users\zacha\.android\build-cache\c72580b9c3cc04e83d9e4a8fdb7ce7bacf266bda\output\AndroidManifest.xml:12:5-20
-MERGED from [com.afollestad.material-dialogs:core:0.8.4.2] C:\Users\zacha\.android\build-cache\6262849e4d7ac859e4df37fddc7ed916bd29c633\output\AndroidManifest.xml:13:5-20
-MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\zacha\.android\build-cache\d4df4bfca3bb7b01f8a2c599fe8394c0c006a1be\output\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.1.1] C:\Users\zacha\.android\build-cache\8163f52332dc6c2d870a42c6bf2934e46ff24f3d\output\AndroidManifest.xml:22:5-20
-MERGED from [com.github.emanzanoaxa:RippleEffect:52ea2a0ab6] C:\Users\zacha\.android\build-cache\c291893dff67759934949b22cf96ad29e9fa0731\output\AndroidManifest.xml:12:5-20
+MERGED from [net.steamcrafted:materialiconlib:1.0.4] C:\Users\zacha\.android\build-cache\5b20cc269a64a49c94813316a49f78903f58e38b\output\AndroidManifest.xml:11:5-12:19
+MERGED from [com.balysv.materialmenu:material-menu:1.5.4] C:\Users\zacha\.android\build-cache\f9b362eff895a31898818da8e2f6c13b736320fb\output\AndroidManifest.xml:12:5-20
+MERGED from [com.sothree.slidinguppanel:library:3.1.1] C:\Users\zacha\.android\build-cache\4ccff548640a1e2c1e171daa3a5bff91aaac5b46\output\AndroidManifest.xml:9:5-20
+MERGED from [com.github.christophesmet:android_maskable_layout:557cb182b3] C:\Users\zacha\.android\build-cache\cec572e8258224074ae38b19ad7a217c56a89558\output\AndroidManifest.xml:11:5-20
+MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\zacha\.android\build-cache\406dabecc7a7aaa1b273c58dfedcb8701a0e4d0f\output\AndroidManifest.xml:12:5-20
+MERGED from [com.nononsenseapps:filepicker:2.4.2] C:\Users\zacha\.android\build-cache\0878c7da086c1fc8f6d358d5ee58cb8870bfbee2\output\AndroidManifest.xml:28:5-20
+MERGED from [com.android.support:design:23.1.0] C:\Users\zacha\.android\build-cache\e0c6add93678e3e879eaf761e2423f8bd42deec4\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:23.1.0] C:\Users\zacha\.android\build-cache\df7557f1a64fa28dfebcd887efc23ef06a37137c\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:percent:23.1.0] C:\Users\zacha\.android\build-cache\99cdae9b5f8d7751c93f78a725a05004241b508d\output\AndroidManifest.xml:22:5-20
+MERGED from [com.github.Commit451:NativeStackBlur:1.0.5] C:\Users\zacha\.android\build-cache\e3bb1d032942f8f061b1c7f968cacb9a6803ecd7\output\AndroidManifest.xml:12:5-20
+MERGED from [com.afollestad.material-dialogs:commons:0.8.4.2] C:\Users\zacha\.android\build-cache\e836937e4f582cf14d01e947288fda0241491f17\output\AndroidManifest.xml:12:5-20
+MERGED from [com.afollestad.material-dialogs:core:0.8.4.2] C:\Users\zacha\.android\build-cache\8a1159856dd4cbab4218bd2a24bc9c5bef9c5e6d\output\AndroidManifest.xml:13:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\zacha\.android\build-cache\d4535e1dacc135ba8d4ebf8f88bb5c8b35b4da5b\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.1] C:\Users\zacha\.android\build-cache\13927ef569e85df0b9c86c4ca1d6177338fea95e\output\AndroidManifest.xml:22:5-20
+MERGED from [com.github.emanzanoaxa:RippleEffect:52ea2a0ab6] C:\Users\zacha\.android\build-cache\1b94c9953a93e4a299106c2f261deee8465c3992\output\AndroidManifest.xml:12:5-20
 	android:label
 		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:18:9-41
 	android:fullBackupContent
@@ -116,29 +116,29 @@ ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifes
 		ADDED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml:43:18-74
 uses-sdk
 INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [net.steamcrafted:materialiconlib:1.0.4] C:\Users\zacha\.android\build-cache\8fd1381ab1b9e381de249ec1e376898ac02b3df6\output\AndroidManifest.xml:7:5-9:41
-MERGED from [com.balysv.materialmenu:material-menu:1.5.4] C:\Users\zacha\.android\build-cache\f803407caa6f972e8fafe9cfcd571b8167ea1064\output\AndroidManifest.xml:8:5-10:41
-MERGED from [com.sothree.slidinguppanel:library:3.1.1] C:\Users\zacha\.android\build-cache\78aa936f73f9a2752cd161e3f4f141c835e387bb\output\AndroidManifest.xml:7:5-43
-MERGED from [com.wnafee:vector-compat:1.0.5] C:\Users\zacha\.android\build-cache\316280a6149ca3c77a5d91174766568eb166b7f3\output\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.christophesmet:android_maskable_layout:557cb182b3] C:\Users\zacha\.android\build-cache\63f9680086bf1b64f7d115f64e0dcd3c6699d54b\output\AndroidManifest.xml:7:5-9:41
-MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\zacha\.android\build-cache\67556aa70273bf3cb80556ddb8df53bcab670481\output\AndroidManifest.xml:8:5-10:41
-MERGED from [com.daimajia.numberprogressbar:library:1.2] C:\Users\zacha\.android\build-cache\d312f63fd8ffe348172330a9317e4775957824e9\output\AndroidManifest.xml:7:5-9:41
-MERGED from [com.nononsenseapps:filepicker:2.4.2] C:\Users\zacha\.android\build-cache\ff919f8949bdf2e7125eefe30a6be58b4803e3bd\output\AndroidManifest.xml:24:5-26:41
-MERGED from [com.android.support:design:23.1.0] C:\Users\zacha\.android\build-cache\feb85b546954cd5759b56c22a92d8ef790a943d4\output\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:cardview-v7:23.1.0] C:\Users\zacha\.android\build-cache\2b836e85b3ae51e36dc67ca35989d96146a29191\output\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:percent:23.1.0] C:\Users\zacha\.android\build-cache\e5aac393c26e041d0c00134689b2fcde5e485137\output\AndroidManifest.xml:20:5-43
-MERGED from [jp.wasabeef:blurry:1.0.4] C:\Users\zacha\.android\build-cache\899087b16f487faa0ca4ac65dabf19d804f07e41\output\AndroidManifest.xml:8:5-10:41
-MERGED from [com.github.Commit451:NativeStackBlur:1.0.5] C:\Users\zacha\.android\build-cache\94b3d01cedfb80c7e14a0bbe2209e6a4d34fc443\output\AndroidManifest.xml:8:5-10:41
-MERGED from [com.afollestad.material-dialogs:commons:0.8.4.2] C:\Users\zacha\.android\build-cache\c72580b9c3cc04e83d9e4a8fdb7ce7bacf266bda\output\AndroidManifest.xml:8:5-10:41
-MERGED from [com.afollestad.material-dialogs:core:0.8.4.2] C:\Users\zacha\.android\build-cache\6262849e4d7ac859e4df37fddc7ed916bd29c633\output\AndroidManifest.xml:8:5-11:75
-MERGED from [me.zhanghai.android.materialprogressbar:library:1.1.4] C:\Users\zacha\.android\build-cache\723d50f5458f235653d5b48cfcb7d9e711512b57\output\AndroidManifest.xml:11:5-13:41
-MERGED from [com.android.support:recyclerview-v7:23.1.1] C:\Users\zacha\.android\build-cache\ea2c266b705f8837e0f6a1e037e77fd6ce5b8331\output\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\zacha\.android\build-cache\d4df4bfca3bb7b01f8a2c599fe8394c0c006a1be\output\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.1.1] C:\Users\zacha\.android\build-cache\8163f52332dc6c2d870a42c6bf2934e46ff24f3d\output\AndroidManifest.xml:20:5-43
-MERGED from [me.grantland:autofittextview:0.2.1] C:\Users\zacha\.android\build-cache\550ef196c352a424a5d5206e3d900df452df2487\output\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.emanzanoaxa:RippleEffect:52ea2a0ab6] C:\Users\zacha\.android\build-cache\c291893dff67759934949b22cf96ad29e9fa0731\output\AndroidManifest.xml:8:5-10:41
+MERGED from [net.steamcrafted:materialiconlib:1.0.4] C:\Users\zacha\.android\build-cache\5b20cc269a64a49c94813316a49f78903f58e38b\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.balysv.materialmenu:material-menu:1.5.4] C:\Users\zacha\.android\build-cache\f9b362eff895a31898818da8e2f6c13b736320fb\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.sothree.slidinguppanel:library:3.1.1] C:\Users\zacha\.android\build-cache\4ccff548640a1e2c1e171daa3a5bff91aaac5b46\output\AndroidManifest.xml:7:5-43
+MERGED from [com.wnafee:vector-compat:1.0.5] C:\Users\zacha\.android\build-cache\75efe4cad654d58ed3595cb4e271d1dce97d6fc3\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.christophesmet:android_maskable_layout:557cb182b3] C:\Users\zacha\.android\build-cache\cec572e8258224074ae38b19ad7a217c56a89558\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\zacha\.android\build-cache\406dabecc7a7aaa1b273c58dfedcb8701a0e4d0f\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.daimajia.numberprogressbar:library:1.2] C:\Users\zacha\.android\build-cache\aafe867be5f254ee4517e53028d39cd25a4de5b9\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.nononsenseapps:filepicker:2.4.2] C:\Users\zacha\.android\build-cache\0878c7da086c1fc8f6d358d5ee58cb8870bfbee2\output\AndroidManifest.xml:24:5-26:41
+MERGED from [com.android.support:design:23.1.0] C:\Users\zacha\.android\build-cache\e0c6add93678e3e879eaf761e2423f8bd42deec4\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:23.1.0] C:\Users\zacha\.android\build-cache\df7557f1a64fa28dfebcd887efc23ef06a37137c\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:percent:23.1.0] C:\Users\zacha\.android\build-cache\99cdae9b5f8d7751c93f78a725a05004241b508d\output\AndroidManifest.xml:20:5-43
+MERGED from [jp.wasabeef:blurry:1.0.4] C:\Users\zacha\.android\build-cache\1e864c710b3dc9ab7f4082068337d733748d7a25\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.Commit451:NativeStackBlur:1.0.5] C:\Users\zacha\.android\build-cache\e3bb1d032942f8f061b1c7f968cacb9a6803ecd7\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.afollestad.material-dialogs:commons:0.8.4.2] C:\Users\zacha\.android\build-cache\e836937e4f582cf14d01e947288fda0241491f17\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.afollestad.material-dialogs:core:0.8.4.2] C:\Users\zacha\.android\build-cache\8a1159856dd4cbab4218bd2a24bc9c5bef9c5e6d\output\AndroidManifest.xml:8:5-11:75
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.1.4] C:\Users\zacha\.android\build-cache\b9dc11908d9f9643ff97860bb226c1b1bb022662\output\AndroidManifest.xml:11:5-13:41
+MERGED from [com.android.support:recyclerview-v7:23.1.1] C:\Users\zacha\.android\build-cache\50edc891ee459a6d32621ba8cf44a64ab32b8acf\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\zacha\.android\build-cache\d4535e1dacc135ba8d4ebf8f88bb5c8b35b4da5b\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.1] C:\Users\zacha\.android\build-cache\13927ef569e85df0b9c86c4ca1d6177338fea95e\output\AndroidManifest.xml:20:5-43
+MERGED from [me.grantland:autofittextview:0.2.1] C:\Users\zacha\.android\build-cache\0dd0a3dac0442cc878d8292cdded301e05441f54\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.emanzanoaxa:RippleEffect:52ea2a0ab6] C:\Users\zacha\.android\build-cache\1b94c9953a93e4a299106c2f261deee8465c3992\output\AndroidManifest.xml:8:5-10:41
 	tools:overrideLibrary
-		ADDED from [com.afollestad.material-dialogs:core:0.8.4.2] C:\Users\zacha\.android\build-cache\6262849e4d7ac859e4df37fddc7ed916bd29c633\output\AndroidManifest.xml:11:9-72
+		ADDED from [com.afollestad.material-dialogs:core:0.8.4.2] C:\Users\zacha\.android\build-cache\8a1159856dd4cbab4218bd2a24bc9c5bef9c5e6d\output\AndroidManifest.xml:11:9-72
 	android:targetSdkVersion
 		INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\zacha\Documents\GitHub\audibooks\app\src\main\AndroidManifest.xml

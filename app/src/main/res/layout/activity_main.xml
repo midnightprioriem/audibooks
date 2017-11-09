@@ -134,9 +134,8 @@
             app:layout_heightPercent="7.5%"
             android:layout_below="@+id/main_cover"
             android:id="@+id/seekBar_container">
-            <SeekBar
-                android:id="@+id/seekBar"
-                app:layout_
+            <SeekBar                android:id="@+id/seekBar"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:progressTint="#fff"
                 android:thumbTint="#fff" />
