@@ -6,12 +6,8 @@
 _Android application for listening to .mp3 audiobooks_
 
 
-<img src="https://raw.githubusercontent.com/zachhannum/5audibooks/master/Images/book_chooser.png"
-       alt="Audibooks Book Chooser List View" width="200"/>
-       <img src="https://raw.githubusercontent.com/zachhannum/audibooks/master/Images/book_chooser_grid.png"
-       alt="Audibooks Book Chooser List View" width="200"/>
-       <img src="https://raw.githubusercontent.com/zachhannum/audibooks/master/Images/play_book3.png"
-       alt="Audibooks Book Chooser List View" width="200"/>
+<img src="https://raw.githubusercontent.com/zachhannum/audibooks/master/Images/audibooks_preview.png"
+       alt="Audibooks Preview" width="800"/>
 
 ## Features
 - Persistance between listening sessions. Your place for each book is saved when you exit the app.
