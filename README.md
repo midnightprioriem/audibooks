@@ -6,7 +6,7 @@
 _Android application for listening to .mp3 audiobooks_
 
 
-<img src="https://raw.githubusercontent.com/zachhannum/audibooks/master/Images/book_chooser.png"
+<img src="https://raw.githubusercontent.com/zachhannum/5audibooks/master/Images/book_chooser.png"
        alt="Audibooks Book Chooser List View" width="200"/>
        <img src="https://raw.githubusercontent.com/zachhannum/audibooks/master/Images/book_chooser_grid.png"
        alt="Audibooks Book Chooser List View" width="200"/>
