@@ -10,7 +10,7 @@ _Android application for listening to .mp3 audiobooks_
        alt="Audibooks Preview" width="800"/>
 
 ## Features
-- Persistance between listening sessions. Your place for each book is saved when you exit the app.
+- Persistance between listening sessions. Your place for each book is saved even when you exit the app.
 - List view and Grid view library
 - Streamlined sliding panel player
 - Sort library by title/author
