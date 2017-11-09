@@ -1,7 +1,6 @@
 # Audibooks
 
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
-[![JitPack](https://img.shields.io/jitpack/v/jitpack/maven-simple.svg)]()
 
 _Android application for listening to .mp3 audiobooks_
 
