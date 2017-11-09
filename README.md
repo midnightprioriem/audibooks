@@ -21,7 +21,7 @@ You can download the .apk for installation from the latest [release](https://git
 
 ## Getting Started
 
-This App is built to playback audiobooks with an .mp3 format. In order to use Audibooks, you must have a copy of the audibook you want to listen to as either a single .mp3, or a series of chapterized .mp3's. In the case of chapterized .mp3's, _all_ metadata must be formatted correctly for Audibooks to interpret them. Formatting is as follows:
+This App is built to playback audiobooks with an .mp3 format. In order to use Audibooks, you must have a copy of the audibook you want to listen to as either a single .mp3, or a series of chapterized .mp3's. In both cases, for .mp3's, _all_ metadata must be formatted correctly for Audibooks to interpret them. Formatting is as follows:
 
 | Metadata        | Audibooks |    
 | ------------- |:-------------:| 
