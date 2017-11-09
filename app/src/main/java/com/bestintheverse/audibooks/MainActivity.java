@@ -609,7 +609,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         int pElapsed = (int) rElapsed;
         progressBar.setProgress(pElapsed);
         percentElapsed.setText(String.valueOf(pElapsed + "%" + " Read"));
-        percentElapsedOne.setText(String.valueOf(pElapsed + "%" + " Read"));
 
 
     }
@@ -649,7 +648,6 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
         timeElapsed = (TextView) findViewById(R.id.timeElapsed);
         durationElapsed = (TextView) findViewById(R.id.totalDuration);
         percentElapsed = (TextView) findViewById(R.id.percentElapsed);
-        percentElapsedOne = (TextView) findViewById(R.id.percentElapsedOne);
         durationLeft = (TextView) findViewById(R.id.durationLeft);
         controlLayout = (PercentRelativeLayout) findViewById(R.id.controlLayout);
         titleContainer = (PercentRelativeLayout) findViewById(R.id.title_line);
@@ -667,14 +665,12 @@ public class MainActivity extends Activity implements MediaPlayerControl, Servic
             durationElapsed.setVisibility(View.INVISIBLE);
             percentElapsed.setVisibility(View.INVISIBLE);
             durationLeft.setVisibility(View.INVISIBLE);
-            percentElapsedOne.setVisibility(View.VISIBLE);
 
         } else {
             progressBar.setVisibility(View.VISIBLE);
             durationElapsed.setVisibility(View.VISIBLE);
             percentElapsed.setVisibility(View.VISIBLE);
             durationLeft.setVisibility(View.VISIBLE);
-            percentElapsedOne.setVisibility(View.INVISIBLE);
         }
 
         showNotification();
