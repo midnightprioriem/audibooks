@@ -1,4 +1,8 @@
-package com.bestintheverse.audibooks;
+package com.bestintheverse.audibooks.helpers;
+
+import com.bestintheverse.audibooks.services.MediaService;
+import com.bestintheverse.audibooks.activities.MainActivity;
+import com.bestintheverse.audibooks.data.Chapter;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.bestintheverse.audibooks;
+package com.bestintheverse.audibooks.data;
 
 import java.util.ArrayList;
 

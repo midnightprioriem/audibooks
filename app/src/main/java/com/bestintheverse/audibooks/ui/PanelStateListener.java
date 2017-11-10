@@ -1,8 +1,10 @@
-package com.bestintheverse.audibooks;
+package com.bestintheverse.audibooks.ui;
 
 import android.view.View;
 import android.widget.ImageView;
 
+import com.bestintheverse.audibooks.R;
+import com.bestintheverse.audibooks.activities.MainActivity;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 public class PanelStateListener {

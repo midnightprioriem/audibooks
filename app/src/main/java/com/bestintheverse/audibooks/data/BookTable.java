@@ -1,4 +1,4 @@
-package com.bestintheverse.audibooks;
+package com.bestintheverse.audibooks.data;
 
 import android.content.ContentValues;
 import android.content.Context;
