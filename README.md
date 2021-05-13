@@ -1,7 +1,5 @@
 # Audibooks
 
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
-
 _Android application for listening to .mp3 audiobooks_
 
 
